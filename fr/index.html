@@ -540,7 +540,7 @@
   .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
   .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
   .booking-info-grid { max-width:980px; margin:0 auto 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:stretch; }
-  .booking-card .payment-reassurance { font-size:0.84rem; color:var(--text-muted); padding:1rem 1.5rem 0; text-align:center; }
+  .booking-card .payment-reassurance { margin:1rem 1.5rem 0; background:var(--turquoise-pale); border:1px solid rgba(42,122,122,0.18); border-radius:12px; color:var(--turquoise-deep); padding:1rem 1.2rem; text-align:center; font-size:0.88rem; line-height:1.55; }
   .booking-quick-question { max-width:860px; margin:1rem auto 0; color:var(--text-muted); font-size:0.88rem; }
   .floating-question { position: fixed; right: 22px; bottom: 22px; z-index: 999; }
   .floating-question-button { border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.85rem 1.05rem; box-shadow: 0 16px 38px rgba(0,0,0,0.22); cursor: pointer; font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.04em; transition: transform 0.18s, background 0.18s, box-shadow 0.18s; }
@@ -616,6 +616,12 @@
     .booking-info-grid { grid-template-columns: 1fr; }
     .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
     .reviews-section .btn-coral { width: auto; }
+  }
+
+  .hero-long-stay-note { margin-top:1rem; color:rgba(255,255,255,0.78); font-size:0.92rem; line-height:1.6; max-width:520px; }
+  .booking-card .payment-reassurance span { color:inherit; }
+  @media (max-width: 720px) {
+    .hero-long-stay-note { font-size:0.86rem; }
   }
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
@@ -720,7 +726,8 @@ Voir les photos
 
 
 </a>
-</div>
+
+<p class="hero-long-stay-note">Vous prévoyez un séjour plus long ou souhaitez télétravailler au bord de la mer ? Contactez-nous pour une offre mensuelle sur mesure.</p></div>
 </div>
 <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
@@ -896,6 +903,36 @@ Fauteuil œuf suspendu, table et 4 chaises, store électrique, barbecue intégr�
 </section>
 
 <!-- VIDEOS -->
+<div class="gallery-section gallery-collapsed" id="gallery">
+<div class="gallery-header">
+<p class="section-tag">Galerie</p>
+<h2>Couchers de soleil, plage & <em>ambiance San Pietro</em></h2>
+<p class="section-lead">Un aperçu visuel de la région — ouvrez toutes les photos pour voir l’appartement complet et les alentours.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item gallery-visible" onclick="openLightbox(0)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Beach and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(3)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Sea view at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+</div>
+<div class="gallery-more"><button onclick="toggleFullGallery()" id="gallery-toggle" type="button">Voir toutes les photos</button></div>
+</div>
+<!-- LOCATION -->
 <button aria-controls="videos" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Visites vidéo</span></button><section class="video-section mobile-accordion-target mobile-collapsed" id="videos">
 <p class="section-tag">
 Visites vidéo
@@ -948,36 +985,6 @@ Découvrez<br/><em>l'appartement en mouvement</em>
 </section>
 
 <!-- GALLERY -->
-<div class="gallery-section gallery-collapsed" id="gallery">
-<div class="gallery-header">
-<p class="section-tag">Galerie</p>
-<h2>Couchers de soleil, plage & <em>ambiance San Pietro</em></h2>
-<p class="section-lead">Un aperçu visuel de la région — ouvrez toutes les photos pour voir l’appartement complet et les alentours.</p>
-</div>
-<div class="gallery-grid">
-<div class="gallery-item gallery-visible" onclick="openLightbox(0)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Beach and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(3)"><img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Sea view at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-</div>
-<div class="gallery-more"><button onclick="toggleFullGallery()" id="gallery-toggle" type="button">Voir toutes les photos</button></div>
-</div>
-<!-- LOCATION -->
 <button aria-controls="location" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Localisation et alentours</span></button><div class="location-section mobile-accordion-target mobile-collapsed" id="location">
 <div class="location-text">
 <p class="section-tag">
@@ -1141,17 +1148,18 @@ Bon à savoir avant de réserver
 <input id="checkout" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);width:100%;background:transparent;cursor:pointer" type="date"/>
 </div>
 </div>
-<!-- GUESTS -->
-<div style="padding:1rem 1.5rem;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center">
-<label id="label-guests" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">VOYAGEURS</label>
-<select id="guests-select" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);background:transparent;cursor:pointer">
+<!-- GUESTS + CURRENCY -->
+<div style="padding:1rem 1.5rem;border-bottom:1px solid #eee;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-right:1px solid #eee;padding-right:1rem">
+    <label id="label-guests" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">VOYAGEURS</label>
+    <select id="guests-select" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);background:transparent;cursor:pointer">
 <option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5</option>
 </select>
-</div>
-<!-- CURRENCY -->
-<div style="padding:0.8rem 1.5rem;border-bottom:1px solid #eee;display:flex;gap:0.5rem">
-<button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:0.5rem">
+    <button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
 <button class="curr-toggle-btn" data-currency="CHF" onclick="setCurrency('CHF')" type="button">CHF</button>
+  </div>
 </div>
 <!-- PRICE BREAKDOWN -->
 <div id="price-breakdown-box" style="display:none;padding:1.2rem 1.5rem;border-bottom:1px solid #eee">
@@ -1174,21 +1182,7 @@ Bon à savoir avant de réserver
 <input id="booking-msg" placeholder="Message (optionnel)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-Aucun paiement en ligne n’est prélevé sur ce site. Après confirmation, nous vous envoyons directement les informations de paiement par email.
-</div>
-<div class="booking-request-note">
-Il s’agit d’une demande de réservation, et non d’une réservation instantanée. Nous vous confirmerons les disponibilités, le prix final et les modalités de réservation par email.
-
-
-
-
-</div>
-<div class="long-stay-note">
-Vous prévoyez un séjour plus long ou souhaitez télétravailler au bord de la mer ? Contactez-nous pour une offre mensuelle sur mesure.
-
-
-
-
+Aucun paiement en ligne n’est prélevé sur ce site. Après confirmation, nous vous envoyons directement les informations de paiement par email.<br/><span style="display:block;margin-top:0.55rem">Il s’agit d’une demande de réservation, pas d’une réservation instantanée. Nous confirmons les disponibilités, le prix final et les détails de réservation par email.</span>
 </div>
 <!-- SUBMIT -->
 <div style="padding:1.2rem 1.5rem">
@@ -1443,8 +1437,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var photos = [
     "/sunsetorange.jpeg",
     "/hut.jpeg",
-    "/heart.jpeg",
     "/beachoceanview.jpg",
+    "/heart.jpeg",
     "/sunset3.jpeg",
     "/Sunset1.jpeg",
     "/Sunset2.jpeg",
