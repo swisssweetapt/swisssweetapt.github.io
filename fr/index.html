@@ -7,12 +7,12 @@
 <title>Appartement de vacances à San Pietro Resort, Lalzi Bay | Swiss Sweet Apartment</title>
 <link href="../favicon.png" rel="icon" type="image/png"/>
 <link href="../apple-touch-icon.png" rel="apple-touch-icon"/>
-<meta content="Swiss Sweet Apartment est un appartement de vacances privé de 97 m² à San Pietro Resort, Lalzi Bay, en Albanie, à 5 minutes de la plage, avec parking gratuit et demande de réservation directe." name="description"/>
+<meta content="Swiss Sweet Apartment est un appartement de vacances privé de 97 m² à San Pietro Resort, Lalzi Bay / Lalzit Bay, en Albanie, à 5 minutes de la plage, avec parking gratuit et demande de réservation directe." name="description"/>
 <link href="https://swisssweet-apartment.com/fr/" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Swiss Sweet Apartment — San Pietro Resort, Lalzi Bay" property="og:title"/>
 <meta content="Appartement de vacances de 97 m² pour familles, couples et groupes d’amis, à 5 minutes de la plage, avec parking gratuit et confort suisse au bord de l’Adriatique." property="og:description"/>
-<meta content="https://swisssweet-apartment.com/fr/index.html" property="og:url"/>
+<meta content="https://swisssweetapt.github.io/fr/" property="og:url"/>
 <meta content="https://swisssweet-apartment.com/beachoceanview.jpg" property="og:image"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Swiss Sweet Apartment — San Pietro Resort, Lalzi Bay" name="twitter:title"/>
@@ -22,7 +22,7 @@
   "@context": "https://schema.org",
   "@type": "VacationRental",
   "name": "Swiss Sweet Apartment",
-  "description": "Appartement de vacances privé à San Pietro Resort, Lalzi Bay, en Albanie, à environ 5 minutes à pied de la plage.",
+  "description": "Appartement de vacances privé à San Pietro Resort, Lalzi Bay / Lalzit Bay, en Albanie, à environ 5 minutes à pied de la plage.",
   "url": "https://swisssweet-apartment.com/fr/",
   "image": "https://swisssweet-apartment.com/beachoceanview.jpg",
   "email": "info@swisssweet-apartment.com",
@@ -61,7 +61,21 @@
   ],
   "maximumAttendeeCapacity": 5,
   "priceRange": "À partir de 80 EUR par nuit",
-  "inLanguage": "fr"
+  "inLanguage": "fr",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.5130549,
+    "longitude": 19.5201713
+  },
+  "numberOfRooms": 2,
+  "occupancy": {
+    "@type": "QuantitativeValue",
+    "maxValue": 5,
+    "unitText": "persons"
+  },
+  "petsAllowed": true,
+  "checkinTime": "15:00",
+  "checkoutTime": "10:00"
 }</script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
@@ -508,6 +522,48 @@
   @media (max-width:768px){ .faq-preview-section{padding:1rem 0;} .faq-preview-card{margin:0 1.5rem;padding:1.2rem;} .faq-preview-grid{grid-template-columns:1fr;} }
 
     .mobile-accordion-toggle .mobile-accordion-label { color:var(--turquoise-deep) !important; -webkit-text-fill-color:var(--turquoise-deep) !important; display:block !important; opacity:1 !important; visibility:visible !important; position:relative; z-index:1; }
+
+
+  /* V25 preview: premium question widget + gallery hierarchy */
+  .question-inline-card { margin: 1.2rem 1.5rem 0; padding: 1rem 1.1rem; border: 1px solid rgba(255,107,71,0.20); background: #fff8f5; border-radius: 12px; text-align: center; }
+  .question-inline-card p { margin: 0 0 0.75rem; color: var(--text-muted); font-size: 0.9rem; }
+  .question-inline-card .btn-coral { border: none; cursor: pointer; border-radius: 999px; padding: 0.75rem 1.25rem; font-family: var(--sans); }
+  .floating-question { position: fixed; right: 22px; bottom: 22px; z-index: 999; }
+  .floating-question-button { border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.85rem 1.05rem; box-shadow: 0 16px 38px rgba(0,0,0,0.22); cursor: pointer; font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.04em; transition: transform 0.18s, background 0.18s, box-shadow 0.18s; }
+  .floating-question-button:hover { background: var(--coral-dark); transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0,0,0,0.26); }
+  .floating-question-panel { position: absolute; right: 0; bottom: 58px; width: min(340px, calc(100vw - 32px)); background: white; border: 1px solid rgba(42,122,122,0.16); border-radius: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.22); padding: 1.1rem; display: none; }
+  .floating-question.open .floating-question-panel { display: block; }
+  .floating-question-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.8rem; }
+  .floating-question-head h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; color: var(--turquoise-dark); margin:0; }
+  .floating-question-close { background: transparent; border: none; font-size: 1.4rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
+  .floating-question-panel input, .floating-question-panel textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 0.72rem 0.85rem; font-size: 0.88rem; font-family: var(--sans); margin-bottom: 0.65rem; outline: none; }
+  .floating-question-panel textarea { min-height: 96px; resize: vertical; }
+  .floating-question-panel input:focus, .floating-question-panel textarea:focus { border-color: var(--turquoise); }
+  .floating-question-submit { width: 100%; border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.82rem 1rem; font-size: 0.86rem; font-weight: 500; font-family: var(--sans); cursor:pointer; }
+  .floating-question-submit:hover { background: var(--coral-dark); }
+  .floating-question-status { display:none; margin-top:0.7rem; font-size:0.82rem; color:var(--turquoise-dark); text-align:center; }
+  .review-source { display:inline-flex; align-items:center; justify-content:center; padding:0.22rem 0.62rem; border-radius:999px; background:rgba(126,206,206,0.18); color:var(--turquoise-dark); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.8rem; }
+  .review-rating { color:var(--coral); font-size:0.88rem; margin-bottom:0.65rem; letter-spacing:0.08em; }
+  .gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: stretch; }
+  .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .gallery-item:first-child img { height: 566px; }
+  .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
+  .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
+  @media (max-width: 900px) {
+    .floating-question { right: 14px; bottom: 14px; }
+    .floating-question-button { padding: 0.76rem 0.92rem; font-size: 0.78rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
+    .gallery-grid .gallery-item:first-child img { height: 340px; }
+    .gallery-grid .gallery-item:nth-child(n+2) img { height: 210px; }
+  }
+  @media (max-width: 640px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid .gallery-item:first-child { grid-column: auto; }
+    .gallery-grid .gallery-item:first-child img, .gallery-grid .gallery-item:nth-child(n+2) img { height: 260px; }
+    .floating-question-panel { right: -6px; width: calc(100vw - 28px); }
+  }
+
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -599,7 +655,7 @@ Un appartement de vacances de 97 m² pour familles, couples et groupes d’amis,
 <div class="hero-discount-badge">-10% en direct</div>
 </div>
 <p class="hero-sub" style="margin-bottom:1.4rem">
-Réservez avant qu’il ne soit trop tard et venez profiter de ce magnifique endroit !
+L’été 2026 se remplit déjà — envoyez-nous vos dates et nous confirmerons rapidement les disponibilités.
 
 
 
@@ -625,7 +681,7 @@ Voir les photos
 <!-- STATS -->
 <div class="stats-bar">
 <div class="stat-item"><div class="stat-num">97 m²</div><div class="stat-label">Surface totale</div></div>
-<div class="stat-item"><div class="stat-num">4 + lit bébé</div><div class="stat-label">Couchages</div></div>
+<div class="stat-item"><div class="stat-num">5 + lit bébé</div><div class="stat-label">Couchages</div></div>
 <div class="stat-item"><div class="stat-num">5 min</div><div class="stat-label">De la plage</div></div>
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">De l'aéroport</div></div>
 </div>
@@ -1014,7 +1070,7 @@ Bon à savoir avant de réserver
 <div style="padding:1rem 1.5rem;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center">
 <label id="label-guests" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">VOYAGEURS</label>
 <select id="guests-select" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);background:transparent;cursor:pointer">
-<option>1</option><option selected="">2</option><option>3</option><option>4</option>
+<option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5</option>
 </select>
 </div>
 <!-- CURRENCY -->
@@ -1064,6 +1120,12 @@ Vous prévoyez un séjour plus long ou souhaitez télétravailler au bord de la 
 
 
 </div>
+
+<div class="question-inline-card">
+  <p>Une question avant de réserver ?</p>
+  <button class="btn-coral" type="button" onclick="toggleQuestionBox(true)">Posez-nous votre question</button>
+</div>
+
 <!-- SUBMIT -->
 <div style="padding:0.8rem 1.5rem;text-align:center;background:#f7fdfd;border-top:1px solid #eee">
 <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.4rem">
@@ -1127,24 +1189,27 @@ Min. 2 nuits · Annulation gratuite jusqu’à 14 jours avant l’arrivée ·
 </div>
 </section>
 <!-- REVIEWS -->
-<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Avis voyageurs</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
-<p class="section-tag" style="color:var(--coral)">Avis voyageurs</p>
+<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Avis clients</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
+<p class="section-tag" style="color:var(--coral)">Avis clients</p>
 <h2>Ce que disent nos hôtes</h2>
 <div class="reviews-grid">
 <div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p class="review-text">« Un appartement impeccable, propre et très bien équipé. La plage est vraiment à deux pas. Parfait pour notre famille avec un bébé. »</p>
-<p class="review-author">— Marie &amp; Thomas, France · Juillet 2024</p>
+<div class="review-source">Google</div>
+<div class="review-rating">★★★★★ · 5/5</div>
+<p class="review-text">“J’ai passé un super séjour de 3 jours. L’appartement était bien équipé, propre et bien agencé. Le balcon est spacieux et agréable pour les dîners du soir et petits-déjeuners. Avec les places de parking, il était facile d’accès. Le calme de la résidence a permis un vrai repos. La plage est magnifique. Top.”</p>
+<p class="review-author">— Butrint</p>
 </div>
 <div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p class="review-text">« La salle de bain en marbre m’a bluffée. L’appartement est encore plus beau que sur les photos. Le coucher de soleil était magique. »</p>
-<p class="review-author">— Sophie L., Belgique · Août 2024</p>
+<div class="review-source">Happy Rentals</div>
+<div class="review-rating">★★★★★ · 10/10</div>
+<p class="review-text">“The house was very spacious and had all the amenities needed. The place was clean and my family and I really enjoyed it.”</p>
+<p class="review-author">— Arlinda</p>
 </div>
 <div class="review-card">
-<div class="review-stars">★★★★★</div>
-<p class="review-text">« Résidence très calme et sécurisée. Les enfants ont adoré l’aire de jeux et la mer peu profonde. Nous reviendrons l’année prochaine ! »</p>
-<p class="review-author">— Karim &amp; Yasmine, Suisse · Juillet 2024</p>
+<div class="review-source">Vrbo</div>
+<div class="review-rating">★★★★☆ · 8/10</div>
+<p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
+<p class="review-author">— Kateryna</p>
 </div>
 </div>
 <div style="margin-top:2rem;text-align:center">
@@ -1571,5 +1636,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+<div class="floating-question" id="floating-question">
+  <div class="floating-question-panel" role="dialog" aria-label="Posez-nous votre question">
+    <div class="floating-question-head">
+      <h3>Posez-nous votre question</h3>
+      <button class="floating-question-close" type="button" onclick="toggleQuestionBox(false)" aria-label="Close">×</button>
+    </div>
+    <input id="question-name" type="text" placeholder="Nom" />
+    <input id="question-email" type="email" placeholder="Email" />
+    <textarea id="question-message" placeholder="Question"></textarea>
+    <button class="floating-question-submit" type="button" onclick="submitQuestion()">Envoyer la question</button>
+    <div class="floating-question-status" id="question-status"></div>
+  </div>
+  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Question ?</button>
+</div>
+
+<script>
+  window.toggleQuestionBox = function(force) {
+    var box = document.getElementById('floating-question');
+    if (!box) return;
+    if (force === false) { box.classList.remove('open'); return; }
+    if (force === true) { box.classList.add('open'); return; }
+    box.classList.toggle('open');
+  };
+  window.submitQuestion = function() {
+    var nameEl = document.getElementById('question-name');
+    var emailEl = document.getElementById('question-email');
+    var msgEl = document.getElementById('question-message');
+    var statusEl = document.getElementById('question-status');
+    var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
+    var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
+    if (!email || email.indexOf('@') < 0 || !msg) { alert("Merci d’indiquer un email valide et votre question."); return; }
+    fetch('https://formsubmit.co/ajax/info@swisssweet-apartment.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: "Question - Swiss Sweet Apartment",
+        _template: 'table',
+        _captcha: 'false',
+        name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
+        email: email,
+        question: msg
+      })
+    })
+    .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
+    .then(function() {
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Question envoyée. Nous vous répondrons par email dès que possible."; }
+      if (nameEl) nameEl.value = '';
+      if (emailEl) emailEl.value = '';
+      if (msgEl) msgEl.value = '';
+    })
+    .catch(function() {
+      var subject = encodeURIComponent("Question - Swiss Sweet Apartment");
+      var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
+Email: ' + email + '
+
+Question:
+' + msg);
+      window.location.href = 'mailto:info@swisssweet-apartment.com?subject=' + subject + '&body=' + body;
+    });
+  };
+</script>
+
 </body>
 </html>
