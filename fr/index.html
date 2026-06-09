@@ -195,7 +195,7 @@
   .gallery-header { padding: 0 2.5rem; margin-bottom: 2.5rem; }
   .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .gallery-item { overflow: hidden; background: var(--turquoise-pale); cursor: pointer; position: relative; }
-  Z0px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+  .gallery-item img { width: 100%; height: 280px; object-fit: cover; display: block; transition: transform 0.6s ease; }
   .gallery-item:hover img { transform: scale(1.04); }
   .gallery-overlay { position: absolute; inset: 0; background: rgba(42,122,122,0); transition: background 0.3s; display: flex; align-items: center; justify-content: center; }
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
@@ -206,7 +206,7 @@
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
   .lightbox.active { display: flex; }
-  .lightbox-img { max-width: 88vw; max-height: 84vh; object-fit: cover; border-radius: 2px; }
+  .lightbox-img { max-width: 88vw; max-height: 84vh; object-fit: contain; border-radius: 2px; }
   .lightbox-close { position: absolute; top: 1.5rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.2s; }
   .lightbox-close:hover { opacity: 1; }
   .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 1.8rem; width: 54px; height: 54px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
@@ -648,11 +648,11 @@
   </button>
 <ul class="nav-links">
 <li><a href="#espaces">L'appartement</a></li>
-<li><a href="#gallery">Photos</a></li>
 <li><a href="#videos">Vidéos</a></li>
+<li><a href="#gallery">Photos</a></li>
 <li><a href="#location">Localisation</a></li>
 <li><a href="#reviews">Avis</a></li>
-<li><a href="#blog">Blog &amp; Tips</a></li>
+<li><a href="#blog">Blog & Tips</a></li>
 <li><a href="/fr/faq.html">FAQ</a></li>
 <li><a class="nav-cta" href="#booking">Réserver</a></li>
 </ul>
@@ -665,13 +665,13 @@
 </nav>
 <div class="mobile-panel" id="mobile-panel">
 <a href="#espaces" onclick="closeMobileMenu()">L'appartement</a>
-<a href="#gallery" onclick="closeMobileMenu()">Photos</a>
 <a href="#videos" onclick="closeMobileMenu()">Vidéos</a>
+<a href="#gallery" onclick="closeMobileMenu()">Photos</a>
 <a href="#location" onclick="closeMobileMenu()">Localisation</a>
 <a href="#reviews" onclick="closeMobileMenu()">Avis</a>
-<a href="#blog" onclick="closeMobileMenu()">Blog &amp; Tips</a>
+<a href="#blog" onclick="closeMobileMenu()">Blog & Tips</a>
 <a href="/fr/faq.html" onclick="closeMobileMenu()">FAQ</a>
-<div class="mobile-lang-row"><a class="lang-btn" href="/">EN</a><a class="lang-btn active" href="/fr/">FR</a><a class="lang-btn" href="/de/">DE</a><a class="lang-btn" href="/sq/">AL</a><a class="lang-btn" href="/it/">IT</a></div>
+<div class="mobile-lang-row"><a class="lang-btn " href="/">EN</a><a class="lang-btn active" href="/fr/">FR</a><a class="lang-btn " href="/de/">DE</a><a class="lang-btn " href="/sq/">AL</a><a class="lang-btn " href="/it/">IT</a></div>
 <a class="mobile-book" href="#booking" onclick="closeMobileMenu()">Vérifier les disponibilités</a>
 </div>
 <!-- HERO -->
@@ -726,6 +726,7 @@ Voir les photos
 
 
 </a>
+
 <p class="hero-long-stay-note">Vous prévoyez un séjour plus long ou souhaitez télétravailler au bord de la mer ? Contactez-nous pour une offre mensuelle sur mesure.</p></div>
 </div>
 <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
@@ -775,6 +776,7 @@ Deux chambres, salle de bain en marbre, balcon avec barbecue intégré et cuisin
 <img alt="Allée vers la plage à San Pietro Resort" decoding="async" loading="lazy" src="../heart.jpeg"/>
 </div>
 </div>
+
 <!-- SUNSET BANNER -->
 <div class="sunset-banner">
 <div class="sunset-banner-bg"></div>
@@ -797,6 +799,7 @@ Réserver maintenant
 </a>
 </div>
 </div>
+
 <!-- ESPACES -->
 <button aria-controls="espaces" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Pièces et espaces</span></button><section class="rooms-section mobile-accordion-target mobile-collapsed" id="espaces">
 <p class="section-tag">
@@ -806,7 +809,9 @@ L’appartement
 
 
 </p>
-<h2>L'appartement</h2>
+<h2>
+Tout le confort<br/><em>pour votre famille</em>
+</h2>
 <div class="rooms-grid">
 <div class="room-card">
 <div class="room-media-wrap">
@@ -838,7 +843,7 @@ Deux lits de 140 cm de large, une grande armoire avec espace pour les valises et
 </p>
 </div>
 </div>
-<div class="room-card room-clickable" onclick="openLightbox(13)">
+<div class="room-card room-clickable" onclick="openLightbox(0)">
 <div class="room-media-wrap">
 <img alt="Salle de bain en marbre" decoding="async" loading="lazy" src="../Sdb.jpeg"/>
 </div>
@@ -896,35 +901,36 @@ Fauteuil œuf suspendu, table et 4 chaises, store électrique, barbecue intégr�
 </div>
 </div>
 </section>
+
 <!-- VIDEOS -->
 <div class="gallery-section gallery-collapsed" id="gallery">
 <div class="gallery-header">
 <p class="section-tag">Galerie</p>
-<h2>Couchers de soleil, plage &amp; <em>ambiance San Pietro</em></h2>
+<h2>Couchers de soleil, plage & <em>ambiance San Pietro</em></h2>
 <p class="section-lead">Un aperçu visuel de la région — ouvrez toutes les photos pour voir l’appartement complet et les alentours.</p>
 </div>
 <div class="gallery-grid">
-<div class="gallery-item gallery-visible" onclick="openLightbox(0)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Beach and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Lifeguard tower and open beach at Lalzi Bay" decoding="async" loading="lazy" src="/lifeguard-tower-beach-real.png"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(3)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Sea view at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Sea view and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(3)"><img alt="Beach hut and parasols at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(19)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
 </div>
-<div class="gallery-more"><button id="gallery-toggle" onclick="toggleFullGallery()" type="button">Voir toutes les photos</button></div>
+<div class="gallery-more"><button onclick="toggleFullGallery()" id="gallery-toggle" type="button">Voir toutes les photos</button></div>
 </div>
 <!-- LOCATION -->
 <button aria-controls="videos" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Visites vidéo</span></button><section class="video-section mobile-accordion-target mobile-collapsed" id="videos">
@@ -935,7 +941,9 @@ Visites vidéo
 
 
 </p>
-<h2>Découvrez les alentours en vidéo</h2>
+<h2>
+Découvrez<br/><em>l'appartement en mouvement</em>
+</h2>
 <div class="video-grid" style="grid-template-columns:repeat(2,1fr)">
 <div class="video-card">
 <video controls="" poster="../Spritz.jpeg" preload="metadata">
@@ -975,6 +983,7 @@ Visites vidéo
 </div>
 </div>
 </section>
+
 <!-- GALLERY -->
 <button aria-controls="location" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Localisation et alentours</span></button><div class="location-section mobile-accordion-target mobile-collapsed" id="location">
 <div class="location-text">
@@ -1014,10 +1023,11 @@ Voir sur Google Maps
 <iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d19.5200795!3d41.5130478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDMwJzQ3LjAiTiAxOcKwMzEnMTIuMyJF!5e1!3m2!1sfr!2sch!4v1"></iframe>
 </div>
 </div>
+
 <!-- REVIEWS -->
 <button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Avis</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
 <p class="section-tag" style="color:var(--coral)">Avis clients</p>
-<h2>Ce que nos hôtes ont aimé</h2>
+<h2>Ce que les hôtes<br/><em>ont aimé</em></h2>
 <div class="reviews-grid">
 <div class="review-card">
 <span class="review-source">Google</span>
@@ -1054,6 +1064,7 @@ Voir sur Google Maps
 <article class="blog-card"><div><h3><a href="/fr/blog/tirana-excursions-conseils-albanie.html" style="color:inherit;text-decoration:none">Tirana, excursions et conseils depuis Lalzi Bay</a></h3><p>Que voir à Tirana, où sortir, escapades vers Shkodër ou Himarë, et ce qu’il faut comprendre avant de venir.</p></div><a class="blog-status" href="/fr/blog/tirana-excursions-conseils-albanie.html" style="text-decoration:none">Lire l’article</a></article>
 </div>
 </section>
+
 <!-- FAQ -->
 <button aria-controls="faq-preview" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Questions fréquentes</span></button><section class="faq-preview-section mobile-accordion-target mobile-collapsed" id="faq-preview">
 <div class="faq-preview-card">
@@ -1068,6 +1079,7 @@ Voir sur Google Maps
 <a class="btn-coral" href="/fr/faq.html">Voir la FAQ complète</a>
 </div>
 </section>
+
 <!-- BOOKING -->
 <div style="height:320px;overflow:hidden;position:relative">
 <img alt="Plage" decoding="async" loading="lazy" src="../beachoceanview.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75)"/>
@@ -1118,11 +1130,11 @@ Bon à savoir avant de réserver
 </div>
 </div>
 </div>
-
+</div>
 <div class="booking-card" style="max-width:860px;margin:0 auto;background:white;border-radius:12px;box-shadow:0 6px 32px rgba(0,0,0,0.12);overflow:hidden;border:1px solid #ddd">
 <!-- PRICE HEADER -->
 <div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;text-align:center">
-<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">Estimation directe</div>
+<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">From</div>
 <div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ night</span></div>
 </div>
 <!-- DATES -->
@@ -1138,16 +1150,16 @@ Bon à savoir avant de réserver
 </div>
 <!-- GUESTS + CURRENCY -->
 <div style="padding:1rem 1.5rem;border-bottom:1px solid #eee;display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:center">
-<div style="display:flex;justify-content:space-between;align-items:center;border-right:1px solid #eee;padding-right:1rem">
-<label id="label-guests" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">VOYAGEURS</label>
-<select id="guests-select" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);background:transparent;cursor:pointer">
+  <div style="display:flex;justify-content:space-between;align-items:center;border-right:1px solid #eee;padding-right:1rem">
+    <label id="label-guests" style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text)">VOYAGEURS</label>
+    <select id="guests-select" onchange="calcPrice()" style="border:none;outline:none;font-size:0.95rem;color:var(--text-muted);font-family:var(--sans);background:transparent;cursor:pointer">
 <option>1</option><option selected="">2</option><option>3</option><option>4</option><option>5</option>
 </select>
-</div>
-<div style="display:flex;justify-content:flex-end;gap:0.5rem">
-<button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:0.5rem">
+    <button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
 <button class="curr-toggle-btn" data-currency="CHF" onclick="setCurrency('CHF')" type="button">CHF</button>
-</div>
+  </div>
 </div>
 <!-- PRICE BREAKDOWN -->
 <div id="price-breakdown-box" style="display:none;padding:1.2rem 1.5rem;border-bottom:1px solid #eee">
@@ -1198,6 +1210,7 @@ Min. 2 nuits · Annulation gratuite jusqu’à 14 jours avant l’arrivée ·
 </p>
 </div>
 </section>
+
 <!-- FOOTER -->
 <footer>
 <div class="footer-brand">
@@ -1423,15 +1436,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var photos = [
     "/sunsetorange.jpeg",
+    "/seaview2.jpeg",
     "/hut.jpeg",
-    "/lifeguard-tower-beach.png",
+    "/beachoceanview.jpg",
     "/heart.jpeg",
     "/sunset3.jpeg",
     "/Sunset1.jpeg",
     "/Sunset2.jpeg",
     "/Spritz.jpeg",
     "/restaurantdenuit.jpeg",
-    "/seaview2.jpeg",
     "/exterior.jpeg",
     "/eveningstreet.jpeg",
     "/Salon.jpeg",
@@ -1640,19 +1653,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
 <div class="floating-question" id="floating-question">
-<div aria-hidden="true" class="floating-question-panel">
-<div class="floating-question-head">
-<h3>Une question ?</h3>
-<button aria-label="Close" class="floating-question-close" onclick="toggleQuestionBox(false)" type="button">×</button>
-</div>
-<input id="question-name" placeholder="Nom" type="text"/>
-<input id="question-email" placeholder="Email" type="email"/>
-<textarea id="question-message" placeholder="Question"></textarea>
-<button class="floating-question-submit" onclick="submitQuestion()" type="button">Envoyer la question</button>
-<div class="floating-question-status" id="question-status"></div>
-</div>
-<button class="floating-question-button" onclick="toggleQuestionBox()" type="button">Question ?</button>
+  <div class="floating-question-panel" aria-hidden="true">
+    <div class="floating-question-head">
+      <h3>Une question ?</h3>
+      <button class="floating-question-close" type="button" onclick="toggleQuestionBox(false)" aria-label="Close">×</button>
+    </div>
+    <input id="question-name" type="text" placeholder="Nom" />
+    <input id="question-email" type="email" placeholder="Email" />
+    <textarea id="question-message" placeholder="Question"></textarea>
+    <button class="floating-question-submit" type="button" onclick="submitQuestion()">Envoyer la question</button>
+    <div class="floating-question-status" id="question-status"></div>
+  </div>
+  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Question ?</button>
 </div>
 <script>
 (function() {
@@ -1699,5 +1713,6 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 })();
 </script>
+
 </body>
 </html>
