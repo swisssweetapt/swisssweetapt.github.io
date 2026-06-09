@@ -23,7 +23,7 @@
   "@type": "VacationRental",
   "name": "Swiss Sweet Apartment",
   "description": "Appartamento vacanze privato al San Pietro Resort, Lalzi Bay / Lalzit Bay, Albania, a circa 5 minuti a piedi dalla spiaggia.",
-  "url": "https://swisssweet-apartment.com/it/",
+  "url": "https://swisssweetapt.github.io/it/",
   "image": "https://swisssweet-apartment.com/beachoceanview.jpg",
   "email": "info@swisssweet-apartment.com",
   "address": {
@@ -148,6 +148,7 @@
   .nav-cta { background: var(--coral) !important; color: white !important; padding: 0.5rem 1.2rem; border-radius: 2px; }
   .nav-tools { display:flex; align-items:center; justify-content:flex-end; gap:0.65rem; }
   .nav-audio-group { display:none !important; }
+  .nav-audio-group { display:flex; align-items:center; gap:0.35rem; }
 
   /* AUDIO */
   .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--sans); letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
@@ -200,9 +201,7 @@
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay { background: rgba(42,122,122,0.3); }
   .gallery-item:hover .gallery-overlay span { opacity: 1; }
-  .mobile-gallery-more { display:block; text-align:center; padding:1.2rem 1.5rem 0; }
-  .mobile-gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.4rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; }
-  .gallery-collapsed .gallery-grid:not(.mobile-expanded) .gallery-item:nth-child(n+4) { display:none; }
+  .mobile-gallery-more { display:none; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
@@ -525,11 +524,20 @@
 
     .mobile-accordion-toggle .mobile-accordion-label { color:var(--turquoise-deep) !important; -webkit-text-fill-color:var(--turquoise-deep) !important; display:block !important; opacity:1 !important; visibility:visible !important; position:relative; z-index:1; }
 
-
-  /* V25 preview: premium question widget + gallery hierarchy */
-  .question-inline-card { margin: 1.2rem 1.5rem 0; padding: 1rem 1.1rem; border: 1px solid rgba(255,107,71,0.20); background: #fff8f5; border-radius: 12px; text-align: center; }
-  .question-inline-card p { margin: 0 0 0.75rem; color: var(--text-muted); font-size: 0.9rem; }
-  .question-inline-card .btn-coral { border: none; cursor: pointer; border-radius: 999px; padding: 0.75rem 1.25rem; font-family: var(--sans); }
+  /* V27 preview refinements */
+  .gallery-collapsed .gallery-extra { display:none; }
+  .gallery-expanded .gallery-extra { display:block; }
+  .gallery-more { text-align:center; padding:1.6rem 1.5rem 0; }
+  .gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.45rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:background 0.18s, transform 0.18s; }
+  .gallery-more button:hover { background:var(--coral-dark); transform:translateY(-1px); }
+  .gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: stretch; }
+  .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .gallery-item:first-child img { height: 566px; }
+  .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
+  .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
+  .booking-info-grid { max-width:980px; margin:0 auto 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:stretch; }
+  .booking-card .payment-reassurance { font-size:0.84rem; color:var(--text-muted); padding:1rem 1.5rem 0; text-align:center; }
+  .booking-quick-question { max-width:860px; margin:1rem auto 0; color:var(--text-muted); font-size:0.88rem; }
   .floating-question { position: fixed; right: 22px; bottom: 22px; z-index: 999; }
   .floating-question-button { border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.85rem 1.05rem; box-shadow: 0 16px 38px rgba(0,0,0,0.22); cursor: pointer; font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.04em; transition: transform 0.18s, background 0.18s, box-shadow 0.18s; }
   .floating-question-button:hover { background: var(--coral-dark); transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0,0,0,0.26); }
@@ -538,31 +546,29 @@
   .floating-question-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.8rem; }
   .floating-question-head h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; color: var(--turquoise-dark); margin:0; }
   .floating-question-close { background: transparent; border: none; font-size: 1.4rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
-  .floating-question-panel input, .floating-question-panel textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 0.72rem 0.85rem; font-size: 0.88rem; font-family: var(--sans); margin-bottom: 0.65rem; outline: none; }
+  .floating-question-panel input, .floating-question-panel textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 0.72rem 0.85rem; font-size: 0.88rem; font-family: var(--sans); margin-bottom: 0.65rem; outline: none; box-sizing:border-box; }
   .floating-question-panel textarea { min-height: 96px; resize: vertical; }
   .floating-question-panel input:focus, .floating-question-panel textarea:focus { border-color: var(--turquoise); }
   .floating-question-submit { width: 100%; border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.82rem 1rem; font-size: 0.86rem; font-weight: 500; font-family: var(--sans); cursor:pointer; }
   .floating-question-submit:hover { background: var(--coral-dark); }
   .floating-question-status { display:none; margin-top:0.7rem; font-size:0.82rem; color:var(--turquoise-dark); text-align:center; }
-  .review-source { display:inline-flex; align-items:center; justify-content:center; padding:0.22rem 0.62rem; border-radius:999px; background:rgba(126,206,206,0.18); color:var(--turquoise-dark); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.8rem; }
-  .review-rating { color:var(--coral); font-size:0.88rem; margin-bottom:0.65rem; letter-spacing:0.08em; }
-  .gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: stretch; }
-  .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
-  .gallery-grid .gallery-item:first-child img { height: 566px; }
-  .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
-  .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
+  .review-source { display:inline-block; margin-bottom:0.9rem; padding:0.28rem 0.7rem; border-radius:999px; background:rgba(255,255,255,0.14); color:white; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .review-rating { color:var(--coral); font-size:0.9rem; margin-bottom:0.8rem; }
+  .review-excerpt { font-size:0.76rem; color:rgba(255,255,255,0.58); margin-top:0.7rem; }
   @media (max-width: 900px) {
-    .floating-question { right: 14px; bottom: 14px; }
-    .floating-question-button { padding: 0.76rem 0.92rem; font-size: 0.78rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
     .gallery-grid .gallery-item:first-child img { height: 340px; }
     .gallery-grid .gallery-item:nth-child(n+2) img { height: 210px; }
+    .booking-info-grid { display:block; }
+    .booking-info-grid .direct-save-box, .booking-info-grid .good-to-know-box { margin:0 0 0.8rem; }
   }
-  @media (max-width: 640px) {
+  @media (max-width: 520px) {
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-grid .gallery-item:first-child { grid-column: auto; }
     .gallery-grid .gallery-item:first-child img, .gallery-grid .gallery-item:nth-child(n+2) img { height: 260px; }
+    .floating-question { right: 14px; bottom: 14px; }
+    .floating-question-button { padding: 0.76rem 0.92rem; font-size: 0.78rem; }
     .floating-question-panel { right: -6px; width: calc(100vw - 28px); }
   }
 
@@ -578,9 +584,6 @@
 <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 <!-- AUDIO -->
-<audio id="ambient-audio" loop="" preload="none">
-<source src="../saltwater-mirage.mp3" type="audio/mpeg"/>
-</audio>
 <!-- NAV -->
 <nav>
 <a aria-label="Home Swiss Sweet Apartment" class="nav-logo" href="/it/"><span class="nav-logo-text">Swiss<span>Sweet</span> Apartment</span></a>
@@ -593,23 +596,16 @@
     Menu
   </button>
 <ul class="nav-links">
-<li><a href="#espaces">L'appartamento</a></li>
-<li><a href="#gallery">Foto</a></li>
+<li><a href="#espaces">Appartamento</a></li>
 <li><a href="#videos">Video</a></li>
+<li><a href="#gallery">Foto</a></li>
 <li><a href="#location">Posizione</a></li>
 <li><a href="#reviews">Recensioni</a></li>
-<li><a href="#blog">Blog &amp; consigli locali</a></li>
+<li><a href="#blog">Blog & Tips</a></li>
 <li><a href="/it/faq.html">FAQ</a></li>
 <li><a class="nav-cta" href="#booking">Prenota</a></li>
 </ul>
 <div class="nav-tools">
-<div class="nav-audio-group">
-<button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Riproduci / Pausa" type="button">
-<span class="audio-dot"></span>
-<span id="audio-title">Saltwater Mirage</span>
-</button>
-<button class="audio-btn" id="audioNext" onclick="nextTrack()" style="padding:0.35rem 0.6rem;font-size:0.8rem" title="Brano successivo" type="button">⏭</button>
-</div>
 <div class="lang-dropdown">
 <button aria-label="Scegli la lingua" class="lang-current" type="button">IT ▾</button>
 <div class="lang-menu"><a class="lang-btn" href="/">EN</a><a class="lang-btn" href="/fr/">FR</a><a class="lang-btn" href="/de/">DE</a><a class="lang-btn" href="/sq/">AL</a><a class="lang-btn active" href="/it/">IT</a></div>
@@ -617,13 +613,14 @@
 </div>
 </nav>
 <div class="mobile-panel" id="mobile-panel">
-<a href="#espaces" onclick="closeMobileMenu()">L'appartamento</a>
-<a href="#gallery" onclick="closeMobileMenu()">Foto</a>
+<a href="#espaces" onclick="closeMobileMenu()">Appartamento</a>
 <a href="#videos" onclick="closeMobileMenu()">Video</a>
+<a href="#gallery" onclick="closeMobileMenu()">Foto</a>
 <a href="#location" onclick="closeMobileMenu()">Posizione</a>
+<a href="#reviews" onclick="closeMobileMenu()">Recensioni</a>
+<a href="#blog" onclick="closeMobileMenu()">Blog & Tips</a>
 <a href="/it/faq.html" onclick="closeMobileMenu()">FAQ</a>
-<a href="#blog" onclick="closeMobileMenu()">Blog</a>
-<div class="mobile-lang-row"><a class="lang-btn" href="/">EN</a><a class="lang-btn" href="/fr/">FR</a><a class="lang-btn" href="/de/">DE</a><a class="lang-btn" href="/sq/">AL</a><a class="lang-btn active" href="/it/">IT</a></div>
+<div class="mobile-lang-row"><a class="lang-btn " href="/">EN</a><a class="lang-btn " href="/fr/">FR</a><a class="lang-btn " href="/de/">DE</a><a class="lang-btn " href="/sq/">AL</a><a class="lang-btn active" href="/it/">IT</a></div>
 <a class="mobile-book" href="#booking" onclick="closeMobileMenu()">Verifica disponibilità</a>
 </div>
 <!-- HERO -->
@@ -663,7 +660,7 @@ Un appartamento vacanze di 97 m² per famiglie, coppie e gruppi di amici, a 5 mi
 
 
 
-L’estate 2026 si sta già riempiendo — inviaci le tue date e confermeremo rapidamente la disponibilità.
+Prenotate prima che sia troppo tardi e venite a godervi questo magnifico posto.
 </p>
 <div class="hero-actions">
 <a class="btn-coral" href="#booking">
@@ -685,57 +682,9 @@ Vedi le foto
 <!-- STATS -->
 <div class="stats-bar">
 <div class="stat-item"><div class="stat-num">97m²</div><div class="stat-label">Superficie totale</div></div>
-<div class="stat-item"><div class="stat-num">5 + lettino</div><div class="stat-label">Capienza notte</div></div>
+<div class="stat-item"><div class="stat-num">5 + lettino</div><div class="stat-label">Posti letto</div></div>
 <div class="stat-item"><div class="stat-num">5 min</div><div class="stat-label">Dalla spiaggia</div></div>
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">Dall'aeroporto</div></div>
-</div>
-<!-- GALLERY -->
-<div class="gallery-section gallery-collapsed" id="gallery">
-<div class="gallery-header">
-<p class="section-tag">
-
-
-
-
-Galleria
-</p>
-<h2>
-
-
-
-L'appartamento &amp; <em>la destinazione</em>
-</h2>
-</div>
-<div class="gallery-grid">
-<div class="gallery-item mobile-feature mobile-order-1" onclick="openLightbox(0)"><img alt="Soggiorno con parete turchese" decoding="async" loading="lazy" src="../Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-4" onclick="openLightbox(1)"><img alt="Bagno in marmo" decoding="async" loading="lazy" src="../Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-2" onclick="openLightbox(2)"><img alt="Camera principale" decoding="async" loading="lazy" src="../chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(3)"><img alt="Cucina aperta completamente attrezzata" decoding="async" loading="lazy" src="../Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-3" onclick="openLightbox(4)"><img alt="Balcone privato con poltrona sospesa" decoding="async" loading="lazy" src="../Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(5)"><img alt="Vista sul giardino dal balcone" decoding="async" loading="lazy" src="../Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-5" onclick="openLightbox(6)"><img alt="Spiaggia di sabbia di Lalzi Bay" decoding="async" loading="lazy" src="../beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(7)"><img alt="Viale alberato nel San Pietro Resort" decoding="async" loading="lazy" src="../sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(8)"><img alt="Tramonto su Lalzi Bay" decoding="async" loading="lazy" src="../Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-6" onclick="openLightbox(9)"><img alt="Tramonto sulla baia" decoding="async" loading="lazy" src="../Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(10)"><img alt="Spritz in spiaggia" decoding="async" loading="lazy" src="../Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(11)"><img alt="Ristorante di sera" decoding="async" loading="lazy" src="../restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(12)"><img alt="Tramonto sulla spiaggia di Lalzi Bay" decoding="async" loading="lazy" src="../hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(13)"><img alt="Bagno in marmo con lavasciuga" decoding="async" loading="lazy" src="../sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(14)"><img alt="Viale verso la spiaggia al San Pietro Resort" decoding="async" loading="lazy" src="../heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(15)"><img alt="Vista mare a Lalzi Bay" decoding="async" loading="lazy" src="../seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(16)"><img alt="Esterno della residenza San Pietro" decoding="async" loading="lazy" src="../exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(17)"><img alt="Residenza San Pietro di sera" decoding="async" loading="lazy" src="../eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(18)"><img alt="Tramonto arancione sul mare" decoding="async" loading="lazy" src="../sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-</div>
-<div class="mobile-gallery-more" id="mobile-gallery-more">
-<button onclick="showAllMobileGallery()" type="button">
-
-
-
-
-Vedi tutte le foto
-</button>
-</div>
 </div>
 <!-- FEATURES -->
 <button aria-controls="features" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Dotazioni dell’appartamento</span></button><div class="features-section mobile-accordion-target mobile-collapsed" id="features">
@@ -778,6 +727,7 @@ Due camere da letto, bagno in marmo, balcone con barbecue integrato e cucina ape
 <img alt="Viale verso la spiaggia al San Pietro Resort" decoding="async" loading="lazy" src="../heart.jpeg"/>
 </div>
 </div>
+
 <!-- SUNSET BANNER -->
 <div class="sunset-banner">
 <div class="sunset-banner-bg"></div>
@@ -803,6 +753,7 @@ Prenota ora
 </a>
 </div>
 </div>
+
 <!-- ESPACES -->
 <button aria-controls="espaces" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Stanze e spazi</span></button><section class="rooms-section mobile-accordion-target mobile-collapsed" id="espaces">
 <p class="section-tag">
@@ -907,6 +858,7 @@ Poltrona sospesa a forma di uovo, tavolo con 4 sedie, tenda elettrica e barbecue
 </div>
 </div>
 </section>
+
 <!-- VIDEOS -->
 <button aria-controls="videos" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Tour video</span></button><section class="video-section mobile-accordion-target mobile-collapsed" id="videos">
 <p class="section-tag">
@@ -961,6 +913,37 @@ Scopri<br/><em>l'appartamento in movimento</em>
 </div>
 </div>
 </section>
+
+<!-- GALLERY -->
+<div class="gallery-section gallery-collapsed" id="gallery">
+<div class="gallery-header">
+<p class="section-tag">Galleria</p>
+<h2>Tramonti, spiaggia & <em>atmosfera San Pietro</em></h2>
+<p class="section-lead">Un breve assaggio visivo della zona — apri tutte le foto per vedere la galleria completa dell’appartamento e dei dintorni.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item gallery-visible" onclick="openLightbox(0)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Beach and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(3)"><img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Sea view at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+</div>
+<div class="gallery-more"><button onclick="toggleFullGallery()" id="gallery-toggle" type="button">Vedi tutte le foto</button></div>
+</div>
 <!-- LOCATION -->
 <button aria-controls="location" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Posizione e dintorni</span></button><div class="location-section mobile-accordion-target mobile-collapsed" id="location">
 <div class="location-text">
@@ -978,10 +961,7 @@ Posizione
 Nel cuore di Lalzi Bay,<br/><em>sulla costa adriatica albanese</em>
 </h2>
 <p class="section-lead">
-
-
-
-San Pietro Resort, Lalzi Bay — tra mare, gastronomia e cultura.
+Situato nel San Pietro Resort, nella zona di Lalzi Bay / Lalzit Bay, vicino a Durazzo.
 </p>
 <ul class="distance-list">
 <li class="distance-item"><span class="distance-name">🏖️ Spiaggia di sabbia</span><span class="distance-val">circa 5 min a piedi</span></li>
@@ -1006,6 +986,59 @@ Vedi su Google Maps
 <iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d19.5200795!3d41.5130478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDMwJzQ3LjAiTiAxOcKwMzEnMTIuMyJF!5e1!3m2!1sfr!2sch!4v1"></iframe>
 </div>
 </div>
+
+<!-- REVIEWS -->
+<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Recensioni</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
+<p class="section-tag" style="color:var(--coral)">Recensioni degli ospiti</p>
+<h2>Real stays,<br/><em>real feedback</em></h2>
+<div class="reviews-grid">
+<div class="review-card">
+<span class="review-source">Google</span>
+<div class="review-rating">5/5</div>
+<p>“J’ai passé un super séjour de 3 jours. L’appartement était bien équipé, propre et bien agencé. Le balcon est spacieux et agréable pour les dîners du soir et petits-déjeuners. Avec les places de parking, il était facile d’accès. Le calme de la résidence a permis un vrai repos. La plage est magnifique. Top.”</p>
+<div class="review-author">Butrint</div>
+</div>
+<div class="review-card">
+<span class="review-source">Happy Rentals</span>
+<div class="review-rating">10/10</div>
+<p>“The house was very spacious and had all the amenities needed. The place was clean and my family and I really enjoyed it.”</p>
+<div class="review-author">Arlinda</div>
+</div>
+<div class="review-card">
+<span class="review-source">Vrbo</span>
+<div class="review-rating">8/10</div>
+<p>“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
+<div class="review-excerpt">Estratto da una recensione verificata Vrbo</div>
+<div class="review-author">Kateryna</div>
+</div>
+</div>
+<a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Hai soggiornato da noi? Lascia una recensione Google</a>
+</section>
+<!-- BLOG / LOCAL TIPS -->
+<button aria-controls="blog" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Consigli locali</span></button><section class="blog-section mobile-accordion-target mobile-collapsed" id="blog">
+<div class="blog-header">
+<p class="section-tag">Blog &amp; Tips</p>
+<h2>Le nostre esperienze<br/><em>a Lalzi Bay</em></h2>
+<p class="section-lead">I nostri consigli personali su Lalzi Bay, San Pietro Resort, Tirana e le escursioni in Albania.</p>
+</div>
+<div class="blog-grid"><article class="blog-card"><div><h3>Arrivare a Lalzi Bay e al San Pietro Resort</h3><p>Voli, taxi, SIM, guida e prime impressioni prima di sistemarsi.</p></div><a class="blog-status" href="/it/blog/arrivare-lalzi-bay-san-pietro.html">Leggi</a></article><article class="blog-card"><div><h3>Spiaggia, ristoranti e stagioni a Lalzi Bay</h3><p>Lettini, beach bar, Meliá, Insifa Beach, Duka Winery e il periodo migliore per venire.</p></div><a class="blog-status" href="/it/blog/spiaggia-ristoranti-stagioni-lalzi-bay.html">Leggi</a></article><article class="blog-card"><div><h3>Tirana, escursioni e consigli per l’Albania</h3><p>Cosa vedere a Tirana, dove uscire e come esplorare Shkodër, Himarë e Dhërmi da Lalzi Bay.</p></div><a class="blog-status" href="/it/blog/tirana-escursioni-consigli-albania.html">Leggi</a></article></div>
+</section>
+
+<!-- FAQ -->
+<button aria-controls="faq-preview" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Domande frequenti</span></button><section class="faq-preview-section mobile-accordion-target mobile-collapsed" id="faq-preview">
+<div class="faq-preview-card">
+<p class="section-tag">FAQ</p>
+<h2>Domande rapide prima di prenotare</h2>
+<div class="faq-preview-grid">
+<div class="faq-preview-item">Viene effettuato un pagamento su questo sito? No, il modulo invia soltanto una richiesta.</div>
+<div class="faq-preview-item">Distanza dalla spiaggia? Circa 5 minuti a piedi.</div>
+<div class="faq-preview-item">Parcheggio? Gratuito all’interno della residenza.</div>
+<div class="faq-preview-item">Le strutture del Meliá Resort sono incluse? No, non sono incluse.</div>
+</div>
+<a class="btn-coral" href="/it/faq.html">Vedi FAQ completa</a>
+</div>
+</section>
+
 <!-- BOOKING -->
 <div style="height:320px;overflow:hidden;position:relative">
 <img alt="Spiaggia di sabbia di Lalzi Bay" decoding="async" loading="lazy" src="../beachoceanview.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75)"/>
@@ -1035,18 +1068,10 @@ Prenota direttamente,<br/><em>senza commissioni</em>
 <div class="booking-info-grid">
 <button aria-controls="mobile-accordion-target-4" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Perché prenotare direttamente?</span></button><div class="direct-save-box mobile-accordion-target mobile-collapsed" id="mobile-accordion-target-4">
 <div class="direct-save-title">
-
-
-
-
 Prenotare direttamente = risparmiare
 </div>
 <p class="direct-save-text">
-
-
-
-
-Approfittate della nostra tariffa speciale estiva: 10% di sconto sulle richieste dirette. Evitate i costi di servizio delle piattaforme, beneficiate dell’assistenza locale durante il soggiorno e potete confrontare i nostri annunci sulle principali piattaforme.
+Inviaci direttamente le tue date ed evita costi inutili delle piattaforme. Confermiamo prima la disponibilità e rispondiamo personalmente via email.
 </p>
 <div class="direct-save-links">
 <a class="platform-link" href="https://www.airbnb.fr/rooms/1096118163660517988" rel="noopener noreferrer" target="_blank">Airbnb</a>
@@ -1057,27 +1082,22 @@ Approfittate della nostra tariffa speciale estiva: 10% di sconto sulle richieste
 </div>
 <button aria-controls="mobile-accordion-target-5" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Da sapere</span></button><div class="good-to-know-box mobile-accordion-target mobile-collapsed" id="mobile-accordion-target-5">
 <div class="good-to-know-title">
-
-
-
-
 Da sapere prima di prenotare
 </div>
 <div class="good-to-know-grid">
+<div class="good-to-know-item">Nessun pagamento online viene effettuato su questo sito.</div>
+<div class="good-to-know-item">Check-in dalle 15:00. Check-out entro le 10:00.</div>
+<div class="good-to-know-item">L’appartamento ospita fino a 5 persone, con lettino per un bebè o bambino piccolo fino a 4 anni.</div>
 <div class="good-to-know-item">L’edificio non dispone di ascensore.</div>
-<div class="good-to-know-item">L’accesso alle strutture del Meliá Resort non è incluso.</div>
-<div class="good-to-know-item">La spiaggia è a circa 5 minuti a piedi.</div>
-<div class="good-to-know-item">Un’auto è consigliata per esplorare liberamente la regione.</div>
+</div>
 </div>
 </div>
 </div>
 <div class="booking-card" style="max-width:860px;margin:0 auto;background:white;border-radius:12px;box-shadow:0 6px 32px rgba(0,0,0,0.12);overflow:hidden;border:1px solid #ddd">
 <!-- PRICE HEADER -->
-<div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center">
-<div>
-<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">A partire da</div>
-<div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ notte</span></div>
-</div>
+<div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;text-align:center">
+<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">From</div>
+<div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ night</span></div>
 </div>
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
@@ -1123,7 +1143,7 @@ Da sapere prima di prenotare
 <input id="booking-msg" placeholder="Messaggio (facoltativo)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-Qui non viene effettuato alcun pagamento online. Dopo la conferma, inviamo i dettagli di pagamento via email.
+Nessun pagamento online viene effettuato su questo sito. Dopo la conferma, inviamo direttamente via email i dettagli per il pagamento.
 </div>
 <div class="booking-request-note">
 
@@ -1139,17 +1159,7 @@ Questa è una richiesta di prenotazione, non una prenotazione immediata. Conferm
 
 State pianificando un soggiorno più lungo o volete lavorare da remoto vicino al mare? Contattateci per un’offerta mensile su misura.
 </div>
-
 <!-- SUBMIT -->
-<div style="padding:0.8rem 1.5rem;text-align:center;background:#f7fdfd;border-top:1px solid #eee">
-<p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.4rem">
-
-
-
-oppure scriveteci direttamente a
-</p>
-<a href="mailto:info@swisssweet-apartment.com" style="color:var(--turquoise-dark);font-weight:500;font-size:0.9rem;text-decoration:none">info@swisssweet-apartment.com</a>
-</div>
 <div style="padding:1.2rem 1.5rem">
 <button id="submit-btn" onclick="submitBooking()" onmouseout="this.style.background='var(--coral)'" onmouseover="this.style.background='#E05530'" style="width:100%;background:var(--coral);color:white;border:none;padding:1rem;border-radius:8px;font-size:0.95rem;font-weight:500;cursor:pointer;font-family:var(--sans);transition:background 0.2s" type="button">
 
@@ -1175,57 +1185,7 @@ Min. 2 notti · Cancellazione gratuita fino a 14 giorni prima dell’arrivo ·
 </p>
 </div>
 </section>
-<!-- FAQ -->
-<button aria-controls="faq-preview" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Domande frequenti</span></button><section class="faq-preview-section mobile-accordion-target mobile-collapsed" id="faq-preview">
-<div class="faq-preview-card">
-<p class="section-tag">FAQ</p>
-<h2>Domande rapide prima di prenotare</h2>
-<div class="faq-preview-grid">
-<div class="faq-preview-item">Viene effettuato un pagamento su questo sito? No, il modulo invia soltanto una richiesta.</div>
-<div class="faq-preview-item">Distanza dalla spiaggia? Circa 5 minuti a piedi.</div>
-<div class="faq-preview-item">Parcheggio? Gratuito all’interno della residenza.</div>
-<div class="faq-preview-item">Le strutture del Meliá Resort sono incluse? No, non sono incluse.</div>
-</div>
-<a class="btn-coral" href="/it/faq.html">Vedi FAQ completa</a>
-</div>
-</section>
-<!-- BLOG / LOCAL TIPS -->
-<button aria-controls="blog" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Consigli locali</span></button><section class="blog-section mobile-accordion-target mobile-collapsed" id="blog">
-<div class="blog-header">
-<p class="section-tag">Blog &amp; consigli locali</p>
-<h2>Le nostre esperienze<br/><em>a Lalzi Bay</em></h2>
-<p class="section-lead">I nostri consigli personali su Lalzi Bay, San Pietro Resort, Tirana e le escursioni in Albania.</p>
-</div>
-<div class="blog-grid"><article class="blog-card"><div><h3>Arrivare a Lalzi Bay e al San Pietro Resort</h3><p>Voli, taxi, SIM, guida e prime impressioni prima di sistemarsi.</p></div><a class="blog-status" href="/it/blog/arrivare-lalzi-bay-san-pietro.html">Leggi</a></article><article class="blog-card"><div><h3>Spiaggia, ristoranti e stagioni a Lalzi Bay</h3><p>Lettini, beach bar, Meliá, Insifa Beach, Duka Winery e il periodo migliore per venire.</p></div><a class="blog-status" href="/it/blog/spiaggia-ristoranti-stagioni-lalzi-bay.html">Leggi</a></article><article class="blog-card"><div><h3>Tirana, escursioni e consigli per l’Albania</h3><p>Cosa vedere a Tirana, dove uscire e come esplorare Shkodër, Himarë e Dhërmi da Lalzi Bay.</p></div><a class="blog-status" href="/it/blog/tirana-escursioni-consigli-albania.html">Leggi</a></article></div>
-</section>
-<!-- REVIEWS -->
-<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Recensioni</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
-<p class="section-tag" style="color:var(--coral)">Recensioni</p>
-<h2>Cosa dicono i nostri ospiti</h2>
-<div class="reviews-grid">
-<div class="review-card">
-<div class="review-source">Google</div>
-<div class="review-rating">★★★★★ · 5/5</div>
-<p class="review-text">“J’ai passé un super séjour de 3 jours. L’appartement était bien équipé, propre et bien agencé. Le balcon est spacieux et agréable pour les dîners du soir et petits-déjeuners. Avec les places de parking, il était facile d’accès. Le calme de la résidence a permis un vrai repos. La plage est magnifique. Top.”</p>
-<p class="review-author">— Butrint</p>
-</div>
-<div class="review-card">
-<div class="review-source">Happy Rentals</div>
-<div class="review-rating">★★★★★ · 10/10</div>
-<p class="review-text">“The house was very spacious and had all the amenities needed. The place was clean and my family and I really enjoyed it.”</p>
-<p class="review-author">— Arlinda</p>
-</div>
-<div class="review-card">
-<div class="review-source">Vrbo · estratto da recensione verificata</div>
-<div class="review-rating">★★★★☆ · 8/10</div>
-<p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
-<p class="review-author">— Kateryna</p>
-</div>
-</div>
-<div style="margin-top:2rem;text-align:center">
-<a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Hai soggiornato da noi? Lascia una recensione Google</a>
-</div>
-</section>
+
 <!-- FOOTER -->
 <footer>
 <div class="footer-brand">
@@ -1450,11 +1410,25 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   var photos = [
-    '../Salon.jpeg', '../Sdb.jpeg', '../chambre1.jpeg', '../Cuisine.jpeg',
-    '../Balcon.jpg', '../Vuejardinbalcon.jpeg', '../beachoceanview.jpg',
-    '../sunset3.jpeg', '../Sunset1.jpeg', '../Sunset2.jpeg', '../Spritz.jpeg', '../restaurantdenuit.jpeg',
-    '../hut.jpeg', '../sdb2.jpeg', '../heart.jpeg', '../seaview2.jpeg',
-    '../exterior.jpeg', '../eveningstreet.jpeg', '../sunsetorange.jpeg'
+    "/sunsetorange.jpeg",
+    "/hut.jpeg",
+    "/heart.jpeg",
+    "/beachoceanview.jpg",
+    "/sunset3.jpeg",
+    "/Sunset1.jpeg",
+    "/Sunset2.jpeg",
+    "/Spritz.jpeg",
+    "/restaurantdenuit.jpeg",
+    "/seaview2.jpeg",
+    "/exterior.jpeg",
+    "/eveningstreet.jpeg",
+    "/Salon.jpeg",
+    "/Sdb.jpeg",
+    "/sdb2.jpeg",
+    "/chambre1.jpeg",
+    "/Cuisine.jpeg",
+    "/Balcon.jpg",
+    "/Vuejardinbalcon.jpeg"
   ];
   var currentPhoto = 0;
 
@@ -1647,9 +1621,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <div class="floating-question" id="floating-question">
-  <div class="floating-question-panel" role="dialog" aria-label="Fai una domanda">
+  <div class="floating-question-panel" aria-hidden="true">
     <div class="floating-question-head">
-      <h3>Fai una domanda</h3>
+      <h3>Hai una domanda?</h3>
       <button class="floating-question-close" type="button" onclick="toggleQuestionBox(false)" aria-label="Close">×</button>
     </div>
     <input id="question-name" type="text" placeholder="Nome" />
@@ -1658,10 +1632,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <button class="floating-question-submit" type="button" onclick="submitQuestion()">Invia la domanda</button>
     <div class="floating-question-status" id="question-status"></div>
   </div>
-  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Domanda?</button>
+  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Contatto</button>
 </div>
-
 <script>
+(function() {
   window.toggleQuestionBox = function(force) {
     var box = document.getElementById('floating-question');
     if (!box) return;
@@ -1676,9 +1650,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var statusEl = document.getElementById('question-status');
     var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
     var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
-    if (!email || email.indexOf('@') < 0 || !msg) { alert('Inserisci un indirizzo email valido e la tua domanda.'); return; }
+    if (!email || email.indexOf('@') < 0 || !msg) { alert("Inserisci un’email valida e la tua domanda."); return; }
     var payload = {
-      _subject: 'Domanda - Swiss Sweet Apartment',
+      _subject: 'Question - Swiss Sweet Apartment',
       _template: 'table',
       _captcha: 'false',
       name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
@@ -1692,21 +1666,18 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
     .then(function() {
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Domanda inviata. Risponderemo via email il prima possibile.'; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Domanda inviata. Risponderemo via email appena possibile."; }
       if (nameEl) nameEl.value = '';
       if (emailEl) emailEl.value = '';
       if (msgEl) msgEl.value = '';
     })
     .catch(function() {
-      var subject = encodeURIComponent('Domanda - Swiss Sweet Apartment');
-      var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
-Email: ' + email + '
-
-Question:
-' + msg);
+      var subject = encodeURIComponent('Question - Swiss Sweet Apartment');
+      var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '\nEmail: ' + email + '\n\nQuestion:\n' + msg);
       window.location.href = 'mailto:info@swisssweet-apartment.com?subject=' + subject + '&body=' + body;
     });
   };
+})();
 </script>
 
 </body>

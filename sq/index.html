@@ -23,7 +23,7 @@
   "@type": "VacationRental",
   "name": "Swiss Sweet Apartment",
   "description": "Apartament privat pushimi në San Pietro Resort, Gjiri i Lalëzit, Shqipëri, rreth 5 minuta në këmbë nga plazhi.",
-  "url": "https://swisssweet-apartment.com/sq/",
+  "url": "https://swisssweetapt.github.io/sq/",
   "image": "https://swisssweet-apartment.com/beachoceanview.jpg",
   "email": "info@swisssweet-apartment.com",
   "address": {
@@ -148,6 +148,7 @@
   .nav-cta { background: var(--coral) !important; color: white !important; padding: 0.5rem 1.2rem; border-radius: 2px; }
   .nav-tools { display:flex; align-items:center; justify-content:flex-end; gap:0.65rem; }
   .nav-audio-group { display:none !important; }
+  .nav-audio-group { display:flex; align-items:center; gap:0.35rem; }
 
   /* AUDIO */
   .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--sans); letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
@@ -200,9 +201,7 @@
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay { background: rgba(42,122,122,0.3); }
   .gallery-item:hover .gallery-overlay span { opacity: 1; }
-  .mobile-gallery-more { display:block; text-align:center; padding:1.2rem 1.5rem 0; }
-  .mobile-gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.4rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; }
-  .gallery-collapsed .gallery-grid:not(.mobile-expanded) .gallery-item:nth-child(n+4) { display:none; }
+  .mobile-gallery-more { display:none; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
@@ -525,11 +524,20 @@
 
     .mobile-accordion-toggle .mobile-accordion-label { color:var(--turquoise-deep) !important; -webkit-text-fill-color:var(--turquoise-deep) !important; display:block !important; opacity:1 !important; visibility:visible !important; position:relative; z-index:1; }
 
-
-  /* V25 preview: premium question widget + gallery hierarchy */
-  .question-inline-card { margin: 1.2rem 1.5rem 0; padding: 1rem 1.1rem; border: 1px solid rgba(255,107,71,0.20); background: #fff8f5; border-radius: 12px; text-align: center; }
-  .question-inline-card p { margin: 0 0 0.75rem; color: var(--text-muted); font-size: 0.9rem; }
-  .question-inline-card .btn-coral { border: none; cursor: pointer; border-radius: 999px; padding: 0.75rem 1.25rem; font-family: var(--sans); }
+  /* V27 preview refinements */
+  .gallery-collapsed .gallery-extra { display:none; }
+  .gallery-expanded .gallery-extra { display:block; }
+  .gallery-more { text-align:center; padding:1.6rem 1.5rem 0; }
+  .gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.45rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; transition:background 0.18s, transform 0.18s; }
+  .gallery-more button:hover { background:var(--coral-dark); transform:translateY(-1px); }
+  .gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: stretch; }
+  .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .gallery-item:first-child img { height: 566px; }
+  .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
+  .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
+  .booking-info-grid { max-width:980px; margin:0 auto 1.4rem; display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:stretch; }
+  .booking-card .payment-reassurance { font-size:0.84rem; color:var(--text-muted); padding:1rem 1.5rem 0; text-align:center; }
+  .booking-quick-question { max-width:860px; margin:1rem auto 0; color:var(--text-muted); font-size:0.88rem; }
   .floating-question { position: fixed; right: 22px; bottom: 22px; z-index: 999; }
   .floating-question-button { border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.85rem 1.05rem; box-shadow: 0 16px 38px rgba(0,0,0,0.22); cursor: pointer; font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.04em; transition: transform 0.18s, background 0.18s, box-shadow 0.18s; }
   .floating-question-button:hover { background: var(--coral-dark); transform: translateY(-2px); box-shadow: 0 20px 48px rgba(0,0,0,0.26); }
@@ -538,31 +546,29 @@
   .floating-question-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:0.8rem; }
   .floating-question-head h3 { font-family: var(--serif); font-size: 1.35rem; font-weight: 300; color: var(--turquoise-dark); margin:0; }
   .floating-question-close { background: transparent; border: none; font-size: 1.4rem; line-height: 1; color: var(--text-muted); cursor: pointer; }
-  .floating-question-panel input, .floating-question-panel textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 0.72rem 0.85rem; font-size: 0.88rem; font-family: var(--sans); margin-bottom: 0.65rem; outline: none; }
+  .floating-question-panel input, .floating-question-panel textarea { width: 100%; border: 1px solid #ddd; border-radius: 10px; padding: 0.72rem 0.85rem; font-size: 0.88rem; font-family: var(--sans); margin-bottom: 0.65rem; outline: none; box-sizing:border-box; }
   .floating-question-panel textarea { min-height: 96px; resize: vertical; }
   .floating-question-panel input:focus, .floating-question-panel textarea:focus { border-color: var(--turquoise); }
   .floating-question-submit { width: 100%; border: none; background: var(--coral); color: white; border-radius: 999px; padding: 0.82rem 1rem; font-size: 0.86rem; font-weight: 500; font-family: var(--sans); cursor:pointer; }
   .floating-question-submit:hover { background: var(--coral-dark); }
   .floating-question-status { display:none; margin-top:0.7rem; font-size:0.82rem; color:var(--turquoise-dark); text-align:center; }
-  .review-source { display:inline-flex; align-items:center; justify-content:center; padding:0.22rem 0.62rem; border-radius:999px; background:rgba(126,206,206,0.18); color:var(--turquoise-dark); font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:0.8rem; }
-  .review-rating { color:var(--coral); font-size:0.88rem; margin-bottom:0.65rem; letter-spacing:0.08em; }
-  .gallery-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: stretch; }
-  .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: span 2; }
-  .gallery-grid .gallery-item:first-child img { height: 566px; }
-  .gallery-grid .gallery-item:nth-child(2) img, .gallery-grid .gallery-item:nth-child(3) img { height: 280px; }
-  .gallery-grid .gallery-item:nth-child(n+4) img { height: 210px; }
+  .review-source { display:inline-block; margin-bottom:0.9rem; padding:0.28rem 0.7rem; border-radius:999px; background:rgba(255,255,255,0.14); color:white; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; }
+  .review-rating { color:var(--coral); font-size:0.9rem; margin-bottom:0.8rem; }
+  .review-excerpt { font-size:0.76rem; color:rgba(255,255,255,0.58); margin-top:0.7rem; }
   @media (max-width: 900px) {
-    .floating-question { right: 14px; bottom: 14px; }
-    .floating-question-button { padding: 0.76rem 0.92rem; font-size: 0.78rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; }
     .gallery-grid .gallery-item:first-child { grid-column: span 2; grid-row: auto; }
     .gallery-grid .gallery-item:first-child img { height: 340px; }
     .gallery-grid .gallery-item:nth-child(n+2) img { height: 210px; }
+    .booking-info-grid { display:block; }
+    .booking-info-grid .direct-save-box, .booking-info-grid .good-to-know-box { margin:0 0 0.8rem; }
   }
-  @media (max-width: 640px) {
+  @media (max-width: 520px) {
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-grid .gallery-item:first-child { grid-column: auto; }
     .gallery-grid .gallery-item:first-child img, .gallery-grid .gallery-item:nth-child(n+2) img { height: 260px; }
+    .floating-question { right: 14px; bottom: 14px; }
+    .floating-question-button { padding: 0.76rem 0.92rem; font-size: 0.78rem; }
     .floating-question-panel { right: -6px; width: calc(100vw - 28px); }
   }
 
@@ -578,9 +584,6 @@
 <div class="lightbox-counter" id="lightbox-counter"></div>
 </div>
 <!-- AUDIO -->
-<audio id="ambient-audio" loop="" preload="none">
-<source src="../saltwater-mirage.mp3" type="audio/mpeg"/>
-</audio>
 <!-- NAV -->
 <nav>
 <a aria-label="Faqja kryesore e Swiss Sweet Apartment" class="nav-logo" href="/sq/"><span class="nav-logo-text">Swiss<span>Sweet</span> Apartment</span></a>
@@ -594,22 +597,15 @@
   </button>
 <ul class="nav-links">
 <li><a href="#espaces">Apartamenti</a></li>
-<li><a href="#gallery">Foto</a></li>
 <li><a href="#videos">Video</a></li>
+<li><a href="#gallery">Foto</a></li>
 <li><a href="#location">Vendndodhja</a></li>
 <li><a href="#reviews">Vlerësime</a></li>
-<li><a href="#blog">Blog &amp; këshilla lokale</a></li>
+<li><a href="#blog">Blog & Tips</a></li>
 <li><a href="/sq/faq.html">FAQ</a></li>
 <li><a class="nav-cta" href="#booking">Rezervo</a></li>
 </ul>
 <div class="nav-tools">
-<div class="nav-audio-group">
-<button class="audio-btn" id="audioBtn" onclick="toggleAudio()" title="Luaj / Ndalo" type="button">
-<span class="audio-dot"></span>
-<span id="audio-title">Saltwater Mirage</span>
-</button>
-<button class="audio-btn" id="audioNext" onclick="nextTrack()" style="padding:0.35rem 0.6rem;font-size:0.8rem" title="Kënga tjetër" type="button">⏭</button>
-</div>
 <div class="lang-dropdown">
 <button aria-label="Zgjidhni gjuhën" class="lang-current" type="button">AL ▾</button>
 <div class="lang-menu"><a class="lang-btn" href="/">EN</a><a class="lang-btn" href="/fr/">FR</a><a class="lang-btn" href="/de/">DE</a><a class="lang-btn active" href="/sq/">AL</a><a class="lang-btn" href="/it/">IT</a></div>
@@ -618,13 +614,14 @@
 </nav>
 <div class="mobile-panel" id="mobile-panel">
 <a href="#espaces" onclick="closeMobileMenu()">Apartamenti</a>
-<a href="#gallery" onclick="closeMobileMenu()">Foto</a>
 <a href="#videos" onclick="closeMobileMenu()">Video</a>
+<a href="#gallery" onclick="closeMobileMenu()">Foto</a>
 <a href="#location" onclick="closeMobileMenu()">Vendndodhja</a>
+<a href="#reviews" onclick="closeMobileMenu()">Vlerësime</a>
+<a href="#blog" onclick="closeMobileMenu()">Blog & Tips</a>
 <a href="/sq/faq.html" onclick="closeMobileMenu()">FAQ</a>
-<a href="#blog" onclick="closeMobileMenu()">Blog</a>
-<div class="mobile-lang-row"><a class="lang-btn" href="/">EN</a><a class="lang-btn" href="/fr/">FR</a><a class="lang-btn" href="/de/">DE</a><a class="lang-btn active" href="/sq/">AL</a><a class="lang-btn" href="/it/">IT</a></div>
-<a class="mobile-book" href="#booking" onclick="closeMobileMenu()">Kontrolloni disponueshmërinë</a>
+<div class="mobile-lang-row"><a class="lang-btn " href="/">EN</a><a class="lang-btn " href="/fr/">FR</a><a class="lang-btn " href="/de/">DE</a><a class="lang-btn active" href="/sq/">AL</a><a class="lang-btn " href="/it/">IT</a></div>
+<a class="mobile-book" href="#booking" onclick="closeMobileMenu()">Kontrollo disponueshmërinë</a>
 </div>
 <!-- HERO -->
 <section class="hero">
@@ -662,7 +659,7 @@ Një apartament pushimi 97 m² për familje, çifte dhe grupe miqsh, 5 minuta ng
 
 
 
-Vera 2026 po mbushet tashmë — na dërgoni datat tuaja dhe ne do të konfirmojmë shpejt disponueshmërinë.
+Rezervoni para se të jetë vonë dhe shijoni këtë vend të mrekullueshëm.
 
 </p>
 <div class="hero-actions">
@@ -685,57 +682,9 @@ Shiko fotot
 <!-- STATS -->
 <div class="stats-bar">
 <div class="stat-item"><div class="stat-num">97m²</div><div class="stat-label">Sipërfaqja totale</div></div>
-<div class="stat-item"><div class="stat-num">5 + krevat fëmijësh</div><div class="stat-label">Vende gjumi</div></div>
+<div class="stat-item"><div class="stat-num">5 + krevat bebe</div><div class="stat-label">Fle</div></div>
 <div class="stat-item"><div class="stat-num">5 min</div><div class="stat-label">Nga plazhi</div></div>
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">Nga aeroporti</div></div>
-</div>
-<!-- GALLERY -->
-<div class="gallery-section gallery-collapsed" id="gallery">
-<div class="gallery-header">
-<p class="section-tag">
-
-
-
-Galeria
-
-</p>
-<h2>
-
-
-
-Apartamenti &amp; <em>destinacioni</em>
-</h2>
-</div>
-<div class="gallery-grid">
-<div class="gallery-item mobile-feature mobile-order-1" onclick="openLightbox(0)"><img alt="Dhoma e ndenjjes me mur ngjyrë bruz" decoding="async" loading="lazy" src="../Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-4" onclick="openLightbox(1)"><img alt="Banjo me mermer" decoding="async" loading="lazy" src="../Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-2" onclick="openLightbox(2)"><img alt="Dhoma kryesore e gjumit" decoding="async" loading="lazy" src="../chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(3)"><img alt="Kuzhinë e hapur, plotësisht e pajisur" decoding="async" loading="lazy" src="../Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-3" onclick="openLightbox(4)"><img alt="Ballkon privat me karrige të varur" decoding="async" loading="lazy" src="../Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(5)"><img alt="Pamje nga kopshti prej ballkonit" decoding="async" loading="lazy" src="../Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-5" onclick="openLightbox(6)"><img alt="Plazhi me rërë në Gjirin e Lalëzit" decoding="async" loading="lazy" src="../beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(7)"><img alt="Shëtitore me palma në San Pietro Resort" decoding="async" loading="lazy" src="../sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(8)"><img alt="Perëndim dielli mbi Gjirin e Lalëzit" decoding="async" loading="lazy" src="../Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-feature mobile-order-6" onclick="openLightbox(9)"><img alt="Perëndim dielli mbi gji" decoding="async" loading="lazy" src="../Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(10)"><img alt="Spritz pranë plazhit" decoding="async" loading="lazy" src="../Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(11)"><img alt="Restorant në mbrëmje" decoding="async" loading="lazy" src="../restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(12)"><img alt="Perëndim dielli në plazhin e Gjirit të Lalëzit" decoding="async" loading="lazy" src="../hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(13)"><img alt="Banjo me mermer dhe lavatriçe-tharëse" decoding="async" loading="lazy" src="../sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(14)"><img alt="Rruga drejt plazhit në San Pietro Resort" decoding="async" loading="lazy" src="../heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(15)"><img alt="Pamje nga deti në Gjirin e Lalëzit" decoding="async" loading="lazy" src="../seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(16)"><img alt="Pamja e jashtme e rezidencës San Pietro" decoding="async" loading="lazy" src="../exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(17)"><img alt="Rezidenca San Pietro në mbrëmje" decoding="async" loading="lazy" src="../eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-<div class="gallery-item mobile-extra" onclick="openLightbox(18)"><img alt="Perëndim portokalli mbi det" decoding="async" loading="lazy" src="../sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
-</div>
-<div class="mobile-gallery-more" id="mobile-gallery-more">
-<button onclick="showAllMobileGallery()" type="button">
-
-
-
-Shih të gjitha fotot
-
-</button>
-</div>
 </div>
 <!-- FEATURES -->
 <button aria-controls="features" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Komoditetet e apartamentit</span></button><div class="features-section mobile-accordion-target mobile-collapsed" id="features">
@@ -778,6 +727,7 @@ Dy dhoma gjumi, banjo mermeri, ballkon me skarë dhe kuzhinë e hapur plotësish
 <img alt="Rruga drejt plazhit në San Pietro Resort" decoding="async" loading="lazy" src="../heart.jpeg"/>
 </div>
 </div>
+
 <!-- SUNSET BANNER -->
 <div class="sunset-banner">
 <div class="sunset-banner-bg"></div>
@@ -803,6 +753,7 @@ Rezervo tani
 </a>
 </div>
 </div>
+
 <!-- ESPACES -->
 <button aria-controls="espaces" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Dhomat dhe hapësirat</span></button><section class="rooms-section mobile-accordion-target mobile-collapsed" id="espaces">
 <p class="section-tag">
@@ -907,6 +858,7 @@ Karrige e varur në formë veze, tavolinë me 4 karrige, tendë elektrike dhe sk
 </div>
 </div>
 </section>
+
 <!-- VIDEOS -->
 <button aria-controls="videos" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Vizita me video</span></button><section class="video-section mobile-accordion-target mobile-collapsed" id="videos">
 <p class="section-tag">
@@ -961,6 +913,37 @@ Zbuloni<br/><em>apartamentin në lëvizje</em>
 </div>
 </div>
 </section>
+
+<!-- GALLERY -->
+<div class="gallery-section gallery-collapsed" id="gallery">
+<div class="gallery-header">
+<p class="section-tag">Galeri</p>
+<h2>Perëndime, plazh & <em>atmosferë San Pietro</em></h2>
+<p class="section-lead">Një pamje e shkurtër vizuale e zonës — hapni të gjitha fotot për galerinë e plotë të apartamentit dhe rrethinës.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item gallery-visible" onclick="openLightbox(0)"><img alt="Orange sunset over Lalzi Bay" decoding="async" loading="lazy" src="/sunsetorange.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(1)"><img alt="Beach and lifeguard tower at Lalzi Bay" decoding="async" loading="lazy" src="/hut.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-visible" onclick="openLightbox(2)"><img alt="Green resort walkway to the beach" decoding="async" loading="lazy" src="/heart.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(3)"><img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(4)"><img alt="Palm-lined walkway at San Pietro Resort" decoding="async" loading="lazy" src="/sunset3.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(5)"><img alt="Sunset over Lalzi Bay" decoding="async" loading="lazy" src="/Sunset1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(6)"><img alt="Sunset over the bay" decoding="async" loading="lazy" src="/Sunset2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(7)"><img alt="Spritz by the beach" decoding="async" loading="lazy" src="/Spritz.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(8)"><img alt="Restaurant at night" decoding="async" loading="lazy" src="/restaurantdenuit.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(9)"><img alt="Sea view at Lalzi Bay" decoding="async" loading="lazy" src="/seaview2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(10)"><img alt="Exterior of the San Pietro residence" decoding="async" loading="lazy" src="/exterior.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(11)"><img alt="San Pietro residence in the evening" decoding="async" loading="lazy" src="/eveningstreet.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(12)"><img alt="Living room with turquoise feature wall" decoding="async" loading="lazy" src="/Salon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(13)"><img alt="Marble bathroom" decoding="async" loading="lazy" src="/Sdb.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(14)"><img alt="Marble bathroom with washer-dryer" decoding="async" loading="lazy" src="/sdb2.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(15)"><img alt="Main bedroom" decoding="async" loading="lazy" src="/chambre1.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(16)"><img alt="Fully equipped open kitchen" decoding="async" loading="lazy" src="/Cuisine.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(17)"><img alt="Private balcony with hanging egg chair" decoding="async" loading="lazy" src="/Balcon.jpg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+<div class="gallery-item gallery-extra" onclick="openLightbox(18)"><img alt="Garden view from the balcony" decoding="async" loading="lazy" src="/Vuejardinbalcon.jpeg"/><div class="gallery-overlay"><span>⊕</span></div></div>
+</div>
+<div class="gallery-more"><button onclick="toggleFullGallery()" id="gallery-toggle" type="button">Shihni të gjitha fotot</button></div>
+</div>
 <!-- LOCATION -->
 <button aria-controls="location" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Vendndodhja dhe rrethina</span></button><div class="location-section mobile-accordion-target mobile-collapsed" id="location">
 <div class="location-text">
@@ -978,10 +961,7 @@ Vendndodhja
 Në zemër të Gjirit të Lalëzit,<br/><em>në bregdetin adriatik të Shqipërisë</em>
 </h2>
 <p class="section-lead">
-
-
-
-San Pietro Resort, Gjiri i Lalëzit — midis detit, gastronomisë dhe kulturës.
+I vendosur në San Pietro Resort, në zonën e Gjirit të Lalëzit, pranë Durrësit.
 </p>
 <ul class="distance-list">
 <li class="distance-item"><span class="distance-name">🏖️ Plazh ranor</span><span class="distance-val">rreth 5 min në këmbë</span></li>
@@ -1006,6 +986,59 @@ Shiko në Google Maps
 <iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1500!2d19.5200795!3d41.5130478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDMwJzQ3LjAiTiAxOcKwMzEnMTIuMyJF!5e1!3m2!1sfr!2sch!4v1"></iframe>
 </div>
 </div>
+
+<!-- REVIEWS -->
+<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Vlerësime</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
+<p class="section-tag" style="color:var(--coral)">Vlerësime nga mysafirët</p>
+<h2>Real stays,<br/><em>real feedback</em></h2>
+<div class="reviews-grid">
+<div class="review-card">
+<span class="review-source">Google</span>
+<div class="review-rating">5/5</div>
+<p>“J’ai passé un super séjour de 3 jours. L’appartement était bien équipé, propre et bien agencé. Le balcon est spacieux et agréable pour les dîners du soir et petits-déjeuners. Avec les places de parking, il était facile d’accès. Le calme de la résidence a permis un vrai repos. La plage est magnifique. Top.”</p>
+<div class="review-author">Butrint</div>
+</div>
+<div class="review-card">
+<span class="review-source">Happy Rentals</span>
+<div class="review-rating">10/10</div>
+<p>“The house was very spacious and had all the amenities needed. The place was clean and my family and I really enjoyed it.”</p>
+<div class="review-author">Arlinda</div>
+</div>
+<div class="review-card">
+<span class="review-source">Vrbo</span>
+<div class="review-rating">8/10</div>
+<p>“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
+<div class="review-excerpt">Pjesë nga një vlerësim i verifikuar në Vrbo</div>
+<div class="review-author">Kateryna</div>
+</div>
+</div>
+<a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Keni qëndruar te ne? Lini një vlerësim në Google</a>
+</section>
+<!-- BLOG / LOCAL TIPS -->
+<button aria-controls="blog" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Këshilla lokale</span></button><section class="blog-section mobile-accordion-target mobile-collapsed" id="blog">
+<div class="blog-header">
+<p class="section-tag">Blog &amp; Tips</p>
+<h2>Përvojat tona<br/><em>në Lalzi Bay</em></h2>
+<p class="section-lead">Këshillat tona personale për Lalzi Bay, San Pietro Resort, Tiranën dhe udhëtimet në Shqipëri.</p>
+</div>
+<div class="blog-grid"><article class="blog-card"><div><h3>Mbërritja në Lalzi Bay dhe San Pietro Resort</h3><p>Fluturimi, taksitë, karta SIM, drejtimi i makinës dhe përshtypjet e para.</p></div><a class="blog-status" href="/sq/blog/mberritja-lalzi-bay-san-pietro.html">Lexo</a></article><article class="blog-card"><div><h3>Plazhi, restorantet dhe sezonet në Lalzi Bay</h3><p>Shezlongë, beach bars, Meliá, Insifa Beach, Duka Winery dhe koha më e mirë për të ardhur.</p></div><a class="blog-status" href="/sq/blog/plazhi-restorantet-sezonet-lalzi-bay.html">Lexo</a></article><article class="blog-card"><div><h3>Tirana, udhëtime dhe këshilla për Shqipërinë</h3><p>Çfarë të shihni në Tiranë, ku të dilni dhe si të eksploroni Shkodrën, Himarën dhe Dhërmiun nga Lalzi Bay.</p></div><a class="blog-status" href="/sq/blog/tirana-udhetime-keshilla-shqiperi.html">Lexo</a></article></div>
+</section>
+
+<!-- FAQ -->
+<button aria-controls="faq-preview" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Pyetje të shpeshta</span></button><section class="faq-preview-section mobile-accordion-target mobile-collapsed" id="faq-preview">
+<div class="faq-preview-card">
+<p class="section-tag">FAQ</p>
+<h2>Pyetje të shpejta para rezervimit</h2>
+<div class="faq-preview-grid">
+<div class="faq-preview-item">A kryhet pagesë në këtë faqe? Jo — formulari dërgon vetëm një kërkesë rezervimi.</div>
+<div class="faq-preview-item">Distanca nga plazhi? Rreth 5 minuta në këmbë.</div>
+<div class="faq-preview-item">Parkim? Falas brenda rezidencës.</div>
+<div class="faq-preview-item">A përfshihen ambientet e Meliá Resort? Jo, ato nuk përfshihen.</div>
+</div>
+<a class="btn-coral" href="/sq/faq.html">Shiko FAQ të plotë</a>
+</div>
+</section>
+
 <!-- BOOKING -->
 <div style="height:320px;overflow:hidden;position:relative">
 <img alt="Plazhi me rërë në Gjirin e Lalëzit" decoding="async" loading="lazy" src="../beachoceanview.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75)"/>
@@ -1035,18 +1068,10 @@ Rezervoni drejtpërdrejt,<br/><em>pa komision</em>
 <div class="booking-info-grid">
 <button aria-controls="mobile-accordion-target-4" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Pse të rezervoni drejtpërdrejt?</span></button><div class="direct-save-box mobile-accordion-target mobile-collapsed" id="mobile-accordion-target-4">
 <div class="direct-save-title">
-
-
-
-Rezervim i drejtpërdrejtë = kursim
-
+Rezervim direkt = kursim
 </div>
 <p class="direct-save-text">
-
-
-
-Përfitoni nga çmimi ynë special i verës: 10% ulje për kërkesat direkte. Shmangni tarifat e shërbimit të platformave, përfitoni nga asistenca lokale gjatë qëndrimit dhe mund t’i krahasoni ofertat tona në platformat kryesore.
-
+Na dërgoni datat direkt dhe shmangni tarifat e panevojshme të platformave. Ne konfirmojmë fillimisht disponueshmërinë dhe përgjigjemi personalisht me email.
 </p>
 <div class="direct-save-links">
 <a class="platform-link" href="https://www.airbnb.fr/rooms/1096118163660517988" rel="noopener noreferrer" target="_blank">Airbnb</a>
@@ -1057,27 +1082,22 @@ Përfitoni nga çmimi ynë special i verës: 10% ulje për kërkesat direkte. Sh
 </div>
 <button aria-controls="mobile-accordion-target-5" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Mirë të dihet</span></button><div class="good-to-know-box mobile-accordion-target mobile-collapsed" id="mobile-accordion-target-5">
 <div class="good-to-know-title">
-
-
-
 Mirë të dihet para rezervimit
-
 </div>
 <div class="good-to-know-grid">
+<div class="good-to-know-item">Në këtë faqe nuk kryhet pagesë online.</div>
+<div class="good-to-know-item">Check-in nga ora 15:00. Check-out deri në orën 10:00.</div>
+<div class="good-to-know-item">Apartamenti akomodon deri në 5 mysafirë, me krevat për bebe ose fëmijë të vogël deri në 4 vjeç.</div>
 <div class="good-to-know-item">Ndërtesa nuk ka ashensor.</div>
-<div class="good-to-know-item">Qasja në ambientet e Meliá Resort nuk përfshihet në rezervim.</div>
-<div class="good-to-know-item">Plazhi është rreth 5 minuta në këmbë.</div>
-<div class="good-to-know-item">Makina rekomandohet për të eksploruar lirshëm rajonin.</div>
+</div>
 </div>
 </div>
 </div>
 <div class="booking-card" style="max-width:860px;margin:0 auto;background:white;border-radius:12px;box-shadow:0 6px 32px rgba(0,0,0,0.12);overflow:hidden;border:1px solid #ddd">
 <!-- PRICE HEADER -->
-<div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center">
-<div>
-<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">Nga</div>
-<div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ natë</span></div>
-</div>
+<div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;text-align:center">
+<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">From</div>
+<div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ night</span></div>
 </div>
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
@@ -1123,7 +1143,7 @@ Mirë të dihet para rezervimit
 <input id="booking-msg" placeholder="Mesazh (opsional)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-Këtu nuk merret pagesë online. Pas konfirmimit, ju dërgojmë me email detajet e pagesës.
+Në këtë faqe nuk kryhet pagesë online. Pas konfirmimit, ju dërgojmë të dhënat e pagesës direkt me email.
 </div>
 <div class="booking-request-note">
 
@@ -1139,17 +1159,7 @@ Kjo është një kërkesë rezervimi dhe jo një rezervim i menjëhershëm. Ne d
 Po planifikoni një qëndrim më të gjatë ose të punoni në distancë pranë detit? Na kontaktoni për një ofertë mujore të personalizuar.
 
 </div>
-
 <!-- SUBMIT -->
-<div style="padding:0.8rem 1.5rem;text-align:center;background:#f7fdfd;border-top:1px solid #eee">
-<p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.4rem">
-
-
-
-ose shkruani drejtpërdrejt në
-</p>
-<a href="mailto:info@swisssweet-apartment.com" style="color:var(--turquoise-dark);font-weight:500;font-size:0.9rem;text-decoration:none">info@swisssweet-apartment.com</a>
-</div>
 <div style="padding:1.2rem 1.5rem">
 <button id="submit-btn" onclick="submitBooking()" onmouseout="this.style.background='var(--coral)'" onmouseover="this.style.background='#E05530'" style="width:100%;background:var(--coral);color:white;border:none;padding:1rem;border-radius:8px;font-size:0.95rem;font-weight:500;cursor:pointer;font-family:var(--sans);transition:background 0.2s" type="button">
 
@@ -1175,57 +1185,7 @@ Min. 2 netë · Anulim falas deri 14 ditë para mbërritjes ·
 </p>
 </div>
 </section>
-<!-- FAQ -->
-<button aria-controls="faq-preview" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Pyetje të shpeshta</span></button><section class="faq-preview-section mobile-accordion-target mobile-collapsed" id="faq-preview">
-<div class="faq-preview-card">
-<p class="section-tag">FAQ</p>
-<h2>Pyetje të shpejta para rezervimit</h2>
-<div class="faq-preview-grid">
-<div class="faq-preview-item">A kryhet pagesë në këtë faqe? Jo — formulari dërgon vetëm një kërkesë rezervimi.</div>
-<div class="faq-preview-item">Distanca nga plazhi? Rreth 5 minuta në këmbë.</div>
-<div class="faq-preview-item">Parkim? Falas brenda rezidencës.</div>
-<div class="faq-preview-item">A përfshihen ambientet e Meliá Resort? Jo, ato nuk përfshihen.</div>
-</div>
-<a class="btn-coral" href="/sq/faq.html">Shiko FAQ të plotë</a>
-</div>
-</section>
-<!-- BLOG / LOCAL TIPS -->
-<button aria-controls="blog" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Këshilla lokale</span></button><section class="blog-section mobile-accordion-target mobile-collapsed" id="blog">
-<div class="blog-header">
-<p class="section-tag">Blog &amp; këshilla lokale</p>
-<h2>Përvojat tona<br/><em>në Lalzi Bay</em></h2>
-<p class="section-lead">Këshillat tona personale për Lalzi Bay, San Pietro Resort, Tiranën dhe udhëtimet në Shqipëri.</p>
-</div>
-<div class="blog-grid"><article class="blog-card"><div><h3>Mbërritja në Lalzi Bay dhe San Pietro Resort</h3><p>Fluturimi, taksitë, karta SIM, drejtimi i makinës dhe përshtypjet e para.</p></div><a class="blog-status" href="/sq/blog/mberritja-lalzi-bay-san-pietro.html">Lexo</a></article><article class="blog-card"><div><h3>Plazhi, restorantet dhe sezonet në Lalzi Bay</h3><p>Shezlongë, beach bars, Meliá, Insifa Beach, Duka Winery dhe koha më e mirë për të ardhur.</p></div><a class="blog-status" href="/sq/blog/plazhi-restorantet-sezonet-lalzi-bay.html">Lexo</a></article><article class="blog-card"><div><h3>Tirana, udhëtime dhe këshilla për Shqipërinë</h3><p>Çfarë të shihni në Tiranë, ku të dilni dhe si të eksploroni Shkodrën, Himarën dhe Dhërmiun nga Lalzi Bay.</p></div><a class="blog-status" href="/sq/blog/tirana-udhetime-keshilla-shqiperi.html">Lexo</a></article></div>
-</section>
-<!-- REVIEWS -->
-<button aria-controls="reviews" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Vlerësime</span></button><section class="reviews-section mobile-accordion-target mobile-collapsed" id="reviews">
-<p class="section-tag" style="color:var(--coral)">Vlerësime</p>
-<h2>Çfarë thonë mysafirët tanë</h2>
-<div class="reviews-grid">
-<div class="review-card">
-<div class="review-source">Google</div>
-<div class="review-rating">★★★★★ · 5/5</div>
-<p class="review-text">“J’ai passé un super séjour de 3 jours. L’appartement était bien équipé, propre et bien agencé. Le balcon est spacieux et agréable pour les dîners du soir et petits-déjeuners. Avec les places de parking, il était facile d’accès. Le calme de la résidence a permis un vrai repos. La plage est magnifique. Top.”</p>
-<p class="review-author">— Butrint</p>
-</div>
-<div class="review-card">
-<div class="review-source">Happy Rentals</div>
-<div class="review-rating">★★★★★ · 10/10</div>
-<p class="review-text">“The house was very spacious and had all the amenities needed. The place was clean and my family and I really enjoyed it.”</p>
-<p class="review-author">— Arlinda</p>
-</div>
-<div class="review-card">
-<div class="review-source">Vrbo · pjesë nga një vlerësim i verifikuar</div>
-<div class="review-rating">★★★★☆ · 8/10</div>
-<p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
-<p class="review-author">— Kateryna</p>
-</div>
-</div>
-<div style="margin-top:2rem;text-align:center">
-<a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Keni qëndruar te ne? Lini një vlerësim në Google</a>
-</div>
-</section>
+
 <!-- FOOTER -->
 <footer>
 <div class="footer-brand">
@@ -1450,11 +1410,25 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   var photos = [
-    '../Salon.jpeg', '../Sdb.jpeg', '../chambre1.jpeg', '../Cuisine.jpeg',
-    '../Balcon.jpg', '../Vuejardinbalcon.jpeg', '../beachoceanview.jpg',
-    '../sunset3.jpeg', '../Sunset1.jpeg', '../Sunset2.jpeg', '../Spritz.jpeg', '../restaurantdenuit.jpeg',
-    '../hut.jpeg', '../sdb2.jpeg', '../heart.jpeg', '../seaview2.jpeg',
-    '../exterior.jpeg', '../eveningstreet.jpeg', '../sunsetorange.jpeg'
+    "/sunsetorange.jpeg",
+    "/hut.jpeg",
+    "/heart.jpeg",
+    "/beachoceanview.jpg",
+    "/sunset3.jpeg",
+    "/Sunset1.jpeg",
+    "/Sunset2.jpeg",
+    "/Spritz.jpeg",
+    "/restaurantdenuit.jpeg",
+    "/seaview2.jpeg",
+    "/exterior.jpeg",
+    "/eveningstreet.jpeg",
+    "/Salon.jpeg",
+    "/Sdb.jpeg",
+    "/sdb2.jpeg",
+    "/chambre1.jpeg",
+    "/Cuisine.jpeg",
+    "/Balcon.jpg",
+    "/Vuejardinbalcon.jpeg"
   ];
   var currentPhoto = 0;
 
@@ -1647,9 +1621,9 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <div class="floating-question" id="floating-question">
-  <div class="floating-question-panel" role="dialog" aria-label="Na bëni një pyetje">
+  <div class="floating-question-panel" aria-hidden="true">
     <div class="floating-question-head">
-      <h3>Na bëni një pyetje</h3>
+      <h3>Keni një pyetje?</h3>
       <button class="floating-question-close" type="button" onclick="toggleQuestionBox(false)" aria-label="Close">×</button>
     </div>
     <input id="question-name" type="text" placeholder="Emri" />
@@ -1658,10 +1632,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <button class="floating-question-submit" type="button" onclick="submitQuestion()">Dërgo pyetjen</button>
     <div class="floating-question-status" id="question-status"></div>
   </div>
-  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Pyetje?</button>
+  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Pyetje</button>
 </div>
-
 <script>
+(function() {
   window.toggleQuestionBox = function(force) {
     var box = document.getElementById('floating-question');
     if (!box) return;
@@ -1676,9 +1650,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var statusEl = document.getElementById('question-status');
     var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
     var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
-    if (!email || email.indexOf('@') < 0 || !msg) { alert('Ju lutemi shkruani një email të vlefshëm dhe pyetjen tuaj.'); return; }
+    if (!email || email.indexOf('@') < 0 || !msg) { alert("Ju lutemi shkruani një email të vlefshëm dhe pyetjen tuaj."); return; }
     var payload = {
-      _subject: 'Pyetje - Swiss Sweet Apartment',
+      _subject: 'Question - Swiss Sweet Apartment',
       _template: 'table',
       _captcha: 'false',
       name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
@@ -1692,21 +1666,18 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
     .then(function() {
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Pyetja u dërgua. Do t’ju përgjigjemi me email sa më shpejt të jetë e mundur.'; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Pyetja u dërgua. Do t’ju përgjigjemi me email sa më shpejt."; }
       if (nameEl) nameEl.value = '';
       if (emailEl) emailEl.value = '';
       if (msgEl) msgEl.value = '';
     })
     .catch(function() {
-      var subject = encodeURIComponent('Pyetje - Swiss Sweet Apartment');
-      var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
-Email: ' + email + '
-
-Question:
-' + msg);
+      var subject = encodeURIComponent('Question - Swiss Sweet Apartment');
+      var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '\nEmail: ' + email + '\n\nQuestion:\n' + msg);
       window.location.href = 'mailto:info@swisssweet-apartment.com?subject=' + subject + '&body=' + body;
     });
   };
+})();
 </script>
 
 </body>
