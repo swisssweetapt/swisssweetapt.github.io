@@ -147,7 +147,7 @@
   .nav-links a:hover { color: var(--white); }
   .nav-cta { background: var(--coral) !important; color: white !important; padding: 0.5rem 1.2rem; border-radius: 2px; }
   .nav-tools { display:flex; align-items:center; justify-content:flex-end; gap:0.65rem; }
-  .nav-audio-group { display:flex; align-items:center; gap:0.35rem; }
+  .nav-audio-group { display:none !important; }
 
   /* AUDIO */
   .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--sans); letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
@@ -200,7 +200,9 @@
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay { background: rgba(42,122,122,0.3); }
   .gallery-item:hover .gallery-overlay span { opacity: 1; }
-  .mobile-gallery-more { display:none; }
+  .mobile-gallery-more { display:block; text-align:center; padding:1.2rem 1.5rem 0; }
+  .mobile-gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.4rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; }
+  .gallery-collapsed .gallery-grid:not(.mobile-expanded) .gallery-item:nth-child(n+4) { display:none; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
@@ -595,8 +597,10 @@
 <li><a href="#gallery">Photos</a></li>
 <li><a href="#videos">Vidéos</a></li>
 <li><a href="#location">Localisation</a></li>
-<li><a class="nav-cta" href="/fr/faq.html">FAQ</a></li>
-<li><a href="#blog">Blog</a></li>
+<li><a href="#reviews">Avis</a></li>
+<li><a href="#blog">Blog &amp; conseils locaux</a></li>
+<li><a href="/fr/faq.html">FAQ</a></li>
+<li><a class="nav-cta" href="#booking">Réserver</a></li>
 </ul>
 <div class="nav-tools">
 <div class="nav-audio-group">
@@ -686,7 +690,7 @@ Voir les photos
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">De l'aéroport</div></div>
 </div>
 <!-- GALLERY -->
-<div class="gallery-section" id="gallery">
+<div class="gallery-section gallery-collapsed" id="gallery">
 <div class="gallery-header">
 <p class="section-tag">
 Galerie
@@ -1053,7 +1057,6 @@ Bon à savoir avant de réserver
 <div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">À partir de</div>
 <div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ nuit</span></div>
 </div>
-<div id="cal-badge" style="background:var(--coral);padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:500">Réservation directe</div>
 </div>
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
@@ -1077,7 +1080,6 @@ Bon à savoir avant de réserver
 <div style="padding:0.8rem 1.5rem;border-bottom:1px solid #eee;display:flex;gap:0.5rem">
 <button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
 <button class="curr-toggle-btn" data-currency="CHF" onclick="setCurrency('CHF')" type="button">CHF</button>
-<button class="curr-toggle-btn" data-currency="LEK" onclick="setCurrency('LEK')" type="button">L LEK</button>
 </div>
 <!-- PRICE BREAKDOWN -->
 <div id="price-breakdown-box" style="display:none;padding:1.2rem 1.5rem;border-bottom:1px solid #eee">
@@ -1100,11 +1102,7 @@ Bon à savoir avant de réserver
 <input id="booking-msg" placeholder="Message (optionnel)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-Aucun paiement n’est effectué sur ce site.
-
-
-
-
+Aucun paiement en ligne n’est prélevé ici. Après confirmation, nous envoyons les informations de paiement par email.
 </div>
 <div class="booking-request-note">
 Il s’agit d’une demande de réservation, et non d’une réservation instantanée. Nous vous confirmerons les disponibilités, le prix final et les modalités de réservation par email.
@@ -1119,11 +1117,6 @@ Vous prévoyez un séjour plus long ou souhaitez télétravailler au bord de la 
 
 
 
-</div>
-
-<div class="question-inline-card">
-  <p>Une question avant de réserver ?</p>
-  <button class="btn-coral" type="button" onclick="toggleQuestionBox(true)">Posez-nous votre question</button>
 </div>
 
 <!-- SUBMIT -->
@@ -1167,7 +1160,7 @@ Min. 2 nuits · Annulation gratuite jusqu’à 14 jours avant l’arrivée ·
 <p class="section-tag">FAQ</p>
 <h2>Questions rapides avant de réserver</h2>
 <div class="faq-preview-grid">
-<div class="faq-preview-item">Paiement sur ce site ? Non — ce formulaire envoie uniquement une demande de réservation.</div>
+<div class="faq-preview-item">Paiement sur ce site ? Non — ce formulaire envoie une demande de réservation. Après confirmation, les informations de paiement sont envoyées par email.</div>
 <div class="faq-preview-item">Distance de la plage ? Environ 5 minutes à pied.</div>
 <div class="faq-preview-item">Parking ? Gratuit dans la résidence.</div>
 <div class="faq-preview-item">Les installations du Meliá Resort sont-elles incluses ? Non, elles ne sont pas incluses.</div>
@@ -1206,7 +1199,7 @@ Min. 2 nuits · Annulation gratuite jusqu’à 14 jours avant l’arrivée ·
 <p class="review-author">— Arlinda</p>
 </div>
 <div class="review-card">
-<div class="review-source">Vrbo</div>
+<div class="review-source">Vrbo · extrait d’un avis vérifié</div>
 <div class="review-rating">★★★★☆ · 8/10</div>
 <p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
 <p class="review-author">— Kateryna</p>
@@ -1289,12 +1282,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var L = { 'fr': { from: 'À partir de', night: '/ nuit', checkin: 'ARRIVÉE', checkout: 'DÉPART', guests: 'VOYAGEURS', total: 'Total', badge: 'Réservation directe', nights: function(n) { return n + ' nuit' + (n > 1 ? 's' : ''); }, discount: 'Réservation directe (-10%)', cleaning: 'Frais de ménage + check-in', minNights: 'Minimum 2 nuits', emailError: 'Merci d’entrer votre adresse email.', sending: 'Envoi...', sent: 'Demande envoyée !', error: 'Erreur, veuillez réessayer.' } };
 
-  var rates = { EUR: 1, CHF: 0.97, LEK: 111 };
-  var syms  = { EUR: 'EUR ', CHF: 'CHF ', LEK: 'L ' };
+  var rates = { EUR: 1, CHF: 0.97 };
+  var syms  = { EUR: 'EUR ', CHF: 'CHF ' };
 
   function fmt(eur) {
     var val = Math.round(eur * rates[currentCurrency]);
-    if (currentCurrency === 'LEK') { return syms[currentCurrency] + val.toLocaleString(); }
     return syms[currentCurrency] + val;
   }
 
@@ -1667,28 +1659,29 @@ document.addEventListener('DOMContentLoaded', function () {
     var statusEl = document.getElementById('question-status');
     var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
     var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
-    if (!email || email.indexOf('@') < 0 || !msg) { alert("Merci d’indiquer un email valide et votre question."); return; }
+    if (!email || email.indexOf('@') < 0 || !msg) { alert('Merci d’indiquer une adresse email valable et votre question.'); return; }
+    var payload = {
+      _subject: 'Question - Swiss Sweet Apartment',
+      _template: 'table',
+      _captcha: 'false',
+      name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
+      email: email,
+      question: msg
+    };
     fetch('https://formsubmit.co/ajax/info@swisssweet-apartment.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: "Question - Swiss Sweet Apartment",
-        _template: 'table',
-        _captcha: 'false',
-        name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
-        email: email,
-        question: msg
-      })
+      body: JSON.stringify(payload)
     })
     .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
     .then(function() {
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Question envoyée. Nous vous répondrons par email dès que possible."; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Question envoyée. Nous vous répondrons par email dès que possible.'; }
       if (nameEl) nameEl.value = '';
       if (emailEl) emailEl.value = '';
       if (msgEl) msgEl.value = '';
     })
     .catch(function() {
-      var subject = encodeURIComponent("Question - Swiss Sweet Apartment");
+      var subject = encodeURIComponent('Question - Swiss Sweet Apartment');
       var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
 Email: ' + email + '
 

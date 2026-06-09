@@ -147,7 +147,7 @@
   .nav-links a:hover { color: var(--white); }
   .nav-cta { background: var(--coral) !important; color: white !important; padding: 0.5rem 1.2rem; border-radius: 2px; }
   .nav-tools { display:flex; align-items:center; justify-content:flex-end; gap:0.65rem; }
-  .nav-audio-group { display:flex; align-items:center; gap:0.35rem; }
+  .nav-audio-group { display:none !important; }
 
   /* AUDIO */
   .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--sans); letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
@@ -200,7 +200,9 @@
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay { background: rgba(42,122,122,0.3); }
   .gallery-item:hover .gallery-overlay span { opacity: 1; }
-  .mobile-gallery-more { display:none; }
+  .mobile-gallery-more { display:block; text-align:center; padding:1.2rem 1.5rem 0; }
+  .mobile-gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.4rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; }
+  .gallery-collapsed .gallery-grid:not(.mobile-expanded) .gallery-item:nth-child(n+4) { display:none; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
@@ -595,8 +597,10 @@
 <li><a href="#gallery">Photos</a></li>
 <li><a href="#videos">Videos</a></li>
 <li><a href="#location">Location</a></li>
-<li><a class="nav-cta" href="/faq.html">FAQ</a></li>
-<li><a href="#blog">Blog</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#blog">Blog &amp; Local Tips</a></li>
+<li><a href="/faq.html">FAQ</a></li>
+<li><a class="nav-cta" href="#booking">Booking</a></li>
 </ul>
 <div class="nav-tools">
 <div class="nav-audio-group">
@@ -686,7 +690,7 @@ See photos
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">From the airport</div></div>
 </div>
 <!-- GALLERY -->
-<div class="gallery-section" id="gallery">
+<div class="gallery-section gallery-collapsed" id="gallery">
 <div class="gallery-header">
 <p class="section-tag">
 
@@ -1060,7 +1064,6 @@ Good to know before booking
 <div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">From</div>
 <div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ night</span></div>
 </div>
-<div id="cal-badge" style="background:var(--coral);padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:500">Direct booking</div>
 </div>
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
@@ -1084,7 +1087,6 @@ Good to know before booking
 <div style="padding:0.8rem 1.5rem;border-bottom:1px solid #eee;display:flex;gap:0.5rem">
 <button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
 <button class="curr-toggle-btn" data-currency="CHF" onclick="setCurrency('CHF')" type="button">CHF</button>
-<button class="curr-toggle-btn" data-currency="LEK" onclick="setCurrency('LEK')" type="button">L LEK</button>
 </div>
 <!-- PRICE BREAKDOWN -->
 <div id="price-breakdown-box" style="display:none;padding:1.2rem 1.5rem;border-bottom:1px solid #eee">
@@ -1107,11 +1109,7 @@ Good to know before booking
 <input id="booking-msg" placeholder="Message (optional)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-
-No payment is taken on this website.
-
-
-
+No online payment is taken here. After confirmation, we send the payment details by email.
 </div>
 <div class="booking-request-note">
 
@@ -1126,11 +1124,6 @@ Planning a longer stay or working remotely by the sea? Contact us for a tailor-m
 
 
 
-</div>
-
-<div class="question-inline-card">
-  <p>Have a question before booking?</p>
-  <button class="btn-coral" type="button" onclick="toggleQuestionBox(true)">Ask us a question</button>
 </div>
 
 <!-- SUBMIT -->
@@ -1174,7 +1167,7 @@ Min. 2 nights · Free cancellation up to 14 days before arrival ·
 <p class="section-tag">FAQ</p>
 <h2>Quick questions before booking</h2>
 <div class="faq-preview-grid">
-<div class="faq-preview-item">Payment on this website? No — this form only sends a booking request.</div>
+<div class="faq-preview-item">Payment on this website? No — this form sends a booking request. After confirmation, payment details are sent by email.</div>
 <div class="faq-preview-item">Beach distance? About 5 minutes on foot.</div>
 <div class="faq-preview-item">Parking? Free within the residence.</div>
 <div class="faq-preview-item">Are Meliá Resort facilities included? No, they are not included.</div>
@@ -1213,7 +1206,7 @@ Min. 2 nights · Free cancellation up to 14 days before arrival ·
 <p class="review-author">— Arlinda</p>
 </div>
 <div class="review-card">
-<div class="review-source">Vrbo</div>
+<div class="review-source">Vrbo · excerpt from verified review</div>
 <div class="review-rating">★★★★☆ · 8/10</div>
 <p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
 <p class="review-author">— Kateryna</p>
@@ -1296,12 +1289,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var L = { 'en': { from: 'From', night: '/ night', checkin: 'CHECK-IN', checkout: 'CHECK-OUT', guests: 'GUESTS', total: 'Total', badge: 'Direct booking', nights: function(n) { return n + ' night' + (n > 1 ? 's' : ''); }, discount: 'Direct booking (-10%)', cleaning: 'Cleaning + check-in', minNights: 'Minimum 2 nights', emailError: 'Please enter your email.', sending: 'Sending...', sent: 'Request sent!', error: 'Error, please retry.' } };
 
-  var rates = { EUR: 1, CHF: 0.97, LEK: 111 };
-  var syms  = { EUR: 'EUR ', CHF: 'CHF ', LEK: 'L ' };
+  var rates = { EUR: 1, CHF: 0.97 };
+  var syms  = { EUR: 'EUR ', CHF: 'CHF ' };
 
   function fmt(eur) {
     var val = Math.round(eur * rates[currentCurrency]);
-    if (currentCurrency === 'LEK') { return syms[currentCurrency] + val.toLocaleString(); }
     return syms[currentCurrency] + val;
   }
 
@@ -1647,7 +1639,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="floating-question" id="floating-question">
   <div class="floating-question-panel" role="dialog" aria-label="Ask us a question">
     <div class="floating-question-head">
-      <h3>Ask us a question</h3>
+      <h3>Send us a question</h3>
       <button class="floating-question-close" type="button" onclick="toggleQuestionBox(false)" aria-label="Close">×</button>
     </div>
     <input id="question-name" type="text" placeholder="Name" />
@@ -1656,7 +1648,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <button class="floating-question-submit" type="button" onclick="submitQuestion()">Send question</button>
     <div class="floating-question-status" id="question-status"></div>
   </div>
-  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Question?</button>
+  <button class="floating-question-button" type="button" onclick="toggleQuestionBox()">Enquire</button>
 </div>
 
 <script>
@@ -1674,28 +1666,29 @@ document.addEventListener('DOMContentLoaded', function () {
     var statusEl = document.getElementById('question-status');
     var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
     var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
-    if (!email || email.indexOf('@') < 0 || !msg) { alert("Please enter a valid email and your question."); return; }
+    if (!email || email.indexOf('@') < 0 || !msg) { alert('Please enter a valid email and your question.'); return; }
+    var payload = {
+      _subject: 'Question - Swiss Sweet Apartment',
+      _template: 'table',
+      _captcha: 'false',
+      name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
+      email: email,
+      question: msg
+    };
     fetch('https://formsubmit.co/ajax/info@swisssweet-apartment.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: "Question - Swiss Sweet Apartment",
-        _template: 'table',
-        _captcha: 'false',
-        name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
-        email: email,
-        question: msg
-      })
+      body: JSON.stringify(payload)
     })
     .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
     .then(function() {
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Question sent. We will reply by email as soon as possible."; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Question sent. We will reply by email as soon as possible.'; }
       if (nameEl) nameEl.value = '';
       if (emailEl) emailEl.value = '';
       if (msgEl) msgEl.value = '';
     })
     .catch(function() {
-      var subject = encodeURIComponent("Question - Swiss Sweet Apartment");
+      var subject = encodeURIComponent('Question - Swiss Sweet Apartment');
       var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
 Email: ' + email + '
 

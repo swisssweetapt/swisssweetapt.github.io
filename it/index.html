@@ -147,7 +147,7 @@
   .nav-links a:hover { color: var(--white); }
   .nav-cta { background: var(--coral) !important; color: white !important; padding: 0.5rem 1.2rem; border-radius: 2px; }
   .nav-tools { display:flex; align-items:center; justify-content:flex-end; gap:0.65rem; }
-  .nav-audio-group { display:flex; align-items:center; gap:0.35rem; }
+  .nav-audio-group { display:none !important; }
 
   /* AUDIO */
   .audio-btn { background: none; border: 1px solid rgba(255,255,255,0.4); color: rgba(255,255,255,0.7); padding: 0.35rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-family: var(--sans); letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.4rem; }
@@ -200,7 +200,9 @@
   .gallery-overlay span { opacity: 0; color: white; font-size: 2rem; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-overlay { background: rgba(42,122,122,0.3); }
   .gallery-item:hover .gallery-overlay span { opacity: 1; }
-  .mobile-gallery-more { display:none; }
+  .mobile-gallery-more { display:block; text-align:center; padding:1.2rem 1.5rem 0; }
+  .mobile-gallery-more button { border:none; background:var(--coral); color:white; padding:0.85rem 1.4rem; border-radius:999px; font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer; }
+  .gallery-collapsed .gallery-grid:not(.mobile-expanded) .gallery-item:nth-child(n+4) { display:none; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; }
@@ -595,8 +597,10 @@
 <li><a href="#gallery">Foto</a></li>
 <li><a href="#videos">Video</a></li>
 <li><a href="#location">Posizione</a></li>
-<li><a class="nav-cta" href="/it/faq.html">FAQ</a></li>
-<li><a href="#blog">Blog</a></li>
+<li><a href="#reviews">Recensioni</a></li>
+<li><a href="#blog">Blog &amp; consigli locali</a></li>
+<li><a href="/it/faq.html">FAQ</a></li>
+<li><a class="nav-cta" href="#booking">Prenota</a></li>
 </ul>
 <div class="nav-tools">
 <div class="nav-audio-group">
@@ -686,7 +690,7 @@ Vedi le foto
 <div class="stat-item"><div class="stat-num">45 min</div><div class="stat-label">Dall'aeroporto</div></div>
 </div>
 <!-- GALLERY -->
-<div class="gallery-section" id="gallery">
+<div class="gallery-section gallery-collapsed" id="gallery">
 <div class="gallery-header">
 <p class="section-tag">
 
@@ -1074,7 +1078,6 @@ Da sapere prima di prenotare
 <div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">A partire da</div>
 <div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80€ <span style="font-size:1rem;opacity:0.7">/ notte</span></div>
 </div>
-<div id="cal-badge" style="background:var(--coral);padding:0.4rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:500">Prenotazione diretta</div>
 </div>
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
@@ -1098,7 +1101,6 @@ Da sapere prima di prenotare
 <div style="padding:0.8rem 1.5rem;border-bottom:1px solid #eee;display:flex;gap:0.5rem">
 <button class="curr-toggle-btn active" data-currency="EUR" onclick="setCurrency('EUR')" type="button">€ EUR</button>
 <button class="curr-toggle-btn" data-currency="CHF" onclick="setCurrency('CHF')" type="button">CHF</button>
-<button class="curr-toggle-btn" data-currency="LEK" onclick="setCurrency('LEK')" type="button">L LEK</button>
 </div>
 <!-- PRICE BREAKDOWN -->
 <div id="price-breakdown-box" style="display:none;padding:1.2rem 1.5rem;border-bottom:1px solid #eee">
@@ -1121,11 +1123,7 @@ Da sapere prima di prenotare
 <input id="booking-msg" placeholder="Messaggio (facoltativo)" style="width:100%;border:1px solid #ddd;border-radius:8px;padding:0.75rem 1rem;font-size:0.9rem;font-family:var(--sans);outline:none;box-sizing:border-box" type="text"/>
 </div>
 <div class="payment-reassurance">
-
-
-
-
-Nessun pagamento viene effettuato su questo sito.
+Qui non viene effettuato alcun pagamento online. Dopo la conferma, inviamo i dettagli di pagamento via email.
 </div>
 <div class="booking-request-note">
 
@@ -1140,11 +1138,6 @@ Questa è una richiesta di prenotazione, non una prenotazione immediata. Conferm
 
 
 State pianificando un soggiorno più lungo o volete lavorare da remoto vicino al mare? Contattateci per un’offerta mensile su misura.
-</div>
-
-<div class="question-inline-card">
-  <p>Hai una domanda prima di prenotare?</p>
-  <button class="btn-coral" type="button" onclick="toggleQuestionBox(true)">Fai una domanda</button>
 </div>
 
 <!-- SUBMIT -->
@@ -1223,7 +1216,7 @@ Min. 2 notti · Cancellazione gratuita fino a 14 giorni prima dell’arrivo ·
 <p class="review-author">— Arlinda</p>
 </div>
 <div class="review-card">
-<div class="review-source">Vrbo</div>
+<div class="review-source">Vrbo · estratto da recensione verificata</div>
 <div class="review-rating">★★★★☆ · 8/10</div>
 <p class="review-text">“Die Wohnung ist sauber und die Küche ist gut ausgestattet. Die Terrasse ist sehr schön. Die Wohnanlage ist sauber und grün.”</p>
 <p class="review-author">— Kateryna</p>
@@ -1306,12 +1299,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var L = { 'it': { from: 'A partire da', night: '/ notte', checkin: 'ARRIVO', checkout: 'PARTENZA', guests: 'OSPITI', total: 'Totale', badge: 'Prenotazione diretta', nights: function(n) { return n + ' nott' + (n > 1 ? 'i' : 'e'); }, discount: 'Prenotazione diretta (-10%)', cleaning: 'Pulizie + check-in', minNights: 'Minimo 2 notti', emailError: 'Inserite il vostro indirizzo email.', sending: 'Invio...', sent: 'Richiesta inviata!', error: 'Errore, riprovate.' } };
 
-  var rates = { EUR: 1, CHF: 0.97, LEK: 111 };
-  var syms  = { EUR: 'EUR ', CHF: 'CHF ', LEK: 'L ' };
+  var rates = { EUR: 1, CHF: 0.97 };
+  var syms  = { EUR: 'EUR ', CHF: 'CHF ' };
 
   function fmt(eur) {
     var val = Math.round(eur * rates[currentCurrency]);
-    if (currentCurrency === 'LEK') { return syms[currentCurrency] + val.toLocaleString(); }
     return syms[currentCurrency] + val;
   }
 
@@ -1684,28 +1676,29 @@ document.addEventListener('DOMContentLoaded', function () {
     var statusEl = document.getElementById('question-status');
     var email = emailEl && emailEl.value ? emailEl.value.trim() : '';
     var msg = msgEl && msgEl.value ? msgEl.value.trim() : '';
-    if (!email || email.indexOf('@') < 0 || !msg) { alert("Inserisci un indirizzo email valido e la tua domanda."); return; }
+    if (!email || email.indexOf('@') < 0 || !msg) { alert('Inserisci un indirizzo email valido e la tua domanda.'); return; }
+    var payload = {
+      _subject: 'Domanda - Swiss Sweet Apartment',
+      _template: 'table',
+      _captcha: 'false',
+      name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
+      email: email,
+      question: msg
+    };
     fetch('https://formsubmit.co/ajax/info@swisssweet-apartment.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        _subject: "Domanda - Swiss Sweet Apartment",
-        _template: 'table',
-        _captcha: 'false',
-        name: nameEl && nameEl.value ? nameEl.value : 'Swiss Sweet Website question',
-        email: email,
-        question: msg
-      })
+      body: JSON.stringify(payload)
     })
     .then(function(r) { if (!r.ok) throw new Error('Question submission failed'); return r.json(); })
     .then(function() {
-      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = "Domanda inviata. Ti risponderemo via email il prima possibile."; }
+      if (statusEl) { statusEl.style.display = 'block'; statusEl.textContent = 'Domanda inviata. Risponderemo via email il prima possibile.'; }
       if (nameEl) nameEl.value = '';
       if (emailEl) emailEl.value = '';
       if (msgEl) msgEl.value = '';
     })
     .catch(function() {
-      var subject = encodeURIComponent("Domanda - Swiss Sweet Apartment");
+      var subject = encodeURIComponent('Domanda - Swiss Sweet Apartment');
       var body = encodeURIComponent('Name: ' + (nameEl && nameEl.value ? nameEl.value : '') + '
 Email: ' + email + '
 
