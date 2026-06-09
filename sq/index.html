@@ -239,6 +239,10 @@
   .room-card { background: var(--off-white); overflow: hidden; border-radius: 2px; border: 1px solid var(--turquoise-light); transition: transform 0.3s, box-shadow 0.3s; }
   .room-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(42,122,122,0.15); }
   .room-media-wrap { width: 100%; height: var(--card-media-h); overflow: hidden; position: relative; background: var(--turquoise-pale); }
+
+  .room-card.room-clickable { cursor: pointer; }
+  .room-card.room-clickable .room-media-wrap::after { content: '⊕'; position: absolute; right: 0.85rem; bottom: 0.85rem; width: 36px; height: 36px; border-radius: 999px; background: rgba(30,88,88,0.78); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; opacity: 0; transform: translateY(4px); transition: opacity 0.2s, transform 0.2s; }
+  .room-card.room-clickable:hover .room-media-wrap::after { opacity: 1; transform: translateY(0); }
   .room-media-wrap img, .room-media-wrap video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
   .room-card:hover .room-media-wrap img { transform: scale(1.03); }
   .room-info { padding: 1.6rem; }
@@ -572,6 +576,47 @@
     .floating-question-panel { right: -6px; width: calc(100vw - 28px); }
   }
 
+
+
+  /* V29 VISUAL REFINEMENTS — trims empty space without compressing images */
+  .features-section { min-height: 0; align-items: stretch; overflow: hidden; }
+  .features-text { padding: 3.8rem 3.4rem 3.8rem 2.5rem; justify-content: center; }
+  .features-text .section-lead { margin-bottom: 2rem; }
+  .features-list { gap: 0.72rem 1.6rem; }
+  .features-image { min-height: 0 !important; height: 560px; }
+  .features-image img { height: 100%; object-fit: cover; object-position: center 55%; }
+
+  .booking-section { padding: 4.2rem 2.5rem 4.8rem; }
+  .booking-section h2 { margin-bottom: 0.8rem; }
+  .booking-section .section-lead { margin: 0 auto 2rem; }
+  .booking-info-grid { margin: 0 auto 1.1rem; align-items: start; }
+  .direct-save-box, .booking-info-grid .good-to-know-box { height: auto; min-height: 0; }
+  .direct-save-box { padding: 1.35rem 1.45rem; }
+  .good-to-know-box { padding: 1.25rem 1.45rem; }
+  .direct-save-text { line-height: 1.62; }
+  .good-to-know-grid { gap: 0.75rem 1rem; }
+  .price-cal-header { justify-content: center; text-align: center; }
+  .price-cal-header > div { text-align: center; }
+  .price-cal-badge { display: none !important; }
+
+  .reviews-section { padding: 4.6rem 2.5rem; }
+  .reviews-grid { align-items: start; gap: 1.6rem; margin-top: 2.2rem; }
+  .review-card { padding: 1.55rem; height: auto; align-self: start; }
+  .review-card p { line-height: 1.6; margin-bottom: 0.85rem; }
+  .review-source { background: var(--turquoise-pale); color: var(--turquoise-dark); border: 1px solid var(--turquoise-light); margin-bottom: 0.72rem; }
+  .review-excerpt { color: var(--text-muted); }
+  .reviews-section .btn-coral { margin-top: 1.45rem; padding: 0.72rem 1.35rem; font-size: 0.74rem; }
+
+  .gallery-more button { background: var(--coral); color: white; border: none; border-radius: 999px; padding: 0.8rem 1.35rem; font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; box-shadow: 0 12px 28px rgba(0,0,0,0.12); }
+  .gallery-more button:hover { background: var(--coral-dark); }
+
+  @media (max-width: 900px) {
+    .features-text { padding: 3rem 1.4rem; }
+    .features-image { height: 420px; }
+    .booking-info-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .reviews-section .btn-coral { width: auto; }
+  }
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -800,7 +845,7 @@ Dy krevate 140 cm, gardërobë e madhe me hapësirë për valixhe dhe varëse, s
 </p>
 </div>
 </div>
-<div class="room-card">
+<div class="room-card room-clickable" onclick="openLightbox(13)">
 <div class="room-media-wrap">
 <img alt="Banjo me mermer" decoding="async" loading="lazy" src="../Sdb.jpeg"/>
 </div>
@@ -1437,6 +1482,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var more = document.getElementById('mobile-gallery-more');
     if (grid) { grid.classList.add('mobile-expanded'); }
     if (more) { more.style.display = 'none'; }
+  };
+
+  window.toggleFullGallery = function () {
+    var section = document.getElementById('gallery');
+    var btn = document.getElementById('gallery-toggle');
+    if (!section || !btn) { return; }
+    var expanded = section.classList.toggle('gallery-expanded');
+    section.classList.toggle('gallery-collapsed', !expanded);
+    btn.textContent = expanded ? 'Shfaq më pak foto' : 'Shihni të gjitha fotot';
   };
 
   window.openLightbox = function (i) {
