@@ -921,45 +921,44 @@
 
 .booking-day.booked {
   cursor: not-allowed;
-  color: var(--coral-dark);
-  border-color: var(--coral);
+  color: var(--turquoise-deep);
+  border-color: var(--turquoise-light);
   background:
     repeating-linear-gradient(
       135deg,
-      rgba(255,107,71,0.18),
-      rgba(255,107,71,0.18) 7px,
+      rgba(42,122,122,0.13),
+      rgba(42,122,122,0.13) 7px,
       rgba(255,255,255,0.72) 7px,
       rgba(255,255,255,0.72) 14px
     ),
-    #fff1eb;
+    var(--turquoise-pale);
 }
 
 .booking-day.booked::after {
   content: "Booked";
   position: absolute;
-  left: 0.25rem;
-  right: 0.25rem;
-  bottom: 0.22rem;
-  border-radius: 999px;
-  background: var(--coral);
-  color: white;
-  font-size: 0.52rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  line-height: 1.35;
+  left: 0.15rem;
+  right: 0.15rem;
+  bottom: 0.18rem;
+  color: var(--turquoise-deep);
+  background: transparent;
+  font-size: 0.50rem;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+  line-height: 1.15;
   text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .booking-day.selected-start,
-.booking-day.selected-end {
-  background: var(--turquoise-dark);
-  border-color: var(--turquoise-dark);
-  color: white;
-}
-
+.booking-day.selected-end,
 .booking-day.in-range {
-  background: var(--turquoise-pale);
-  border-color: var(--turquoise-light);
+  background: var(--coral);
+  border-color: var(--coral);
+  color: white;
+  box-shadow: 0 8px 18px rgba(255,107,71,0.22);
 }
 
 .booking-day.today:not(.selected-start):not(.selected-end)::before {
@@ -999,15 +998,15 @@
 }
 
 .legend-box.booked {
-  border-color: var(--coral);
+  border-color: var(--turquoise-light);
   background:
-    repeating-linear-gradient(135deg, rgba(255,107,71,0.25), rgba(255,107,71,0.25) 5px, white 5px, white 10px),
-    #fff1eb;
+    repeating-linear-gradient(135deg, rgba(42,122,122,0.18), rgba(42,122,122,0.18) 5px, white 5px, white 10px),
+    var(--turquoise-pale);
 }
 
 .legend-box.selected {
-  background: var(--turquoise-dark);
-  border-color: var(--turquoise-dark);
+  background: var(--coral);
+  border-color: var(--coral);
 }
 
 .legend-box.past {
@@ -1069,13 +1068,66 @@
   }
 
   .booking-day.booked::after {
-    content: "";
-    left: auto;
-    right: 0.22rem;
-    bottom: 0.22rem;
-    width: 7px;
-    height: 7px;
-    background: var(--coral);
+    content: "Booked";
+    left: 0.12rem;
+    right: 0.12rem;
+    bottom: 0.12rem;
+    color: var(--turquoise-deep);
+    background: transparent;
+    width: auto;
+    height: auto;
+    font-size: 0.42rem;
+  }
+}
+
+
+.booking-day.selected-start::after,
+.booking-day.selected-end::after,
+.booking-day.in-range::after {
+  content: none !important;
+}
+
+.booking-day.selected-start::before,
+.booking-day.selected-end::before,
+.booking-day.in-range::before {
+  content: none !important;
+}
+
+.booking-day.booked:hover,
+.booking-day.past:hover {
+  transform: none;
+}
+
+.booking-calendar-toolbar button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  background: #f4f7f7;
+}
+
+.booking-calendar-toolbar button:disabled:hover {
+  border-color: rgba(42,122,122,0.22);
+  background: #f4f7f7;
+}
+
+
+
+
+/* DESKTOP ONLY — sticky booking card */
+@media (min-width: 980px) {
+  .booking-card {
+    position: sticky;
+    top: 1.5rem;
+    align-self: flex-start;
+    z-index: 5;
+  }
+}
+
+/* MOBILE + TABLET — normal flow, no sticky card */
+@media (max-width: 979px) {
+  .booking-card {
+    position: static;
+    top: auto;
+    z-index: auto;
   }
 }
 
@@ -2128,11 +2180,7 @@ document.addEventListener('DOMContentLoaded', function () {
   today.setHours(0,0,0,0);
 
   let visibleYear = today.getFullYear();
-  let visibleMonth = today.getDate() > 20 ? today.getMonth() + 1 : today.getMonth();
-  if (visibleMonth > 11) {
-    visibleMonth = 0;
-    visibleYear += 1;
-  }
+  let visibleMonth = today.getMonth();
   let bookedRanges = [];
   let selectedStart = "";
   let selectedEnd = "";
@@ -2225,6 +2273,16 @@ document.addEventListener('DOMContentLoaded', function () {
       cursor.setDate(cursor.getDate() + 1);
     }
     return false;
+  }
+
+
+  function isAtOrBeforeCurrentMonth(year, month) {
+    return year < today.getFullYear() || (year === today.getFullYear() && month <= today.getMonth());
+  }
+
+  function updatePrevButton() {
+    if (!prevBtn) return;
+    prevBtn.disabled = isAtOrBeforeCurrentMonth(visibleYear, visibleMonth);
   }
 
   function updateSelectedText() {
@@ -2355,6 +2413,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function renderCalendars() {
+    updatePrevButton();
     monthsEl.innerHTML = "";
 
     monthsEl.appendChild(renderMonth(visibleYear, visibleMonth));
@@ -2379,11 +2438,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   prevBtn.addEventListener("click", function () {
+    if (isAtOrBeforeCurrentMonth(visibleYear, visibleMonth)) return;
+
     visibleMonth -= 1;
     if (visibleMonth < 0) {
       visibleMonth = 11;
       visibleYear -= 1;
     }
+
+    if (visibleYear < today.getFullYear() || (visibleYear === today.getFullYear() && visibleMonth < today.getMonth())) {
+      visibleYear = today.getFullYear();
+      visibleMonth = today.getMonth();
+    }
+
     renderCalendars();
   });
 
