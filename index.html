@@ -786,286 +786,48 @@
     .hero-long-stay-note { font-size:0.86rem; }
   }
 
-  /* AVAILABILITY CALENDAR — V30, integrated into real Swiss Sweet Apartment design */
-  .availability-section {
-    background: var(--off-white);
-    padding: 5rem 2.5rem;
-    text-align: center;
-  }
-  .availability-header {
-    max-width: 760px;
-    margin: 0 auto 3rem;
-  }
-  .availability-header .section-lead {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-  }
-  .availability-card {
-    max-width: 1080px;
-    margin: 0 auto;
-    overflow: hidden;
-    background: var(--white);
-    border: 1px solid rgba(42,122,122,0.14);
-    border-radius: 16px;
-    box-shadow: 0 10px 34px rgba(42,122,122,0.10);
-    text-align: left;
-  }
-  .availability-card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.2rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--turquoise-dark);
-    color: white;
-  }
-  .availability-label {
-    margin-bottom: 0.25rem;
-    color: rgba(255,255,255,0.68);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .availability-card-header h3 {
-    margin: 0;
-    color: white;
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 3vw, 2.45rem);
-    font-weight: 300;
-    line-height: 1.1;
-  }
-  .availability-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .availability-control {
-    border: 1px solid rgba(255,255,255,0.35);
-    background: rgba(255,255,255,0.10);
-    color: white;
-    padding: 0.52rem 0.8rem;
-    border-radius: 999px;
-    font-family: var(--sans);
-    font-size: 0.76rem;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .availability-control:hover {
-    background: rgba(255,255,255,0.18);
-    border-color: white;
-  }
-  .availability-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-  }
-  .availability-calendar {
-    padding: 1.35rem;
-  }
-  .availability-weekdays,
-  .availability-days {
-    display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-    gap: 0.45rem;
-  }
-  .availability-weekdays span {
-    padding: 0.45rem 0;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-  .availability-day {
-    position: relative;
-    min-height: 74px;
-    padding: 0.55rem;
-    background: var(--off-white);
-    border: 1px solid rgba(42,122,122,0.12);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .availability-day.empty {
-    background: transparent;
-    border-color: transparent;
-  }
-  .availability-number {
-    position: relative;
-    z-index: 2;
-    color: var(--text);
-    font-size: 0.82rem;
-    font-weight: 600;
-  }
-  .availability-pill {
-    position: absolute;
-    left: 0.45rem;
-    right: 0.45rem;
-    bottom: 0.45rem;
-    border-radius: 999px;
-    padding: 0.25rem 0.35rem;
-    background: var(--turquoise-pale);
-    color: var(--turquoise-dark);
-    text-align: center;
-    font-size: 0.64rem;
-    font-weight: 700;
-  }
-  .availability-day.unavailable {
-    border-color: rgba(255,107,71,0.35);
-    background:
-      repeating-linear-gradient(
-        135deg,
-        rgba(255,107,71,0.08),
-        rgba(255,107,71,0.08) 7px,
-        transparent 7px,
-        transparent 14px
-      ),
-      #fff4ef;
-  }
-  .availability-day.unavailable .availability-pill {
-    background: rgba(255,107,71,0.14);
-    color: var(--coral-dark);
-  }
-  .availability-day.today .availability-number {
-    display: inline-flex;
-    width: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    margin: -0.2rem 0 0 -0.2rem;
-    border-radius: 999px;
-    background: var(--coral);
-    color: white;
-  }
-  .availability-side {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1.4rem;
-    padding: 1.5rem;
-    border-left: 1px solid rgba(42,122,122,0.12);
-    background: linear-gradient(135deg, rgba(228,247,247,0.75), rgba(255,255,255,0.98));
-  }
-  .availability-side h3 {
-    margin: 0;
-    color: var(--turquoise-dark);
-    font-family: var(--serif);
-    font-size: 1.55rem;
-    font-weight: 300;
-    line-height: 1.15;
-  }
-  .availability-side p {
-    margin-top: 0.7rem;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-  .availability-legend {
-    display: grid;
-    gap: 0.65rem;
-    margin-top: 1rem;
-  }
-  .availability-legend span {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    font-weight: 500;
-  }
-  .availability-dot {
-    width: 17px;
-    height: 17px;
-    border: 1px solid rgba(42,122,122,0.16);
-    border-radius: 6px;
-    background: var(--off-white);
-  }
-  .availability-dot.unavailable {
-    border-color: rgba(255,107,71,0.35);
-    background: #fff4ef;
-  }
-  .availability-status-text {
-    margin-top: 1rem !important;
-    font-size: 0.78rem !important;
-  }
-  .availability-cta {
-    padding: 1.15rem;
-    border-radius: 16px;
-    background: var(--turquoise-dark);
-    color: white;
-  }
-  .availability-cta strong {
-    display: block;
-    margin-bottom: 0.35rem;
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-weight: 300;
-    color: white;
-  }
-  .availability-cta p {
-    margin: 0 0 0.9rem;
-    color: rgba(255,255,255,0.74);
-    font-size: 0.85rem;
-  }
-  .availability-cta a {
-    display: flex;
-    min-height: 42px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    background: var(--coral);
-    color: white;
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .availability-cta a:hover {
-    background: var(--coral-dark);
-  }
-  @media (max-width: 900px) {
-    .availability-layout {
-      grid-template-columns: 1fr;
-    }
-    .availability-side {
-      border-left: 0;
-      border-top: 1px solid rgba(42,122,122,0.12);
-    }
-  }
+  /* BOOKING AVAILABILITY CALENDAR — inside booking card */
+  .booking-availability { border-bottom:1px solid #eee; background:white; }
+  .booking-availability-head { background:var(--turquoise-dark); color:white; padding:1.2rem 1.5rem; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+  .booking-availability-kicker { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.68); margin-bottom:0.3rem; font-weight:600; }
+  .booking-availability-title { font-family:var(--serif); font-size:2rem; font-weight:300; line-height:1.05; color:white; margin:0; }
+  .booking-availability-controls { display:flex; gap:0.45rem; flex-wrap:wrap; justify-content:flex-end; }
+  .booking-availability-btn { border:1px solid rgba(255,255,255,0.35); background:rgba(255,255,255,0.10); color:white; padding:0.48rem 0.75rem; border-radius:999px; font-family:var(--sans); font-size:0.74rem; cursor:pointer; }
+  .booking-availability-btn:hover { background:rgba(255,255,255,0.18); border-color:white; }
+  .booking-availability-body { display:grid; grid-template-columns:minmax(0,1fr) 230px; }
+  .booking-availability-calendar { padding:1.15rem; }
+  .booking-availability-weekdays, .booking-availability-days { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:0.38rem; }
+  .booking-availability-weekdays span { text-align:center; color:var(--text-muted); font-size:0.64rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.35rem 0; }
+  .booking-availability-day { position:relative; min-height:58px; padding:0.45rem; background:var(--off-white); border:1px solid rgba(42,122,122,0.12); border-radius:10px; overflow:hidden; }
+  .booking-availability-day.empty { background:transparent; border-color:transparent; }
+  .booking-availability-number { color:var(--text); font-size:0.78rem; font-weight:600; position:relative; z-index:2; }
+  .booking-availability-pill { position:absolute; left:0.35rem; right:0.35rem; bottom:0.35rem; border-radius:999px; padding:0.18rem 0.25rem; background:var(--turquoise-pale); color:var(--turquoise-dark); text-align:center; font-size:0.58rem; font-weight:700; }
+  .booking-availability-day.unavailable { border-color:rgba(255,107,71,0.35); background:repeating-linear-gradient(135deg, rgba(255,107,71,0.08), rgba(255,107,71,0.08) 7px, transparent 7px, transparent 14px), #fff4ef; }
+  .booking-availability-day.unavailable .booking-availability-pill { background:rgba(255,107,71,0.14); color:var(--coral-dark); }
+  .booking-availability-day.past { opacity:0.56; background:#f4f7f7; border-color:rgba(42,122,122,0.10); }
+  .booking-availability-day.past .booking-availability-pill { background:#e9eeee; color:#6b7f7f; }
+  .booking-availability-day.today .booking-availability-number { display:inline-flex; width:25px; height:25px; align-items:center; justify-content:center; margin:-0.18rem 0 0 -0.18rem; border-radius:999px; background:var(--coral); color:white; }
+  .booking-availability-info { border-left:1px solid #eee; padding:1.15rem; background:linear-gradient(135deg, rgba(228,247,247,0.7), rgba(255,255,255,0.98)); }
+  .booking-availability-info h3 { font-family:var(--serif); color:var(--turquoise-dark); font-size:1.35rem; font-weight:300; margin-bottom:0.7rem; }
+  .booking-availability-info p { color:var(--text-muted); font-size:0.84rem; line-height:1.55; margin-bottom:0.9rem; }
+  .booking-availability-legend { display:grid; gap:0.5rem; margin-bottom:0.8rem; }
+  .booking-availability-legend span { display:flex; align-items:center; gap:0.5rem; color:var(--text-muted); font-size:0.82rem; }
+  .booking-availability-dot { width:15px; height:15px; border-radius:5px; border:1px solid rgba(42,122,122,0.16); background:var(--off-white); }
+  .booking-availability-dot.unavailable { border-color:rgba(255,107,71,0.35); background:#fff4ef; }
+  .booking-availability-dot.past { background:#f4f7f7; opacity:0.65; }
+  #booking-availability-status { font-size:0.76rem; color:var(--text-muted); margin:0; }
+
   @media (max-width: 768px) {
-    .availability-section {
-      padding: 4rem 1rem;
-    }
-    .availability-card-header {
-      display: block;
-    }
-    .availability-controls {
-      margin-top: 1rem;
-    }
-    .availability-control {
-      flex: 1;
-    }
-    .availability-calendar {
-      padding: 0.8rem;
-    }
-    .availability-weekdays,
-    .availability-days {
-      gap: 0.28rem;
-    }
-    .availability-weekdays span {
-      font-size: 0.58rem;
-    }
-    .availability-day {
-      min-height: 52px;
-      padding: 0.4rem;
-      border-radius: 9px;
-    }
-    .availability-pill {
-      display: none;
-    }
+    .booking-availability-head { display:block; }
+    .booking-availability-controls { margin-top:0.85rem; justify-content:stretch; }
+    .booking-availability-btn { flex:1; }
+    .booking-availability-body { grid-template-columns:1fr; }
+    .booking-availability-info { border-left:0; border-top:1px solid #eee; }
+    .booking-availability-calendar { padding:0.8rem; }
+    .booking-availability-weekdays, .booking-availability-days { gap:0.25rem; }
+    .booking-availability-weekdays span { font-size:0.56rem; }
+    .booking-availability-day { min-height:48px; border-radius:8px; padding:0.35rem; }
+    .booking-availability-pill { display:none; }
   }
 
 </style>
@@ -1099,7 +861,6 @@
 <li><a href="#reviews">Reviews</a></li>
 <li><a href="#blog">Blog & Tips</a></li>
 <li><a href="/faq.html">FAQ</a></li>
-<li><a href="#availability">Availability</a></li>
 <li><a class="nav-cta" href="#booking">Booking</a></li>
 </ul>
 <div class="nav-tools">
@@ -1117,9 +878,8 @@
 <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
 <a href="#blog" onclick="closeMobileMenu()">Blog & Tips</a>
 <a href="/faq.html" onclick="closeMobileMenu()">FAQ</a>
-<a href="#availability" onclick="closeMobileMenu()">Availability</a>
 <div class="mobile-lang-row"><a class="lang-btn active" href="/">EN</a><a class="lang-btn " href="/fr/">FR</a><a class="lang-btn " href="/de/">DE</a><a class="lang-btn " href="/sq/">AL</a><a class="lang-btn " href="/it/">IT</a></div>
-<a class="mobile-book" href="#availability" onclick="closeMobileMenu()">Check availability</a>
+<a class="mobile-book" href="#booking" onclick="closeMobileMenu()">Check availability</a>
 </div>
 <!-- HERO -->
 <section class="hero">
@@ -1141,15 +901,12 @@ A 97 m² holiday apartment for families, couples and friends, 5 minutes from the
 
 
 </p>
-<div class="hero-deal-row">
-<div class="hero-price-badge">From<strong>80 EUR</strong> / night</div>
-</div>
 <div class="hero-postcards" aria-label="Travel notes">
 <div class="hero-postcard"><div class="hero-postcard-icon">☀</div><div class="hero-card-title">Summer 2026</div><div class="hero-card-text">Dates still available</div></div>
 <div class="hero-postcard"><div class="hero-postcard-icon">✉</div><div class="hero-card-title">Book without intermediaries</div><div class="hero-card-text">and save</div></div>
 </div>
 <div class="hero-actions">
-<a class="btn-coral" href="#availability">
+<a class="btn-coral" href="#booking">
 
 Check availability
 
@@ -1520,62 +1277,6 @@ View on Google Maps
 <a class="btn-coral" href="/faq.html">View full FAQ</a>
 </div>
 </section>
-
-
-<!-- AVAILABILITY CALENDAR -->
-<button aria-controls="availability" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Availability</span></button><section class="availability-section mobile-accordion-target mobile-collapsed" id="availability">
-<div class="availability-header">
-<p class="section-tag">Availability</p>
-<h2>Check your dates<br/><em>before booking</em></h2>
-<p class="section-lead">
-The calendar shows unavailable nights from our Avantio calendar. It is indicative only: we always confirm availability, final price and booking details by email.
-</p>
-</div>
-
-<div class="availability-card" aria-live="polite">
-<div class="availability-card-header">
-<div>
-<div class="availability-label">Calendar</div>
-<h3 id="availability-month">Loading availability…</h3>
-</div>
-<div class="availability-controls" aria-label="Calendar navigation">
-<button type="button" id="availability-prev" class="availability-control">← Previous</button>
-<button type="button" id="availability-today" class="availability-control">Today</button>
-<button type="button" id="availability-next" class="availability-control">Next →</button>
-</div>
-</div>
-
-<div class="availability-layout">
-<div class="availability-calendar">
-<div class="availability-weekdays" aria-hidden="true">
-<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
-</div>
-<div id="availability-days" class="availability-days"></div>
-</div>
-
-<aside class="availability-side">
-<div>
-<h3>Good to know</h3>
-<p>No online payment is taken on this website. This calendar is here to help you choose dates before sending a booking request.</p>
-<div class="availability-legend">
-<span><i class="availability-dot"></i> Available</span>
-<span><i class="availability-dot unavailable"></i> Unavailable / booked</span>
-</div>
-<p id="availability-status" class="availability-status-text">Loading Avantio availability…</p>
-</div>
-
-<div class="availability-cta">
-<strong>Dates look good?</strong>
-<p>Send us your preferred dates and we will confirm personally by email.</p>
-<a href="#booking">Send booking request</a>
-</div>
-</aside>
-</div>
-</div>
-</section>
-<!-- /AVAILABILITY CALENDAR -->
-
-
 <!-- BOOKING -->
 <div style="height:320px;overflow:hidden;position:relative">
 <img alt="Sandy beach at Lalzi Bay" decoding="async" loading="lazy" src="/beachoceanview.jpg" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.75)"/>
@@ -1629,11 +1330,41 @@ Good to know before booking
 </div>
 </div>
 <div class="booking-card" style="max-width:860px;margin:0 auto;background:white;border-radius:12px;box-shadow:0 6px 32px rgba(0,0,0,0.12);overflow:hidden;border:1px solid #ddd">
-<!-- PRICE HEADER -->
-<div style="background:var(--turquoise-dark);color:white;padding:1.2rem 1.5rem;text-align:center">
-<div id="cal-from-label" style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);margin-bottom:0.3rem">From</div>
-<div id="cal-amount" style="font-family:var(--serif);font-size:2rem;font-weight:300">80 EUR <span style="font-size:1rem;opacity:0.7">/ night</span></div>
+<!-- AVAILABILITY CALENDAR INSIDE BOOKING CARD -->
+<div class="booking-availability" id="availability">
+  <div class="booking-availability-head">
+    <div>
+      <div class="booking-availability-kicker">Availability</div>
+      <h3 class="booking-availability-title" id="booking-availability-month">Loading calendar…</h3>
+    </div>
+    <div class="booking-availability-controls" aria-label="Calendar navigation">
+      <button type="button" id="booking-availability-prev" class="booking-availability-btn">← Previous</button>
+      <button type="button" id="booking-availability-today" class="booking-availability-btn">Today</button>
+      <button type="button" id="booking-availability-next" class="booking-availability-btn">Next →</button>
+    </div>
+  </div>
+
+  <div class="booking-availability-body">
+    <div class="booking-availability-calendar">
+      <div class="booking-availability-weekdays" aria-hidden="true">
+        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+      </div>
+      <div id="booking-availability-days" class="booking-availability-days"></div>
+    </div>
+
+    <div class="booking-availability-info">
+      <h3>Before sending a request</h3>
+      <p>Choose your preferred dates below. We confirm availability and final price personally by email.</p>
+      <div class="booking-availability-legend">
+        <span><i class="booking-availability-dot"></i> Available</span>
+        <span><i class="booking-availability-dot unavailable"></i> Unavailable</span>
+        <span><i class="booking-availability-dot past"></i> Past date</span>
+      </div>
+      <p id="booking-availability-status">Calendar updated.</p>
+    </div>
+  </div>
 </div>
+<!-- /AVAILABILITY CALENDAR INSIDE BOOKING CARD -->
 <!-- DATES -->
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #eee">
 <div style="padding:1rem 1.5rem;border-right:1px solid #eee">
@@ -2138,16 +1869,18 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
+
+
 <script>
 (function () {
   const ICS_LOCAL_URL = "/data/availability.ics";
 
-  const monthTitle = document.getElementById("availability-month");
-  const daysEl = document.getElementById("availability-days");
-  const prevBtn = document.getElementById("availability-prev");
-  const nextBtn = document.getElementById("availability-next");
-  const todayBtn = document.getElementById("availability-today");
-  const statusEl = document.getElementById("availability-status");
+  const monthTitle = document.getElementById("booking-availability-month");
+  const daysEl = document.getElementById("booking-availability-days");
+  const prevBtn = document.getElementById("booking-availability-prev");
+  const nextBtn = document.getElementById("booking-availability-next");
+  const todayBtn = document.getElementById("booking-availability-today");
+  const statusEl = document.getElementById("booking-availability-status");
 
   if (!monthTitle || !daysEl || !prevBtn || !nextBtn || !todayBtn) return;
 
@@ -2155,16 +1888,6 @@ document.addEventListener('DOMContentLoaded', function () {
   let visibleYear = today.getFullYear();
   let visibleMonth = today.getMonth();
   let bookedRanges = [];
-
-  // Used only when previewing the file locally before /data/availability.ics exists.
-  const demoRanges = [
-    { start: "2026-06-10", end: "2026-06-16" },
-    { start: "2026-06-22", end: "2026-06-27" },
-    { start: "2026-07-04", end: "2026-07-11" },
-    { start: "2026-07-18", end: "2026-07-24" },
-    { start: "2026-08-02", end: "2026-08-13" },
-    { start: "2026-08-20", end: "2026-08-29" }
-  ];
 
   function pad(n) {
     return String(n).padStart(2, "0");
@@ -2209,10 +1932,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!start) return null;
 
-        // Standard iCalendar logic: DTEND is exclusive.
-        // Example: DTSTART 20260710 + DTEND 20260716 means nights 10–15 are blocked, checkout day 16 is free.
+        // DTEND is exclusive: checkout day is free.
         const end = endRaw ? addDays(endRaw, -1) : start;
-
         return { start: start, end: end };
       })
       .filter(Boolean);
@@ -2240,7 +1961,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     for (let i = 0; i < mondayFirstOffset; i++) {
       const empty = document.createElement("div");
-      empty.className = "availability-day empty";
+      empty.className = "booking-availability-day empty";
       daysEl.appendChild(empty);
     }
 
@@ -2249,18 +1970,23 @@ document.addEventListener('DOMContentLoaded', function () {
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(visibleYear, visibleMonth, day);
       const dateString = toDateOnly(date);
+      const past = dateString < todayString;
       const unavailable = isUnavailable(dateString);
 
       const cell = document.createElement("div");
-      cell.className = "availability-day";
-      if (unavailable) cell.classList.add("unavailable");
+      cell.className = "booking-availability-day";
+      if (past) cell.classList.add("past");
+      if (!past && unavailable) cell.classList.add("unavailable");
       if (dateString === todayString) cell.classList.add("today");
 
-      cell.setAttribute("aria-label", dateString + ": " + (unavailable ? "unavailable" : "available"));
+      let label = "Available";
+      if (past) label = "Past";
+      else if (unavailable) label = "Unavailable";
 
+      cell.setAttribute("aria-label", dateString + ": " + label.toLowerCase());
       cell.innerHTML =
-        '<span class="availability-number">' + day + '</span>' +
-        '<span class="availability-pill">' + (unavailable ? "Unavailable" : "Available") + '</span>';
+        '<span class="booking-availability-number">' + day + '</span>' +
+        '<span class="booking-availability-pill">' + label + '</span>';
 
       daysEl.appendChild(cell);
     }
@@ -2269,24 +1995,21 @@ document.addEventListener('DOMContentLoaded', function () {
   async function loadAvailability() {
     try {
       const response = await fetch(ICS_LOCAL_URL + "?v=" + Date.now(), { cache: "no-store" });
-      if (!response.ok) throw new Error("Availability file not found: " + response.status);
+      if (!response.ok) throw new Error("Calendar file not found: " + response.status);
 
       const icsText = await response.text();
       bookedRanges = parseIcsEvents(icsText);
       renderCalendar();
 
       if (statusEl) {
-        statusEl.textContent = bookedRanges.length
-          ? "Availability loaded from the Avantio calendar feed."
-          : "Availability loaded, but no unavailable period was found.";
+        statusEl.textContent = "Calendar updated.";
       }
     } catch (error) {
-      // Local Firefox preview or first deployment before the GitHub Action has created /data/availability.ics.
-      bookedRanges = demoRanges;
+      bookedRanges = [];
       renderCalendar();
 
       if (statusEl) {
-        statusEl.textContent = "Preview mode: sample unavailable dates are shown. On the live site, this will sync with Avantio.";
+        statusEl.textContent = "Calendar temporarily unavailable. Send us your dates and we will confirm by email.";
       }
     }
   }
