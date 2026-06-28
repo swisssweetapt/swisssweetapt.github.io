@@ -1109,120 +1109,402 @@
   background: #f4f7f7;
 }
 
+@media (min-width: 980px) {
+  .booking-card {
+    position: sticky;
+    top: 1.5rem;
+    align-self: flex-start;
+  }
+}
 
 
+/* Main Booking stays in its normal section at the bottom */
+.booking-section .booking-card,
+#booking .booking-card {
+  position: static !important;
+  top: auto !important;
+}
 
-/* FLOATING BOOKING SHORTCUT — desktop only */
-.floating-booking-shortcut {
+/* Floating Book dates — open at reading height, minimized at bottom-right */
+.floating-reservation {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 998;
+}
+
+.floating-reservation .floating-question-panel {
+  display: block;
+  position: relative;
+  bottom: auto;
+  right: auto;
+  width: 390px;
+  max-width: calc(100vw - 44px);
+}
+
+.floating-reservation.is-minimized {
+  top: auto;
+  bottom: 86px;
+  transform: none;
+}
+
+.floating-reservation.is-minimized .floating-question-panel {
   display: none;
 }
 
-@media (min-width: 1180px) {
-  .floating-booking-shortcut {
-    position: fixed;
-    right: 1.25rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 285px;
-    background: rgba(255,255,255,0.98);
-    border: 1px solid rgba(42,122,122,0.18);
-    border-radius: 16px;
-    box-shadow: 0 18px 55px rgba(26,46,46,0.16);
-    z-index: 60;
-    padding: 1rem;
-    display: block;
-  }
-
-  .floating-booking-shortcut h3 {
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 300;
-    color: var(--turquoise-dark);
-    margin: 0 0 0.35rem;
-    line-height: 1.15;
-  }
-
-  .floating-booking-shortcut p {
-    margin: 0 0 0.85rem;
-    color: var(--text-muted);
-    font-size: 0.78rem;
-    line-height: 1.45;
-  }
-
-  .floating-booking-row {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.55rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .floating-booking-field label {
-    display: block;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 0.25rem;
-  }
-
-  .floating-booking-field input {
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid rgba(42,122,122,0.18);
-    border-radius: 10px;
-    padding: 0.62rem 0.7rem;
-    font-family: var(--sans);
-    font-size: 0.86rem;
-    color: var(--text);
-    background: var(--off-white);
-    outline: none;
-  }
-
-  .floating-booking-field input:focus {
-    border-color: var(--turquoise-dark);
-    background: white;
-  }
-
-  .floating-booking-button {
-    width: 100%;
-    border: none;
-    border-radius: 999px;
-    background: var(--coral);
-    color: white;
-    padding: 0.78rem 0.9rem;
-    font-family: var(--sans);
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .floating-booking-button:hover {
-    background: #E05530;
-    transform: translateY(-1px);
-  }
-
-  .floating-booking-error {
-    display: none;
-    margin-top: 0.65rem;
-    color: var(--coral-dark);
-    font-size: 0.72rem;
-    line-height: 1.35;
-  }
+.floating-reservation .floating-question-button {
+  display: none;
 }
 
-@media (max-width: 1179px) {
-  .floating-booking-shortcut {
+.floating-reservation.is-minimized .floating-question-button {
+  display: inline-flex;
+}
+
+.floating-reservation .floating-question-panel p {
+  margin: 0 0 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.floating-mini-toolbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.75rem 0 0.65rem;
+}
+
+.floating-mini-toolbar button {
+  border: 1px solid rgba(42,122,122,0.22);
+  background: white;
+  color: var(--turquoise-deep);
+  border-radius: 999px;
+  padding: 0.42rem 0.58rem;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.floating-mini-toolbar button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.floating-mini-status {
+  text-align: center;
+  color: var(--turquoise-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.floating-mini-month h4 {
+  font-family: var(--serif);
+  color: var(--turquoise-dark);
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 300;
+  margin: 0.15rem 0 0.6rem;
+}
+
+.floating-mini-weekdays,
+.floating-mini-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+
+.floating-mini-weekdays span {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding-bottom: 0.15rem;
+}
+
+.floating-mini-day {
+  min-height: 39px;
+  position: relative;
+  border: 1px solid rgba(42,122,122,0.16);
+  background: var(--off-white);
+  color: var(--text);
+  border-radius: 9px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.floating-mini-day:hover {
+  border-color: var(--turquoise-dark);
+  background: var(--turquoise-pale);
+}
+
+.floating-mini-day.empty {
+  cursor: default;
+  pointer-events: none;
+  background: transparent;
+  border-color: transparent;
+}
+
+.floating-mini-day.past {
+  cursor: not-allowed;
+  color: rgba(26,46,46,0.35);
+  background: #f1f4f4;
+  border-color: rgba(42,122,122,0.08);
+}
+
+.floating-mini-day.booked {
+  cursor: not-allowed;
+  color: var(--turquoise-deep);
+  border-color: var(--turquoise-light);
+  background:
+    repeating-linear-gradient(135deg, rgba(42,122,122,0.13), rgba(42,122,122,0.13) 6px, rgba(255,255,255,0.75) 6px, rgba(255,255,255,0.75) 12px),
+    var(--turquoise-pale);
+}
+
+.floating-mini-day.booked::after {
+  content: "Booked";
+  position: absolute;
+  left: 0.1rem;
+  right: 0.1rem;
+  bottom: 0.1rem;
+  color: var(--turquoise-deep);
+  background: transparent;
+  font-size: 0.40rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.floating-mini-day.selected-start,
+.floating-mini-day.selected-end,
+.floating-mini-day.in-range {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: white;
+}
+
+.floating-mini-day.selected-start::after,
+.floating-mini-day.selected-end::after,
+.floating-mini-day.in-range::after {
+  content: none !important;
+}
+
+.floating-mini-summary {
+  margin: 0.75rem 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(42,122,122,0.16);
+  border-radius: 12px;
+  background: var(--off-white);
+  color: var(--turquoise-deep);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.floating-mini-error {
+  display: none;
+  margin-top: 0.55rem;
+  color: var(--coral-dark);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .floating-reservation {
     display: none !important;
   }
 }
 
 
-/* Main booking section stays in its normal place at the bottom */
-.booking-section .booking-card {
-  position: static !important;
-  top: auto !important;
+/* Floating mini calendar — month title between arrows */
+.floating-mini-toolbar {
+  grid-template-columns: 44px 1fr 44px !important;
+  margin: 0.85rem 0 0.75rem !important;
+}
+
+.floating-mini-status {
+  font-family: var(--serif) !important;
+  color: var(--turquoise-dark) !important;
+  font-size: 1.5rem !important;
+  font-weight: 300 !important;
+  line-height: 1.1 !important;
+}
+
+.floating-mini-month h4 {
+  display: none !important;
+}
+
+
+
+/* Floating mini calendar — minimized by default, light turquoise panel when opened */
+.floating-reservation {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 998;
+}
+
+.floating-reservation.is-minimized {
+  top: auto;
+  bottom: 86px;
+  transform: none;
+}
+
+.floating-reservation.is-minimized .floating-question-panel {
+  display: none !important;
+}
+
+.floating-reservation .floating-question-button {
+  display: none;
+}
+
+.floating-reservation.is-minimized .floating-question-button {
+  display: inline-flex;
+  animation: selectDatesPulse 4.5s ease-in-out infinite;
+  box-shadow: 0 10px 28px rgba(255,107,71,0.22);
+}
+
+.floating-reservation.is-minimized .floating-question-button:hover {
+  animation: none;
+  transform: translateY(-1px);
+}
+
+@keyframes selectDatesPulse {
+  0%, 72%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 28px rgba(255,107,71,0.22);
+  }
+  82% {
+    transform: scale(1.035);
+    box-shadow: 0 14px 34px rgba(255,107,71,0.38);
+  }
+  92% {
+    transform: scale(1);
+    box-shadow: 0 10px 28px rgba(255,107,71,0.22);
+  }
+}
+
+.floating-reservation .floating-question-panel {
+  background: linear-gradient(180deg, var(--turquoise-pale), #F8FCFC) !important;
+  border: 1px solid rgba(42,122,122,0.18) !important;
+  box-shadow: 0 18px 55px rgba(26,46,46,0.16) !important;
+  color: var(--turquoise-deep) !important;
+}
+
+.floating-reservation .floating-question-panel h3,
+.floating-reservation .floating-mini-status,
+.floating-reservation .floating-mini-month h4 {
+  color: var(--turquoise-dark) !important;
+}
+
+.floating-reservation .floating-question-panel p,
+.floating-reservation .floating-mini-weekdays span,
+.floating-reservation .floating-mini-summary,
+.floating-reservation .floating-question-close {
+  color: var(--turquoise-deep) !important;
+}
+
+.floating-reservation .floating-question-close {
+  opacity: 0.75;
+}
+
+.floating-reservation .floating-question-close:hover {
+  opacity: 1;
+}
+
+.floating-mini-day {
+  background: rgba(255,255,255,0.74) !important;
+  border-color: rgba(42,122,122,0.16) !important;
+  color: var(--text) !important;
+}
+
+.floating-mini-day:hover {
+  background: white !important;
+  border-color: var(--turquoise-dark) !important;
+}
+
+.floating-mini-day.past {
+  background: rgba(241,244,244,0.88) !important;
+  color: rgba(26,46,46,0.35) !important;
+  border-color: rgba(42,122,122,0.08) !important;
+}
+
+.floating-mini-day.booked {
+  color: var(--turquoise-deep) !important;
+  border-color: var(--turquoise-light) !important;
+  background:
+    repeating-linear-gradient(135deg, rgba(42,122,122,0.14), rgba(42,122,122,0.14) 6px, rgba(255,255,255,0.75) 6px, rgba(255,255,255,0.75) 12px),
+    var(--turquoise-pale) !important;
+}
+
+.floating-mini-day.booked::after {
+  color: var(--turquoise-deep) !important;
+}
+
+.floating-mini-day.selected-start,
+.floating-mini-day.selected-end,
+.floating-mini-day.in-range {
+  background: var(--coral) !important;
+  border-color: var(--coral) !important;
+  color: white !important;
+}
+
+.floating-mini-summary {
+  background: rgba(255,255,255,0.72) !important;
+  border-color: rgba(42,122,122,0.16) !important;
+  color: var(--turquoise-deep) !important;
+}
+
+.floating-mini-toolbar button {
+  background: rgba(255,255,255,0.72) !important;
+  border-color: rgba(42,122,122,0.18) !important;
+  color: var(--turquoise-deep) !important;
+}
+
+.floating-mini-toolbar button:hover {
+  background: white !important;
+  border-color: var(--turquoise-dark) !important;
+}
+
+.floating-mini-toolbar button:disabled {
+  opacity: 0.35;
+}
+
+.floating-question-submit {
+  background: var(--coral) !important;
+  color: white !important;
+  box-shadow: 0 10px 22px rgba(255,107,71,0.22);
+}
+
+.floating-mini-error {
+  color: var(--coral-dark) !important;
+}
+
+@media (max-width: 768px) {
+  .floating-reservation {
+    display: none !important;
+  }
+
+  .floating-reservation.is-minimized .floating-question-button {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-reservation.is-minimized .floating-question-button {
+    animation: none;
+  }
 }
 
 </style>
@@ -2191,6 +2473,37 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<div class="floating-reservation is-minimized" id="floating-reservation">
+  <div class="floating-question-panel" aria-hidden="false">
+    <div class="floating-question-head">
+      <h3>Select your stay</h3>
+      <button class="floating-question-close" type="button" onclick="minimizeReservationBox()" aria-label="Minimize">×</button>
+    </div>
+
+    <p>Select your arrival and departure dates.</p>
+
+    <div class="floating-mini-toolbar">
+      <button type="button" id="floatingMiniPrev">←</button>
+      <div class="floating-mini-status" id="floatingMiniStatus">June 2026</div>
+      <button type="button" id="floatingMiniNext">→</button>
+    </div>
+
+    <div class="floating-mini-month" id="floatingMiniMonth"></div>
+
+    <div class="floating-mini-summary" id="floatingMiniSummary">
+      Your stay: select your arrival and departure dates.
+    </div>
+
+    <button class="floating-question-submit" type="button" onclick="continueReservationFromFloating()">
+      Continue booking
+    </button>
+    <div class="floating-mini-error" id="floatingMiniError"></div>
+  </div>
+
+  <button class="floating-question-button" type="button" onclick="openReservationBox()">Select dates</button>
+</div>
+
 <div class="floating-question" id="floating-question">
   <div class="floating-question-panel" aria-hidden="true">
     <div class="floating-question-head">
@@ -2407,46 +2720,36 @@ document.addEventListener('DOMContentLoaded', function () {
       window.calcPrice();
     }
 
-    const floatingCheckin = document.getElementById("floating-checkin");
-    const floatingCheckout = document.getElementById("floating-checkout");
-    if (floatingCheckin) floatingCheckin.value = selectedStart;
-    if (floatingCheckout) floatingCheckout.value = selectedEnd;
-
     updateSelectedText();
     renderCalendars();
   }
 
 
-    window.swissSweetSelectStay = function (start, end) {
-      if (!start || !end) {
-        return { ok: false, message: "Please select arrival and departure dates." };
-      }
+  window.swissSweetSelectStay = function (start, end) {
+    if (!start || !end) {
+      return { ok: false, message: "Please select arrival and departure dates." };
+    }
 
-      if (end <= start) {
-        return { ok: false, message: "Departure must be after arrival." };
-      }
+    if (end <= start) {
+      return { ok: false, message: "Departure must be after arrival." };
+    }
 
-      if (isRangeBlocked(start, end)) {
-        return { ok: false, message: "Please choose a stay without booked nights in between." };
-      }
+    if (isRangeBlocked(start, end)) {
+      return { ok: false, message: "Please choose a stay without booked nights in between." };
+    }
 
-      const startDate = fromDateOnly(start);
-      visibleYear = startDate.getFullYear();
-      visibleMonth = startDate.getMonth();
+    const startDate = fromDateOnly(start);
+    visibleYear = startDate.getFullYear();
+    visibleMonth = startDate.getMonth();
 
-      if (visibleYear < today.getFullYear() || (visibleYear === today.getFullYear() && visibleMonth < today.getMonth())) {
-        visibleYear = today.getFullYear();
-        visibleMonth = today.getMonth();
-      }
+    if (visibleYear < today.getFullYear() || (visibleYear === today.getFullYear() && visibleMonth < today.getMonth())) {
+      visibleYear = today.getFullYear();
+      visibleMonth = today.getMonth();
+    }
 
-      setSelectedDates(start, end);
-      return { ok: true };
-    };
-
-    const floatingCheckin = document.getElementById("floating-checkin");
-    const floatingCheckout = document.getElementById("floating-checkout");
-    if (floatingCheckin) floatingCheckin.value = selectedStart;
-    if (floatingCheckout) floatingCheckout.value = selectedEnd;
+    setSelectedDates(start, end);
+    return { ok: true };
+  };
 
   function handleDateClick(dateString) {
     if (isPast(dateString) || isBooked(dateString)) return;
@@ -2602,99 +2905,253 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <script>
 (function () {
-  const checkin = document.getElementById("floating-checkin");
-  const checkout = document.getElementById("floating-checkout");
-  const errorBox = document.getElementById("floating-booking-error");
+  const ICS_LOCAL_URL = "/data/availability.ics";
+  const box = document.getElementById("floating-reservation");
+  const monthEl = document.getElementById("floatingMiniMonth");
+  const prevBtn = document.getElementById("floatingMiniPrev");
+  const nextBtn = document.getElementById("floatingMiniNext");
+  const statusEl = document.getElementById("floatingMiniStatus");
+  const summaryEl = document.getElementById("floatingMiniSummary");
+  const errorEl = document.getElementById("floatingMiniError");
 
-  function pad(n) {
-    return String(n).padStart(2, "0");
-  }
+  if (!box || !monthEl || !prevBtn || !nextBtn || !statusEl || !summaryEl) return;
 
-  function toDateOnly(date) {
-    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
-  }
+  const today = new Date();
+  today.setHours(0,0,0,0);
 
+  let visibleYear = today.getFullYear();
+  let visibleMonth = today.getMonth();
+  let bookedRanges = [];
+  let selectedStart = "";
+  let selectedEnd = "";
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function toDateOnly(date) { return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate()); }
+  function fromDateOnly(dateString) { return new Date(dateString + "T00:00:00"); }
   function addDays(dateString, days) {
-    const date = new Date(`${dateString}T00:00:00`);
-    date.setDate(date.getDate() + days);
-    return toDateOnly(date);
+    const d = fromDateOnly(dateString);
+    d.setDate(d.getDate() + days);
+    return toDateOnly(d);
   }
-
-  if (checkin && checkout) {
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    const todayString = toDateOnly(today);
-
-    checkin.min = todayString;
-    checkout.min = addDays(todayString, 1);
-
-    checkin.addEventListener("change", function () {
-      if (!checkin.value) return;
-      checkout.min = addDays(checkin.value, 1);
-      if (checkout.value && checkout.value <= checkin.value) {
-        checkout.value = "";
-      }
-      if (errorBox) errorBox.style.display = "none";
-    });
-
-    checkout.addEventListener("change", function () {
-      if (errorBox) errorBox.style.display = "none";
+  function niceDate(dateString) {
+    if (!dateString) return "—";
+    return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" }).format(fromDateOnly(dateString));
+  }
+  function parseIcsDate(rawValue) {
+    if (!rawValue) return null;
+    const value = rawValue.trim();
+    if (/^\d{8}$/.test(value)) return value.slice(0,4) + "-" + value.slice(4,6) + "-" + value.slice(6,8);
+    if (/^\d{8}T/.test(value)) return value.slice(0,4) + "-" + value.slice(4,6) + "-" + value.slice(6,8);
+    return null;
+  }
+  function parseIcsEvents(icsText) {
+    const unfolded = icsText.replace(/\r?\n[ \t]/g, "");
+    return unfolded.split("BEGIN:VEVENT").slice(1).map(function(eventText) {
+      const s = eventText.match(/DTSTART(?:;[^:]*)?:(\d{8}(?:T\d{6}Z?)?)/);
+      const e = eventText.match(/DTEND(?:;[^:]*)?:(\d{8}(?:T\d{6}Z?)?)/);
+      const start = s ? parseIcsDate(s[1]) : null;
+      const endRaw = e ? parseIcsDate(e[1]) : null;
+      if (!start) return null;
+      const end = endRaw ? addDays(endRaw, -1) : start;
+      return { start: start, end: end };
+    }).filter(Boolean);
+  }
+  function isPast(dateString) { return fromDateOnly(dateString) < today; }
+  function isBooked(dateString) {
+    return bookedRanges.some(function(range) {
+      return dateString >= range.start && dateString <= range.end;
     });
   }
-
-  window.swissSweetFloatingBookingSubmit = function () {
-    if (!checkin || !checkout) return;
-
-    const arrival = checkin.value;
-    const departure = checkout.value;
-
-    if (errorBox) {
-      errorBox.style.display = "none";
-      errorBox.textContent = "";
+  function isRangeBlocked(start, end) {
+    let cursor = fromDateOnly(start);
+    const endDate = fromDateOnly(end);
+    while (cursor < endDate) {
+      const ds = toDateOnly(cursor);
+      if (isPast(ds) || isBooked(ds)) return true;
+      cursor.setDate(cursor.getDate() + 1);
     }
+    return false;
+  }
+  function isCurrentMonthOrBefore(year, month) {
+    return year < today.getFullYear() || (year === today.getFullYear() && month <= today.getMonth());
+  }
+  function updateText() {
+    if (!selectedStart) {
+      
+      summaryEl.innerHTML = "Your stay: select your arrival and departure dates.";
+    } else if (!selectedEnd) {
+      
+      summaryEl.innerHTML = "<strong>Arrival:</strong> " + niceDate(selectedStart) + " · <strong>Departure:</strong> —";
+    } else {
+      
+      summaryEl.innerHTML = "<strong>Arrival:</strong> " + niceDate(selectedStart) + " · <strong>Departure:</strong> " + niceDate(selectedEnd);
+    }
+  }
+  function showError(message) {
+    if (!errorEl) return;
+    errorEl.textContent = message;
+    errorEl.style.display = "block";
+  }
+  function clearError() {
+    if (!errorEl) return;
+    errorEl.textContent = "";
+    errorEl.style.display = "none";
+  }
+  function selectDates(start, end) {
+    selectedStart = start || "";
+    selectedEnd = end || "";
+    updateText();
+    render();
+  }
+  function handleMiniDateClick(dateString) {
+    clearError();
+    if (isPast(dateString) || isBooked(dateString)) return;
 
-    if (!arrival || !departure) {
-      if (errorBox) {
-        errorBox.textContent = "Please select arrival and departure dates.";
-        errorBox.style.display = "block";
-      }
+    if (!selectedStart || selectedEnd) {
+      selectDates(dateString, "");
       return;
     }
 
-    if (departure <= arrival) {
-      if (errorBox) {
-        errorBox.textContent = "Departure must be after arrival.";
-        errorBox.style.display = "block";
+    if (dateString <= selectedStart) {
+      selectDates(dateString, "");
+      return;
+    }
+
+    if (isRangeBlocked(selectedStart, dateString)) {
+      showError("Please choose a stay without booked nights in between.");
+      selectDates(dateString, "");
+      return;
+    }
+
+    selectDates(selectedStart, dateString);
+  }
+  function render() {
+    prevBtn.disabled = isCurrentMonthOrBefore(visibleYear, visibleMonth);
+    monthEl.innerHTML = "";
+
+    const firstDay = new Date(visibleYear, visibleMonth, 1);
+    const lastDay = new Date(visibleYear, visibleMonth + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const offset = (firstDay.getDay() + 6) % 7;
+
+    const title = document.createElement("h4");
+    title.textContent = new Intl.DateTimeFormat("en-GB", { month: "long", year: "numeric" }).format(firstDay);
+    statusEl.textContent = title.textContent;
+
+    const weekdays = document.createElement("div");
+    weekdays.className = "floating-mini-weekdays";
+    weekdays.innerHTML = "<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>";
+
+    const days = document.createElement("div");
+    days.className = "floating-mini-days";
+
+    for (let i = 0; i < offset; i++) {
+      const empty = document.createElement("button");
+      empty.type = "button";
+      empty.className = "floating-mini-day empty";
+      empty.tabIndex = -1;
+      days.appendChild(empty);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date = new Date(visibleYear, visibleMonth, day);
+      const ds = toDateOnly(date);
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "floating-mini-day";
+      btn.textContent = day;
+
+      if (isPast(ds)) btn.classList.add("past");
+      if (isBooked(ds)) btn.classList.add("booked");
+      if (selectedStart && selectedEnd && ds > selectedStart && ds < selectedEnd) btn.classList.add("in-range");
+      if (ds === selectedStart) btn.classList.add("selected-start");
+      if (ds === selectedEnd) btn.classList.add("selected-end");
+
+      if (isPast(ds) || isBooked(ds)) {
+        btn.disabled = true;
+      } else {
+        btn.addEventListener("click", function () { handleMiniDateClick(ds); });
       }
+
+      days.appendChild(btn);
+    }
+
+    monthEl.appendChild(title);
+    monthEl.appendChild(weekdays);
+    monthEl.appendChild(days);
+  }
+  async function loadAvailability() {
+    try {
+      const response = await fetch(ICS_LOCAL_URL + "?v=" + Date.now(), { cache: "no-store" });
+      if (!response.ok) throw new Error("No availability file");
+      bookedRanges = parseIcsEvents(await response.text());
+    } catch (e) {
+      bookedRanges = [{ start: "2026-06-28", end: "2026-06-28" }];
+    }
+    updateText();
+    render();
+  }
+
+  prevBtn.addEventListener("click", function () {
+    if (isCurrentMonthOrBefore(visibleYear, visibleMonth)) return;
+    visibleMonth -= 1;
+    if (visibleMonth < 0) {
+      visibleMonth = 11;
+      visibleYear -= 1;
+    }
+    render();
+  });
+
+  nextBtn.addEventListener("click", function () {
+    visibleMonth += 1;
+    if (visibleMonth > 11) {
+      visibleMonth = 0;
+      visibleYear += 1;
+    }
+    render();
+  });
+
+  window.minimizeReservationBox = function () {
+    box.classList.add("is-minimized");
+  };
+
+  window.openReservationBox = function () {
+    box.classList.remove("is-minimized");
+  };
+
+  window.continueReservationFromFloating = function () {
+    clearError();
+
+    if (!selectedStart || !selectedEnd) {
+      showError("Please select arrival and departure dates.");
       return;
     }
 
     if (typeof window.swissSweetSelectStay === "function") {
-      const result = window.swissSweetSelectStay(arrival, departure);
+      const result = window.swissSweetSelectStay(selectedStart, selectedEnd);
       if (!result || !result.ok) {
-        if (errorBox) {
-          errorBox.textContent = result && result.message ? result.message : "Please choose different dates.";
-          errorBox.style.display = "block";
-        }
+        showError(result && result.message ? result.message : "Please choose different dates.");
         return;
       }
     } else {
-      const mainCheckin = document.getElementById("checkin");
-      const mainCheckout = document.getElementById("checkout");
-      if (mainCheckin) mainCheckin.value = arrival;
-      if (mainCheckout) mainCheckout.value = departure;
+      const checkin = document.getElementById("checkin");
+      const checkout = document.getElementById("checkout");
+      if (checkin) checkin.value = selectedStart;
+      if (checkout) checkout.value = selectedEnd;
     }
 
+    box.classList.add("is-minimized");
+
     const booking = document.getElementById("booking");
-    if (booking) {
-      booking.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    if (booking) booking.scrollIntoView({ behavior: "smooth", block: "start" });
 
     setTimeout(function () {
       const guests = document.getElementById("guests-select");
       if (guests) guests.focus();
-    }, 650);
+    }, 700);
   };
+
+  loadAvailability();
 })();
 </script>
 
