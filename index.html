@@ -1112,55 +1112,117 @@
 
 
 
+/* FLOATING BOOKING SHORTCUT — desktop only */
+.floating-booking-shortcut {
+  display: none;
 }
 
-
-/* DESKTOP BOOKING LAYOUT — right sticky booking card */
-@media (min-width: 980px) {
-  #booking.booking-section {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(380px, 460px);
-    gap: 1.75rem 2rem;
-    align-items: start;
-  }
-
-  #booking > .section-tag,
-  #booking > h2 {
-    grid-column: 1 / -1;
-  }
-
-  #booking > .booking-info-grid {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  #booking > .booking-card {
-    grid-column: 2;
-    grid-row: 3;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    position: sticky !important;
-    top: 1.5rem;
-    align-self: start;
-    z-index: 10;
-  }
-}
-
-/* MOBILE + TABLET — normal flow, no sticky booking card */
-@media (max-width: 979px) {
-  #booking.booking-section {
+@media (min-width: 1180px) {
+  .floating-booking-shortcut {
+    position: fixed;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 285px;
+    background: rgba(255,255,255,0.98);
+    border: 1px solid rgba(42,122,122,0.18);
+    border-radius: 16px;
+    box-shadow: 0 18px 55px rgba(26,46,46,0.16);
+    z-index: 60;
+    padding: 1rem;
     display: block;
   }
 
-  #booking > .booking-card {
-    position: static !important;
-    top: auto !important;
-    z-index: auto !important;
-    width: auto !important;
-    max-width: 860px !important;
-    margin: 0 auto !important;
+  .floating-booking-shortcut h3 {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    color: var(--turquoise-dark);
+    margin: 0 0 0.35rem;
+    line-height: 1.15;
   }
+
+  .floating-booking-shortcut p {
+    margin: 0 0 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .floating-booking-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .floating-booking-field label {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .floating-booking-field input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(42,122,122,0.18);
+    border-radius: 10px;
+    padding: 0.62rem 0.7rem;
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    color: var(--text);
+    background: var(--off-white);
+    outline: none;
+  }
+
+  .floating-booking-field input:focus {
+    border-color: var(--turquoise-dark);
+    background: white;
+  }
+
+  .floating-booking-button {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    background: var(--coral);
+    color: white;
+    padding: 0.78rem 0.9rem;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  .floating-booking-button:hover {
+    background: #E05530;
+    transform: translateY(-1px);
+  }
+
+  .floating-booking-error {
+    display: none;
+    margin-top: 0.65rem;
+    color: var(--coral-dark);
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 1179px) {
+  .floating-booking-shortcut {
+    display: none !important;
+  }
+}
+
+
+/* Main booking section stays in its normal place at the bottom */
+.booking-section .booking-card {
+  position: static !important;
+  top: auto !important;
 }
 
 </style>
@@ -2345,9 +2407,46 @@ document.addEventListener('DOMContentLoaded', function () {
       window.calcPrice();
     }
 
+    const floatingCheckin = document.getElementById("floating-checkin");
+    const floatingCheckout = document.getElementById("floating-checkout");
+    if (floatingCheckin) floatingCheckin.value = selectedStart;
+    if (floatingCheckout) floatingCheckout.value = selectedEnd;
+
     updateSelectedText();
     renderCalendars();
   }
+
+
+    window.swissSweetSelectStay = function (start, end) {
+      if (!start || !end) {
+        return { ok: false, message: "Please select arrival and departure dates." };
+      }
+
+      if (end <= start) {
+        return { ok: false, message: "Departure must be after arrival." };
+      }
+
+      if (isRangeBlocked(start, end)) {
+        return { ok: false, message: "Please choose a stay without booked nights in between." };
+      }
+
+      const startDate = fromDateOnly(start);
+      visibleYear = startDate.getFullYear();
+      visibleMonth = startDate.getMonth();
+
+      if (visibleYear < today.getFullYear() || (visibleYear === today.getFullYear() && visibleMonth < today.getMonth())) {
+        visibleYear = today.getFullYear();
+        visibleMonth = today.getMonth();
+      }
+
+      setSelectedDates(start, end);
+      return { ok: true };
+    };
+
+    const floatingCheckin = document.getElementById("floating-checkin");
+    const floatingCheckout = document.getElementById("floating-checkout");
+    if (floatingCheckin) floatingCheckin.value = selectedStart;
+    if (floatingCheckout) floatingCheckout.value = selectedEnd;
 
   function handleDateClick(dateString) {
     if (isPast(dateString) || isBooked(dateString)) return;
@@ -2497,6 +2596,105 @@ document.addEventListener('DOMContentLoaded', function () {
 
   renderCalendars();
   loadAvailability();
+})();
+</script>
+
+
+<script>
+(function () {
+  const checkin = document.getElementById("floating-checkin");
+  const checkout = document.getElementById("floating-checkout");
+  const errorBox = document.getElementById("floating-booking-error");
+
+  function pad(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  function toDateOnly(date) {
+    return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  }
+
+  function addDays(dateString, days) {
+    const date = new Date(`${dateString}T00:00:00`);
+    date.setDate(date.getDate() + days);
+    return toDateOnly(date);
+  }
+
+  if (checkin && checkout) {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const todayString = toDateOnly(today);
+
+    checkin.min = todayString;
+    checkout.min = addDays(todayString, 1);
+
+    checkin.addEventListener("change", function () {
+      if (!checkin.value) return;
+      checkout.min = addDays(checkin.value, 1);
+      if (checkout.value && checkout.value <= checkin.value) {
+        checkout.value = "";
+      }
+      if (errorBox) errorBox.style.display = "none";
+    });
+
+    checkout.addEventListener("change", function () {
+      if (errorBox) errorBox.style.display = "none";
+    });
+  }
+
+  window.swissSweetFloatingBookingSubmit = function () {
+    if (!checkin || !checkout) return;
+
+    const arrival = checkin.value;
+    const departure = checkout.value;
+
+    if (errorBox) {
+      errorBox.style.display = "none";
+      errorBox.textContent = "";
+    }
+
+    if (!arrival || !departure) {
+      if (errorBox) {
+        errorBox.textContent = "Please select arrival and departure dates.";
+        errorBox.style.display = "block";
+      }
+      return;
+    }
+
+    if (departure <= arrival) {
+      if (errorBox) {
+        errorBox.textContent = "Departure must be after arrival.";
+        errorBox.style.display = "block";
+      }
+      return;
+    }
+
+    if (typeof window.swissSweetSelectStay === "function") {
+      const result = window.swissSweetSelectStay(arrival, departure);
+      if (!result || !result.ok) {
+        if (errorBox) {
+          errorBox.textContent = result && result.message ? result.message : "Please choose different dates.";
+          errorBox.style.display = "block";
+        }
+        return;
+      }
+    } else {
+      const mainCheckin = document.getElementById("checkin");
+      const mainCheckout = document.getElementById("checkout");
+      if (mainCheckin) mainCheckin.value = arrival;
+      if (mainCheckout) mainCheckout.value = departure;
+    }
+
+    const booking = document.getElementById("booking");
+    if (booking) {
+      booking.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    setTimeout(function () {
+      const guests = document.getElementById("guests-select");
+      if (guests) guests.focus();
+    }, 650);
+  };
 })();
 </script>
 
