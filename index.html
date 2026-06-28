@@ -1112,22 +1112,54 @@
 
 
 
-/* DESKTOP ONLY — sticky booking card */
+}
+
+
+/* DESKTOP BOOKING LAYOUT — right sticky booking card */
 @media (min-width: 980px) {
-  .booking-card {
-    position: sticky;
+  #booking.booking-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 460px);
+    gap: 1.75rem 2rem;
+    align-items: start;
+  }
+
+  #booking > .section-tag,
+  #booking > h2 {
+    grid-column: 1 / -1;
+  }
+
+  #booking > .booking-info-grid {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  #booking > .booking-card {
+    grid-column: 2;
+    grid-row: 3;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    position: sticky !important;
     top: 1.5rem;
-    align-self: flex-start;
-    z-index: 5;
+    align-self: start;
+    z-index: 10;
   }
 }
 
-/* MOBILE + TABLET — normal flow, no sticky card */
+/* MOBILE + TABLET — normal flow, no sticky booking card */
 @media (max-width: 979px) {
-  .booking-card {
-    position: static;
-    top: auto;
-    z-index: auto;
+  #booking.booking-section {
+    display: block;
+  }
+
+  #booking > .booking-card {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    width: auto !important;
+    max-width: 860px !important;
+    margin: 0 auto !important;
   }
 }
 
