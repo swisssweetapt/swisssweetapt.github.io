@@ -1612,6 +1612,20 @@
   color: white;
 }
 
+
+/* Today marker inside floating mini calendar */
+.floating-mini-day.today:not(.selected-start):not(.selected-end):not(.in-range)::before {
+  content: "";
+  position: absolute;
+  top: 0.28rem;
+  right: 0.28rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--coral);
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.55);
+}
+
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -3178,6 +3192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (isPast(ds)) btn.classList.add("past");
       if (isBooked(ds)) btn.classList.add("booked");
+      if (ds === toDateOnly(today)) btn.classList.add("today");
       if (selectedStart && selectedEnd && ds > selectedStart && ds < selectedEnd) btn.classList.add("in-range");
       if (ds === selectedStart) btn.classList.add("selected-start");
       if (ds === selectedEnd) btn.classList.add("selected-end");
