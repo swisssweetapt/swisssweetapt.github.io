@@ -1577,41 +1577,19 @@
 }
 
 
-/* WhatsApp Business contact */
-.whatsapp-contact-link,
-.whatsapp-contact-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  text-decoration: none;
-  color: var(--turquoise-deep);
-  font-weight: 600;
-}
 
-.whatsapp-contact-button {
-  justify-content: center;
-  border-radius: 999px;
-  padding: 0.78rem 1.05rem;
-  background: var(--turquoise-pale);
-  border: 1px solid rgba(42,122,122,0.18);
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.whatsapp-contact-button:hover,
-.whatsapp-contact-link:hover {
-  color: var(--turquoise-dark);
-}
-
-.whatsapp-contact-button:hover {
-  background: white;
-  border-color: var(--turquoise-dark);
-  transform: translateY(-1px);
-}
-
-.whatsapp-icon {
+/* WhatsApp entry inside bottom Contact / Platforms only */
+.contact-platform-icon {
   width: 18px;
   height: 18px;
   flex: 0 0 auto;
+}
+
+.contact-platform-card,
+.contact-platform-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 </style>
@@ -1623,7 +1601,14 @@
 <button class="lightbox-prev" onclick="changePhoto(-1)" type="button">‹</button>
 <img alt="Expanded gallery image" class="lightbox-img" decoding="async" id="lightbox-img" loading="lazy" src=""/>
 <button class="lightbox-next" onclick="changePhoto(1)" type="button">›</button>
-<div class="lightbox-counter" id="lightbox-counter"></div>
+<div class="lightbox-counter" id="lightbox-counter">
+
+<a class="contact-platform-link" href="https://wa.me/41793960005" target="_blank" rel="noopener">
+  <svg class="contact-platform-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.86 9.86 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.36c0-4.53 3.69-8.21 8.23-8.21 2.2 0 4.26.86 5.81 2.41a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.21-8.22 8.21Zm4.51-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.76 2.69 4.26 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg>
+  <span>WhatsApp Business</span>
+  <small>+41 79 396 00 05</small>
+</a>
+</div>
 </div>
 <!-- AUDIO -->
 <!-- NAV -->
@@ -2225,7 +2210,7 @@ Min. 2 nights · Free cancellation up to 14 days before arrival ·
 <h4>Contact &amp; platforms</h4>
 <ul>
 <li><a href="mailto:info@swisssweet-apartment.com">info@swisssweet-apartment.com</a>
-<a class="whatsapp-contact-button" href="https://wa.me/41793960005" target="_blank" rel="noopener"><svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.86 9.86 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.36c0-4.53 3.69-8.21 8.23-8.21 2.2 0 4.26.86 5.81 2.41a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.21-8.22 8.21Zm4.51-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.76 2.69 4.26 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg> WhatsApp +41 79 396 00 05</a></li>
+</li>
 <li><a href="https://www.airbnb.fr/rooms/1096118163660517988" rel="noopener noreferrer" target="_blank">Airbnb</a></li>
 <li><a href="https://www.booking.com/hotel/al/swiss-sweet-apartment-happy-rentals.fr.html" rel="noopener noreferrer" target="_blank">Booking.com</a></li>
 <li><a href="https://www.happy.rentals/fr/vacation-rental/10648-swiss-sweet-apartment-297" rel="noopener noreferrer" target="_blank">Happy Rentals</a></li>
@@ -2602,11 +2587,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="floating-mini-summary" id="floatingMiniSummary">
       Your stay: select your arrival and departure dates.
     </div>
-
-    
-    <a class="whatsapp-contact-button floating-whatsapp-link" href="https://wa.me/41793960005" target="_blank" rel="noopener">
-      <svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.33 4.95L2 22l5.27-1.38a9.86 9.86 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.14h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.84-3.05-.2-.31a8.18 8.18 0 0 1-1.25-4.36c0-4.53 3.69-8.21 8.23-8.21 2.2 0 4.26.86 5.81 2.41a8.17 8.17 0 0 1 2.41 5.81c0 4.53-3.69 8.21-8.22 8.21Zm4.51-6.15c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.96-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.45-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.49-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.08 0 1.23.89 2.42 1.02 2.59.12.17 1.76 2.69 4.26 3.77.6.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.1-.23-.16-.48-.29Z"/></svg> WhatsApp
-    </a>
 <button class="floating-question-submit" type="button" onclick="continueReservationFromFloating()">
       Continue booking
     </button>
