@@ -1636,6 +1636,14 @@
   }
 }
 
+
+/* Reviews progressive disclosure */
+.review-extra[hidden] { display: none !important; }
+.review-excerpt { margin-top: 0.7rem; color: rgba(26,53,53,0.52); font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em; }
+.reviews-see-more { display: inline-flex; align-items: center; justify-content: center; margin: 1.5rem auto 0.9rem; padding: 0.72rem 1.05rem; border: 1px solid rgba(42,122,122,0.24); border-radius: 999px; background: transparent; color: var(--turquoise-deep); font-family: var(--sans); font-size: 0.86rem; font-weight: 600; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+.reviews-see-more:hover { background: var(--turquoise-pale); border-color: rgba(42,122,122,0.42); transform: translateY(-1px); }
+.reviews-see-more.is-open { display: none; }
+
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -2052,7 +2060,25 @@ View on Google Maps
 <div class="review-excerpt">Excerpt from verified Vrbo review</div>
 <div class="review-author">Kateryna</div>
 </div>
+<div class="review-card review-extra" hidden>
+<span class="review-source">Booking.com</span>
+<div class="review-rating">10/10</div>
+<p>“Excellent stay. The neighborhood was very nice, everything was organized, and the apartment was quiet.”</p>
+<div class="review-excerpt">Excerpt from verified review</div>
+<div class="review-author">Premtim</div>
 </div>
+
+<div class="review-card review-extra" hidden>
+<span class="review-source">Google</span>
+<div class="review-rating">5/5</div>
+<p>“Every time I am in Albania, I love coming back to Swiss Sweet Apartment. The apartment is clean, spacious and very comfortable, with a beautiful bathroom and a large balcony, perfect for breakfast or reading in the hanging chair. The resort is calm, and I always feel very comfortable there.”</p>
+<div class="review-excerpt">Excerpt from verified review</div>
+<div class="review-author">Zena</div>
+</div>
+
+</div>
+<button class="reviews-see-more" type="button" onclick="showMoreReviews(this)">See more reviews</button>
+
 <a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Stayed with us? Leave a Google review</a>
 </section>
 <!-- BLOG / LOCAL TIPS -->
@@ -3317,6 +3343,16 @@ function scrollToBookingCalendar() {
     <path fill="currentColor" d="M6.45 11.55h2.1v2.1h-2.1v-2.1Zm4.5 0h2.1v2.1h-2.1v-2.1Zm4.5 0h2.1v2.1h-2.1v-2.1Zm-9 4h2.1v2.1h-2.1v-2.1Zm4.5 0h2.1v2.1h-2.1v-2.1Z" opacity=".9"/>
   </svg>
 </button>
+
+
+<script>
+function showMoreReviews(button) {
+  document.querySelectorAll('.review-extra').forEach(function(card) {
+    card.hidden = false;
+  });
+  if (button) button.classList.add('is-open');
+}
+</script>
 
 </body>
 </html>
