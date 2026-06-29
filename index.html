@@ -1613,17 +1613,27 @@
 }
 
 
-/* Today marker inside floating mini calendar */
+
+/* Strong today marker inside floating mini calendar */
 .floating-mini-day.today:not(.selected-start):not(.selected-end):not(.in-range)::before {
-  content: "";
-  position: absolute;
-  top: 0.28rem;
-  right: 0.28rem;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--coral);
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.55);
+  content: "" !important;
+  position: absolute !important;
+  top: 0.25rem !important;
+  right: 0.25rem !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 999px !important;
+  background: var(--coral) !important;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.75), 0 2px 8px rgba(255,107,71,0.45) !important;
+  z-index: 2 !important;
+}
+
+
+/* Final explicit web footer override */
+@media (min-width: 769px) {
+  body footer {
+    grid-template-columns: minmax(280px, 1.45fr) minmax(150px, 0.75fr) minmax(320px, 1.25fr) !important;
+  }
 }
 
 </style>
@@ -2233,7 +2243,7 @@ Min. 2 nights · Free cancellation up to 14 days before arrival ·
 <li><a href="#blog">Blog</a></li>
 </ul>
 </div>
-<div>
+<div class="footer-contact-platforms-col">
 <h4>Contact &amp; platforms</h4>
 <div class="footer-contact-block">
   <div class="footer-contact-group">
@@ -3192,6 +3202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (isPast(ds)) btn.classList.add("past");
       if (isBooked(ds)) btn.classList.add("booked");
+      if (ds === toDateOnly(today)) btn.classList.add("today");
       if (ds === toDateOnly(today)) btn.classList.add("today");
       if (selectedStart && selectedEnd && ds > selectedStart && ds < selectedEnd) btn.classList.add("in-range");
       if (ds === selectedStart) btn.classList.add("selected-start");
