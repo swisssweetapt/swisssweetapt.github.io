@@ -1507,6 +1507,66 @@
   }
 }
 
+
+/* Mobile select dates shortcut */
+.mobile-select-dates-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-select-dates-button {
+    display: inline-flex;
+    position: fixed;
+    right: 18px;
+    bottom: 92px;
+    z-index: 997;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.15rem;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 10px 28px rgba(255,107,71,0.25);
+    cursor: pointer;
+  }
+
+  .mobile-select-dates-button:active {
+    transform: translateY(1px);
+  }
+
+  .floating-reservation {
+    display: none !important;
+  }
+}
+
+/* Cleaner booking calendar toolbar on mobile */
+@media (max-width: 768px) {
+  .booking-calendar-toolbar {
+    display: grid !important;
+    grid-template-columns: 1fr auto !important;
+    gap: 0.75rem !important;
+    align-items: center !important;
+    justify-content: stretch !important;
+  }
+
+  .booking-calendar-toolbar-title {
+    text-align: left !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+  }
+
+  .booking-calendar-toolbar button {
+    justify-self: end !important;
+    white-space: nowrap !important;
+  }
+
+  #bookingCalPrev {
+    display: none !important;
+  }
+}
+
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -3153,6 +3213,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   loadAvailability();
 })();
+</script>
+
+
+<button class="mobile-select-dates-button" type="button" onclick="scrollToBookingCalendar()">Select dates</button>
+
+
+<script>
+function scrollToBookingCalendar() {
+  const booking = document.getElementById("booking");
+  if (booking) {
+    booking.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
 </script>
 
 </body>
