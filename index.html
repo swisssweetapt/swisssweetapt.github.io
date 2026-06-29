@@ -1567,6 +1567,50 @@
   }
 }
 
+
+/* Compact mobile Dates pill */
+.mobile-select-dates-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-select-dates-button {
+    display: inline-flex !important;
+    position: fixed !important;
+    right: 18px !important;
+    bottom: 92px !important;
+    z-index: 997 !important;
+    background: var(--coral) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 0.66rem 0.88rem !important;
+    font-family: var(--sans) !important;
+    font-size: 0.84rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    gap: 0.35rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: auto !important;
+    box-shadow: 0 8px 22px rgba(255,107,71,0.22) !important;
+    cursor: pointer !important;
+  }
+
+  .mobile-select-dates-button span {
+    display: inline-block;
+    font-weight: 600;
+  }
+
+  .mobile-select-dates-button:active {
+    transform: translateY(1px);
+  }
+
+  .floating-reservation {
+    display: none !important;
+  }
+}
+
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
 <body>
@@ -3216,7 +3260,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<button class="mobile-select-dates-button" type="button" onclick="scrollToBookingCalendar()">Select dates</button>
+<button class="mobile-select-dates-button" type="button" onclick="scrollToBookingCalendar()" aria-label="Select dates">📅 <span>Dates</span></button>
 
 
 <script>
