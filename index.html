@@ -1637,12 +1637,73 @@
 }
 
 
-/* Reviews progressive disclosure */
-.review-extra[hidden] { display: none !important; }
-.review-excerpt { margin-top: 0.7rem; color: rgba(26,53,53,0.52); font-family: var(--sans); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.02em; }
-.reviews-see-more { display: inline-flex; align-items: center; justify-content: center; margin: 1.5rem auto 0.9rem; padding: 0.72rem 1.05rem; border: 1px solid rgba(42,122,122,0.24); border-radius: 999px; background: transparent; color: var(--turquoise-deep); font-family: var(--sans); font-size: 0.86rem; font-weight: 600; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
-.reviews-see-more:hover { background: var(--turquoise-pale); border-color: rgba(42,122,122,0.42); transform: translateY(-1px); }
-.reviews-see-more.is-open { display: none; }
+
+/* Reviews toggle */
+.review-extra[hidden] {
+  display: none !important;
+}
+
+.review-note {
+  margin-top: 0.7rem;
+  color: rgba(26, 53, 53, 0.52);
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.reviews-see-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 0;
+  padding: 0.72rem 1.05rem;
+  border: 1px solid rgba(42,122,122,0.24);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--turquoise-deep);
+  font-family: var(--sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.reviews-see-more:hover {
+  background: var(--turquoise-pale);
+  border-color: rgba(42,122,122,0.42);
+  transform: translateY(-1px);
+}
+
+
+/* Review buttons layout */
+.reviews-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 1.6rem auto 0;
+  width: 100%;
+}
+
+.reviews-actions .reviews-see-more,
+.reviews-actions .google-review-button,
+.reviews-actions a {
+  margin: 0 !important;
+}
+
+@media (max-width: 640px) {
+  .reviews-actions {
+    gap: 0.72rem;
+    margin-top: 1.35rem;
+  }
+
+  .reviews-actions .reviews-see-more,
+  .reviews-actions .google-review-button {
+    width: min(100%, 260px);
+  }
+}
 
 </style>
 <link href="https://swisssweet-apartment.com/" hreflang="en" rel="alternate"/><link href="https://swisssweet-apartment.com/fr/" hreflang="fr" rel="alternate"/><link href="https://swisssweet-apartment.com/de/" hreflang="de" rel="alternate"/><link href="https://swisssweet-apartment.com/sq/" hreflang="sq" rel="alternate"/><link href="https://swisssweet-apartment.com/it/" hreflang="it" rel="alternate"/><link href="https://swisssweet-apartment.com/" hreflang="x-default" rel="alternate"/></head>
@@ -2077,9 +2138,14 @@ View on Google Maps
 </div>
 
 </div>
-<button class="reviews-see-more" type="button" onclick="showMoreReviews(this)">See more reviews</button>
 
-<a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Stayed with us? Leave a Google review</a>
+
+
+<div class="reviews-actions">
+  <button class="reviews-see-more" type="button" onclick="toggleReviews(this)" data-open="false">See more reviews</button>
+  <a class="btn-coral" href="https://g.page/r/CdZVWcgSXmVeEBM/review" rel="noopener noreferrer" target="_blank">Stayed with us? Leave a Google review</a>
+</div>
+
 </section>
 <!-- BLOG / LOCAL TIPS -->
 <button aria-controls="blog" aria-expanded="false" class="mobile-accordion-toggle" type="button"><span class="mobile-accordion-label">Local tips</span></button><section class="blog-section mobile-accordion-target mobile-collapsed" id="blog">
@@ -3345,12 +3411,16 @@ function scrollToBookingCalendar() {
 </button>
 
 
+
+
 <script>
-function showMoreReviews(button) {
-  document.querySelectorAll('.review-extra').forEach(function(card) {
-    card.hidden = false;
+function toggleReviews(button) {
+  const isOpen = button.getAttribute("data-open") === "true";
+  document.querySelectorAll(".review-extra").forEach(function(card) {
+    card.hidden = isOpen;
   });
-  if (button) button.classList.add('is-open');
+  button.setAttribute("data-open", isOpen ? "false" : "true");
+  button.textContent = isOpen ? "See more reviews" : "Show fewer reviews";
 }
 </script>
 
